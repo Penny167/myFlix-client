@@ -1,4 +1,6 @@
 import React from 'react';
+import MovieCard from '../movie-card/movie-card';
+
 class MainView extends React.Component {
   render() {
     return (
