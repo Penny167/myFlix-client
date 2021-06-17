@@ -22,7 +22,7 @@ class MainView extends React.Component {
     if (movies.length === 0) return <div className="main-view">The list is empty</div>;
     return (
       <div className="main-view">
-        {movies.map(movie => <MovieCard key={movie._id} movieData={movie}/>)}
+        {movies.map(movie => <MovieCard key={movie._id} movieData={movie} />)}
       </div>
     );
   }
