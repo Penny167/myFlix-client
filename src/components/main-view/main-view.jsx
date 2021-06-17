@@ -10,8 +10,9 @@ class MainView extends React.Component {
         {_id: 1, Title: 'The Godfather', Description: 'descript 1', ImageUrl: '...'},
         {_id: 2, Title: 'Dr Zhivago', Description: 'descript 2', ImageUrl: '...'},
         {_id: 3, Title: 'Lawrence of Arabia', Description: 'descript 3', ImageUrl: '...'}
-      ]
-    }
+      ],
+      selectedMovie: null
+    };
   }
 
   render() {
