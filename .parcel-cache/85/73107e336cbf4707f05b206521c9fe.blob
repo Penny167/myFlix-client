@@ -22071,8 +22071,8 @@ class MainView extends _reactDefault.default.Component {
         }, movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_movieCardDefault.default, {
                 key: movie._id,
                 movieData: movie,
-                onMovieClick: (movie1)=>{
-                    this.setSelectedMovie(movie1);
+                onMovieClick: (movieData)=>{
+                    this.setSelectedMovie(movieData);
                 },
                 __source: {
                     fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
@@ -22213,4 +22213,4 @@ exports.default = MovieView;
 }
 },{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}]},["1j6wU","1Ai42","2uel2"], "2uel2", "parcelRequire279c")
 
-//# sourceMappingURL=index.cbbfa84d.js.map
+//# sourceMappingURL=index.HASH_REF_b06afa89f02bc01363504760cbbfa84d.js.map
