@@ -14,6 +14,7 @@ class MovieView extends React.Component {
         <span className="Label">Description: </span>
         <span className="Value">{movieData.Description}</span>
       </div>
+      <button>Back</button>
     </div>
     );
   }
