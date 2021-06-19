@@ -14,7 +14,7 @@ class MovieView extends React.Component {
         <span className="Label">Description: </span>
         <span className="Value">{movieData.Description}</span>
       </div>
-      <button onClick={() => {onBackClick(null)}}>Back</button>
+      <button onClick={() => onBackClick(null)}>Back</button>
     </div>
     )
   }
