@@ -8,13 +8,9 @@ class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [
-        {_id: 1, Title: 'The Godfather', Description: 'descript 1', ImageUrl: '...'},
-        {_id: 2, Title: 'Dr Zhivago', Description: 'descript 2', ImageUrl: '...'},
-        {_id: 3, Title: 'Lawrence of Arabia', Description: 'descript 3', ImageUrl: '...'}
-      ],
+      movies: [],
       selectedMovie: null
-    };
+    }
   }
 
   setSelectedMovie(selectedMovieData) {
