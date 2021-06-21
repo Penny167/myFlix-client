@@ -13,6 +13,16 @@ class MainView extends React.Component {
     }
   }
 
+  componentDidMount(){
+    axios.get('https://intense-depths-38257.herokuapp.com/movies')
+      .then(res => {
+        this.setState({movies: res.data});
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
   setSelectedMovie(selectedMovieData) {
     this.setState({selectedMovie: selectedMovieData})
   }
