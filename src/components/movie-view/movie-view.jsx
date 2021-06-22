@@ -5,7 +5,7 @@ class MovieView extends React.Component {
     const { movieData, onBackClick } = this.props;
     return ( 
     <div className="movie-view">
-      <div className="movie-image"><img src={movieData.ImageUrl} /></div>
+      <div className="movie-image"><img src={movieData.ImagePath} /></div>
       <div className="movie-title">
         <span className="Label">Title: </span>
         <span className="Value">{movieData.Title}</span>
