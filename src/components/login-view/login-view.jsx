@@ -1,3 +1,4 @@
+import React from 'react';
 // Import useState hook from the React library
 import {useState} from 'react';
 
@@ -10,12 +11,12 @@ function LoginView(props) {
 
 /* Function to handle submission of form data. Note that this will be updated to send a request
 for proper authentication of credentials in a future exercise */
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
 /* We will give the component a property called onLoggedIn within MainView. We will then call it here
-passing the username as the parameter */
-//  props.onLoggedIn(username);
+passing the username as the parameter. This will simulate logging on while we work on styling */
+    props.onLoggedIn(username);
   }
 
 // Return statement
@@ -27,7 +28,7 @@ passing the username as the parameter */
       <label>Password:
         <input type="text" value={password} onChange={e => setPassword(e.target.value)} />
       </label>
-      <button type="submit" onClick={handleSubmit}>Submit</button>
+      <button type="submit" onClick={e => handleSubmit(e)}>Submit</button>
     </form>
   );
 }

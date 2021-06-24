@@ -23602,8 +23602,8 @@ helpers.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+// Import useState hook from the React library
 var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
 // Create function component
 function LoginView(props) {
@@ -23612,58 +23612,57 @@ function LoginView(props) {
     const [username, setUsername] = _react.useState('');
     const [password, setPassword] = _react.useState('');
     /* Function to handle submission of form data. Note that this will be updated to send a request
-for proper authentication of credentials in a future exercise */ const handleSubmit = (e)=>{
+for proper authentication of credentials in a future exercise */ const handleSubmit = ()=>{
         e.preventDefault();
         console.log(username, password);
-        /* We will give the component a property called onLoggedIn within MainView. We will then call it here
-passing the username as the parameter. This will simulate logging on while we work on styling */ props.onLoggedIn(username);
+    /* We will give the component a property called onLoggedIn within MainView. We will then call it here
+passing the username as the parameter. This will simulate logging on while we work on styling */ //  props.onLoggedIn(username);
     };
     // Return statement
-    return(/*#__PURE__*/ _reactDefault.default.createElement("form", {
+    return(/*#__PURE__*/ React.createElement("form", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 23
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("label", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
             lineNumber: 24
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("label", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 25
-        },
-        __self: this
-    }, "Username:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
+    }, "Username:", /*#__PURE__*/ React.createElement("input", {
         type: "text",
         value: username,
         onChange: (e)=>setUsername(e.target.value)
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 26
+            lineNumber: 25
         },
         __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement("label", {
+    })), /*#__PURE__*/ React.createElement("label", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 28
+            lineNumber: 27
         },
         __self: this
-    }, "Password:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
+    }, "Password:", /*#__PURE__*/ React.createElement("input", {
         type: "text",
         value: password,
         onChange: (e)=>setPassword(e.target.value)
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 29
+            lineNumber: 28
         },
         __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement("button", {
+    })), /*#__PURE__*/ React.createElement("button", {
         type: "submit",
-        onClick: (e)=>handleSubmit(e)
-        ,
+        onClick: handleSubmit,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 31
+            lineNumber: 30
         },
         __self: this
     }, "Submit")));
@@ -23681,4 +23680,4 @@ $RefreshReg$(_c, "LoginView");
 }
 },{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}]},["1j6wU","1Ai42","2uel2"], "2uel2", "parcelRequire279c")
 
-//# sourceMappingURL=index.cbbfa84d.js.map
+//# sourceMappingURL=index.HASH_REF_b06afa89f02bc01363504760cbbfa84d.js.map

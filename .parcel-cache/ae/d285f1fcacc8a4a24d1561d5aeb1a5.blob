@@ -23612,7 +23612,7 @@ function LoginView(props) {
     const [username, setUsername] = _react.useState('');
     const [password, setPassword] = _react.useState('');
     /* Function to handle submission of form data. Note that this will be updated to send a request
-for proper authentication of credentials in a future exercise */ const handleSubmit = (e)=>{
+for proper authentication of credentials in a future exercise */ const handleSubmit = ()=>{
         e.preventDefault();
         console.log(username, password);
         /* We will give the component a property called onLoggedIn within MainView. We will then call it here
@@ -23659,8 +23659,7 @@ passing the username as the parameter. This will simulate logging on while we wo
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("button", {
         type: "submit",
-        onClick: (e)=>handleSubmit(e)
-        ,
+        onClick: handleSubmit,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
             lineNumber: 31
@@ -23681,4 +23680,4 @@ $RefreshReg$(_c, "LoginView");
 }
 },{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}]},["1j6wU","1Ai42","2uel2"], "2uel2", "parcelRequire279c")
 
-//# sourceMappingURL=index.cbbfa84d.js.map
+//# sourceMappingURL=index.HASH_REF_b06afa89f02bc01363504760cbbfa84d.js.map

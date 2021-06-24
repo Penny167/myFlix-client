@@ -22046,7 +22046,7 @@ class MainView extends _reactDefault.default.Component {
     render() {
         const { movies , selectedMovie , user  } = this.state;
         if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_loginViewDefault.default, {
-            onLoggedIn: (username)=>this.onLoggedIn(username)
+            blah: (username)=>this.onLoggedIn(username)
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
@@ -23616,7 +23616,7 @@ for proper authentication of credentials in a future exercise */ const handleSub
         e.preventDefault();
         console.log(username, password);
         /* We will give the component a property called onLoggedIn within MainView. We will then call it here
-passing the username as the parameter. This will simulate logging on while we work on styling */ props.onLoggedIn(username);
+passing the username as the parameter. This will simulate logging on while we work on styling */ props.blah(username);
     };
     // Return statement
     return(/*#__PURE__*/ _reactDefault.default.createElement("form", {
@@ -23681,4 +23681,4 @@ $RefreshReg$(_c, "LoginView");
 }
 },{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}]},["1j6wU","1Ai42","2uel2"], "2uel2", "parcelRequire279c")
 
-//# sourceMappingURL=index.cbbfa84d.js.map
+//# sourceMappingURL=index.HASH_REF_b06afa89f02bc01363504760cbbfa84d.js.map
