@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import PropTypes from 'prop-types';
 
 function RegistrationView(props) {
 
@@ -45,6 +46,10 @@ user to the login view */
     </div>  
   ); 
 
+}
+
+RegistrationView.propTypes = {
+  onRegistered:PropTypes.func.isRequired
 }
 
 export default RegistrationView;

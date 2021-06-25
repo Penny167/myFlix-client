@@ -1,6 +1,7 @@
 import React from 'react';
 // Import useState hook from the React library
 import {useState} from 'react';
+import PropTypes from 'prop-types';
 
 // Create function component
 function LoginView(props) {
@@ -31,6 +32,10 @@ passing the username as the parameter. This will simulate logging on while we wo
       <button type="submit" onClick={handleSubmit}>Submit</button>
     </form>
   );
+}
+
+LoginView.propTypes = {
+  onLoggedIn:PropTypes.func.isRequired
 }
 
 export default LoginView
