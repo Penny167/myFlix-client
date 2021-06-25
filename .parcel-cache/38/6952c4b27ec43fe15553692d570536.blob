@@ -1,0 +1,138 @@
+var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+class MovieView extends _reactDefault.default.Component {
+    render() {
+        const { movieData , onBackClick  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-view",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 8
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-image",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 9
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
+            src: movieData.ImagePath,
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 9
+            },
+            __self: this
+        })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-title",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 10
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "Label",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 11
+            },
+            __self: this
+        }, "Title: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "Value",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 12
+            },
+            __self: this
+        }, movieData.Title)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-description",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 14
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "Label",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 15
+            },
+            __self: this
+        }, "Descript: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "Value",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 16
+            },
+            __self: this
+        }, movieData.Description)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-genre",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 18
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "Label",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 19
+            },
+            __self: this
+        }, "Genre: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "Value",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 20
+            },
+            __self: this
+        }, movieData.Genre.Name)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-director",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 22
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "Label",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 23
+            },
+            __self: this
+        }, "Director: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "Value",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 24
+            },
+            __self: this
+        }, movieData.Director.Name)), /*#__PURE__*/ _reactDefault.default.createElement("button", {
+            onClick: ()=>onBackClick(null)
+            ,
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 26
+            },
+            __self: this
+        }, "Back")));
+    }
+}
+exports.default = MovieView;
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

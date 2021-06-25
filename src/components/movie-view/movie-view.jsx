@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class MovieView extends React.Component {
   render() {
@@ -14,6 +15,14 @@ class MovieView extends React.Component {
         <span className="Label">Description: </span>
         <span className="Value">{movieData.Description}</span>
       </div>
+      <div className="movie-genre">
+        <span className="Label">Genre: </span>
+        <span className="Value">{movieData.Genre.Name}</span>
+      </div>
+      <div className="movie-director">
+        <span className="Label">Director: </span>
+        <span className="Value">{movieData.Director.Name}</span>
+      </div>
       <button onClick={() => onBackClick(null)}>Back</button>
     </div>
     )
@@ -21,3 +30,5 @@ class MovieView extends React.Component {
 }
 
 export default MovieView;
+
+

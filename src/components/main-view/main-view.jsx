@@ -41,17 +41,17 @@ class MainView extends React.Component {
 
   render() {
     const { movies, selectedMovie, user, registeredUser } = this.state;
-    if (!registeredUser) return <RegistrationView onRegistered={this.onRegistered} />;
-    if (!user) return <LoginView onLoggedIn={this.onLoggedIn} />;
+    if (!registeredUser) return <RegistrationView onRegistered={registered => this.onRegistered(registered)} />;
+    if (!user) return <LoginView onLoggedIn={username => this.onLoggedIn(username)} />;
     if (movies.length === 0) return <div className="main-view" />;
     return (
       <div className="main-view">
         {selectedMovie
-          ? <MovieView movieData={selectedMovie} onBackClick={
-              this.setSelectedMovie} />
+          ? <MovieView movieData={selectedMovie} onBackClick={movie =>
+              this.setSelectedMovie(movie)} />
           : movies.map(movie => 
-            <MovieCard key={movie._id} movieData={movie} onMovieClick={
-              this.setSelectedMovie} />)
+            <MovieCard key={movie._id} movieData={movie} onMovieClick={movie =>
+              this.setSelectedMovie(movie)} />)
         }
       </div>
     )
