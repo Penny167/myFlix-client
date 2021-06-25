@@ -28,7 +28,7 @@ passing the username as the parameter. This will simulate logging on while we wo
       <label>Password:
         <input type="text" value={password} onChange={e => setPassword(e.target.value)} />
       </label>
-      <button type="submit" onClick={e => handleSubmit(e)}>Submit</button>
+      <button type="submit" onClick={handleSubmit}>Submit</button>
     </form>
   );
 }

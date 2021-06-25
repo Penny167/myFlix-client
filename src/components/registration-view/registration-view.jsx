@@ -13,17 +13,18 @@ user to the login view */
   const handleRegistration = (e) => {
     e.preventDefault();
     console.log('registration submitted');
-    props.onRegistered(registered);
+    props.onRegistered(username);
   }
 
 // Function to go straight to login where user already registered
-  const handleGoToLogin = () => {
+  const handleGoToLogin = (registered) => {
     console.log('take me to login');
     props.onRegistered(registered);
   }
 
   return(
     <div className="registration-view">
+      <h1>Sign up to myFlix</h1>
       <form>
         <label>Username:
           <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
@@ -37,9 +38,10 @@ user to the login view */
         <label>Birthday:
           <input type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
         </label>
-        <button type="submit" onClick={e => handleRegistration(e)}>Submit</button>
+        <button type="submit" onClick={handleRegistration}>Submit</button>
       </form>
-      <button type="button" onClick={handleGoToLogin()}>Go to login screen</button>
+      <h2>Login to myFlix account</h2>
+      <button type="button" onClick={handleGoToLogin}>Take me to login screen</button>
     </div>  
   ); 
 

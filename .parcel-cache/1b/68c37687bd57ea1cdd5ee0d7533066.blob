@@ -22054,7 +22054,8 @@ class MainView extends _reactDefault.default.Component {
     render() {
         const { movies , selectedMovie , user , registeredUser  } = this.state;
         if (!registeredUser) return(/*#__PURE__*/ _reactDefault.default.createElement(_registrationViewDefault.default, {
-            onRegistered: this.onRegistered,
+            onRegistered: (registered)=>this.onRegistered(registered)
+            ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
                 lineNumber: 44
@@ -22062,7 +22063,8 @@ class MainView extends _reactDefault.default.Component {
             __self: this
         }));
         if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_loginViewDefault.default, {
-            onLoggedIn: this.onLoggedIn,
+            onLoggedIn: (username)=>this.onLoggedIn(username)
+            ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
                 lineNumber: 45
@@ -22086,7 +22088,8 @@ class MainView extends _reactDefault.default.Component {
             __self: this
         }, selectedMovie ? /*#__PURE__*/ _reactDefault.default.createElement(_movieViewDefault.default, {
             movieData: selectedMovie,
-            onBackClick: this.setSelectedMovie,
+            onBackClick: (movieData)=>this.setSelectedMovie(movieData)
+            ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
                 lineNumber: 50
@@ -22095,7 +22098,8 @@ class MainView extends _reactDefault.default.Component {
         }) : movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_movieCardDefault.default, {
                 key: movie._id,
                 movieData: movie,
-                onMovieClick: this.setSelectedMovie,
+                onMovieClick: (movieData)=>this.setSelectedMovie(movieData)
+                ,
                 __source: {
                     fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
                     lineNumber: 53
@@ -23627,8 +23631,9 @@ function RegistrationView(props) {
     /* Function to handle submission of registration form. Successful registration should take the new
 user to the login view */ const handleRegistration = (e)=>{
         e.preventDefault();
+        const registered = true;
         console.log('registration submitted');
-        props.onRegistered(username);
+        props.onRegistered(registered);
     };
     // Function to go straight to login where user already registered
     const handleGoToLogin = (registered)=>{
@@ -23639,16 +23644,10 @@ user to the login view */ const handleRegistration = (e)=>{
         className: "registration-view",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 26
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("h1", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
             lineNumber: 27
         },
         __self: this
-    }, "Sign up to myFlix"), /*#__PURE__*/ _reactDefault.default.createElement("form", {
+    }, /*#__PURE__*/ _reactDefault.default.createElement("form", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
             lineNumber: 28
@@ -23720,27 +23719,22 @@ user to the login view */ const handleRegistration = (e)=>{
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("button", {
         type: "submit",
-        onClick: handleRegistration,
+        onClick: (e)=>handleRegistration(e)
+        ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
             lineNumber: 41
         },
         __self: this
-    }, "Submit")), /*#__PURE__*/ _reactDefault.default.createElement("h2", {
+    }, "Submit")), /*#__PURE__*/ _reactDefault.default.createElement("button", {
+        type: "button",
+        onClick: handleGoToLogin,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
             lineNumber: 43
         },
         __self: this
-    }, "Login to myFlix account"), /*#__PURE__*/ _reactDefault.default.createElement("button", {
-        type: "button",
-        onClick: handleGoToLogin,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 44
-        },
-        __self: this
-    }, "Take me to login screen")));
+    }, "Go to login screen")));
 }
 _s(RegistrationView, "tdA1KK8yaZidqYo0wscqshHt/KE=");
 _c = RegistrationView;
@@ -23819,7 +23813,8 @@ passing the username as the parameter. This will simulate logging on while we wo
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("button", {
         type: "submit",
-        onClick: handleSubmit,
+        onClick: (e)=>handleSubmit(e)
+        ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
             lineNumber: 31
@@ -23840,4 +23835,4 @@ $RefreshReg$(_c, "LoginView");
 }
 },{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}]},["1j6wU","1Ai42","2uel2"], "2uel2", "parcelRequire279c")
 
-//# sourceMappingURL=index.cbbfa84d.js.map
+//# sourceMappingURL=index.HASH_REF_b06afa89f02bc01363504760cbbfa84d.js.map

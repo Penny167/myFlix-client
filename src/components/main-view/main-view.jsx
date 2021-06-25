@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import RegistrationView from '../registration-view/registration-view';
 import LoginView from '../login-view/login-view';
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
@@ -11,6 +12,7 @@ class MainView extends React.Component {
     this.state = {
       movies: [],
       selectedMovie: null,
+      registeredUser: null,
       user: null
     }
   }
@@ -29,22 +31,27 @@ class MainView extends React.Component {
     this.setState({selectedMovie: selectedMovieData})
   }
 
+  onRegistered(registered) {
+    this.setState({registeredUser: registered})
+  }
+
   onLoggedIn(username) {
     this.setState({user: username})
   }
 
   render() {
-    const { movies, selectedMovie, user } = this.state;
-    if (!user) return <LoginView onLoggedIn={username => this.onLoggedIn(username)} />;
+    const { movies, selectedMovie, user, registeredUser } = this.state;
+    if (!registeredUser) return <RegistrationView onRegistered={this.onRegistered} />;
+    if (!user) return <LoginView onLoggedIn={this.onLoggedIn} />;
     if (movies.length === 0) return <div className="main-view" />;
     return (
       <div className="main-view">
         {selectedMovie
-          ? <MovieView movieData={selectedMovie} onBackClick={movieData => 
-              this.setSelectedMovie(movieData)} />
+          ? <MovieView movieData={selectedMovie} onBackClick={
+              this.setSelectedMovie} />
           : movies.map(movie => 
-            <MovieCard key={movie._id} movieData={movie} onMovieClick={movieData => 
-              this.setSelectedMovie(movieData)} />)
+            <MovieCard key={movie._id} movieData={movie} onMovieClick={
+              this.setSelectedMovie} />)
         }
       </div>
     )
