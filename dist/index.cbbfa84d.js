@@ -22144,6 +22144,20 @@ class MovieCard extends _reactDefault.default.Component {
         }, movieData.Title));
     }
 }
+MovieCard.propTypes = {
+    movieData: _propTypesDefault.default.shape({
+        Title: _propTypesDefault.default.string.isRequired,
+        Description: _propTypesDefault.default.string.isRequired,
+        ImagePath: _propTypesDefault.default.string.isRequired,
+        Genre: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        }),
+        Director: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        })
+    }).isRequired,
+    onMovieClick: _propTypesDefault.default.func.isRequired
+};
 exports.default = MovieCard;
 
   helpers.postlude(module);
@@ -22962,6 +22976,20 @@ class MovieView extends _reactDefault.default.Component {
         }, "Back")));
     }
 }
+MovieView.propTypes = {
+    movieData: _propTypesDefault.default.shape({
+        Title: _propTypesDefault.default.string.isRequired,
+        Description: _propTypesDefault.default.string.isRequired,
+        ImagePath: _propTypesDefault.default.string.isRequired,
+        Genre: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        }),
+        Director: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        })
+    }).isRequired,
+    onBackClick: _propTypesDefault.default.func.isRequired
+};
 exports.default = MovieView;
 
   helpers.postlude(module);
