@@ -5,6 +5,7 @@ import LoginView from '../login-view/login-view';
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class MainView extends React.Component {
 
@@ -50,8 +51,10 @@ class MainView extends React.Component {
         {selectedMovie
           ? (
             <Row>
-              <MovieView movieData={selectedMovie} onBackClick={movie =>
-                this.setSelectedMovie(movie)} />
+              <Col>
+                <MovieView movieData={selectedMovie} onBackClick={movie =>
+                  this.setSelectedMovie(movie)} />
+              </Col>
             </Row>
           )
           : movies.map(movie => 
