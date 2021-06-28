@@ -4,6 +4,7 @@ import RegistrationView from '../registration-view/registration-view';
 import LoginView from '../login-view/login-view';
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
+import Row from 'react-bootstrap/Row';
 
 class MainView extends React.Component {
 
@@ -47,8 +48,12 @@ class MainView extends React.Component {
     return (
       <div className="main-view">
         {selectedMovie
-          ? <MovieView movieData={selectedMovie} onBackClick={movie =>
-              this.setSelectedMovie(movie)} />
+          ? (
+            <Row>
+              <MovieView movieData={selectedMovie} onBackClick={movie =>
+                this.setSelectedMovie(movie)} />
+            </Row>
+          )
           : movies.map(movie => 
             <MovieCard key={movie._id} movieData={movie} onMovieClick={movie =>
               this.setSelectedMovie(movie)} />)

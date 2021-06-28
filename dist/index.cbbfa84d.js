@@ -22025,6 +22025,8 @@ var _movieCard = require("../movie-card/movie-card");
 var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
 var _movieView = require("../movie-view/movie-view");
 var _movieViewDefault = parcelHelpers.interopDefault(_movieView);
+var _row = require("react-bootstrap/Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
 class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
@@ -22066,7 +22068,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 44
+                lineNumber: 45
             },
             __self: this
         }));
@@ -22075,7 +22077,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 45
+                lineNumber: 46
             },
             __self: this
         }));
@@ -22083,7 +22085,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 46
+                lineNumber: 47
             },
             __self: this
         }));
@@ -22091,26 +22093,32 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 48
+                lineNumber: 49
             },
             __self: this
-        }, selectedMovie ? /*#__PURE__*/ _reactDefault.default.createElement(_movieViewDefault.default, {
+        }, selectedMovie ? /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 52
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_movieViewDefault.default, {
             movieData: selectedMovie,
             onBackClick: (movie)=>this.setSelectedMovie(movie)
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 50
+                lineNumber: 53
             },
             __self: this
-        }) : movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_movieCardDefault.default, {
+        })) : movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_movieCardDefault.default, {
                 key: movie._id,
                 movieData: movie,
                 onMovieClick: (movie1)=>this.setSelectedMovie(movie1)
                 ,
                 __source: {
                     fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                    lineNumber: 53
+                    lineNumber: 58
                 },
                 __self: this
             })
@@ -22124,7 +22132,7 @@ exports.default = MainView;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../movie-card/movie-card":"VFCZ2","../movie-view/movie-view":"67UYI","axios":"7rA65","../registration-view/registration-view":"1nt2p","../login-view/login-view":"6aBEq"}],"VFCZ2":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../movie-card/movie-card":"VFCZ2","../movie-view/movie-view":"67UYI","axios":"7rA65","../registration-view/registration-view":"1nt2p","../login-view/login-view":"6aBEq","react-bootstrap/Row":"3fzwD"}],"VFCZ2":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -25169,7 +25177,63 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","prop-types":"4dfy5"}],"3Mt3t":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","prop-types":"4dfy5"}],"3fzwD":[function(require,module,exports) {
+"use strict";
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+exports.__esModule = true;
+exports.default = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
+var _classnames = _interopRequireDefault(require("classnames"));
+var _react = _interopRequireDefault(require("react"));
+var _ThemeProvider = require("./ThemeProvider");
+var _excluded = [
+    "bsPrefix",
+    "className",
+    "noGutters",
+    "as"
+];
+var DEVICE_SIZES = [
+    'xl',
+    'lg',
+    'md',
+    'sm',
+    'xs'
+];
+var defaultProps = {
+    noGutters: false
+};
+var Row = /*#__PURE__*/ _react.default.forwardRef(function(_ref, ref) {
+    var bsPrefix = _ref.bsPrefix, className = _ref.className, noGutters = _ref.noGutters, _ref$as = _ref.as, Component = _ref$as === void 0 ? 'div' : _ref$as, props = _objectWithoutPropertiesLoose2.default(_ref, _excluded);
+    var decoratedBsPrefix = _ThemeProvider.useBootstrapPrefix(bsPrefix, 'row');
+    var sizePrefix = decoratedBsPrefix + "-cols";
+    var classes = [];
+    DEVICE_SIZES.forEach(function(brkPoint) {
+        var propValue = props[brkPoint];
+        delete props[brkPoint];
+        var cols;
+        if (propValue != null && typeof propValue === 'object') cols = propValue.cols;
+        else cols = propValue;
+        var infix = brkPoint !== 'xs' ? "-" + brkPoint : '';
+        if (cols != null) classes.push("" + sizePrefix + infix + "-" + cols);
+    });
+    return(/*#__PURE__*/ _react.default.createElement(Component, _extends2.default({
+        ref: ref
+    }, props, {
+        className: _classnames.default.apply(void 0, [
+            className,
+            decoratedBsPrefix,
+            noGutters && 'no-gutters'
+        ].concat(classes))
+    })));
+});
+Row.displayName = 'Row';
+Row.defaultProps = defaultProps;
+var _default = Row;
+exports.default = _default;
+module.exports = exports["default"];
+
+},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","./ThemeProvider":"4rz1S"}],"3Mt3t":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
