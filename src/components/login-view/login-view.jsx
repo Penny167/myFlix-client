@@ -24,6 +24,8 @@ passing the username as the parameter. This will simulate logging on while we wo
 
 // Return statement
   return(
+    <div>
+    <h2>Log in to myFlix</h2>
     <Form>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
@@ -35,6 +37,7 @@ passing the username as the parameter. This will simulate logging on while we wo
       </Form.Group>
       <Button variant="danger" type="submit" onClick={handleSubmit}>myFlix</Button>
     </Form>
+    </div>
   );
 }
 

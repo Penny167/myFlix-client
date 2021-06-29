@@ -45,7 +45,7 @@ class MainView extends React.Component {
     const { movies, selectedMovie, user, registeredUser } = this.state;
     if (!registeredUser) return (
       <Row className="registration-view justify-content-center">
-        <Col>
+        <Col xs={8} md={6} lg={4}>
           <RegistrationView onRegistered={registered => this.onRegistered(registered)} />
         </Col>
       </Row>
@@ -59,16 +59,16 @@ class MainView extends React.Component {
     )
     if (movies.length === 0) return <div className="main-view" />;
     return (
-      <Row className="main-view justify-content-md-center">
+      <Row className="main-view justify-content-center">
         {selectedMovie
           ? (
-              <Col md={8}>
+              <Col xs={10} md={8}>
                 <MovieView movieData={selectedMovie} onBackClick={movie =>
                   this.setSelectedMovie(movie)} />
               </Col>
           )
           : movies.map(movie => (
-              <Col md={3}>
+              <Col xs={7} sm={6} md={4} lg={3}>
                 <MovieCard key={movie._id} movieData={movie} onMovieClick={movie =>
                   this.setSelectedMovie(movie)} />
               </Col>
