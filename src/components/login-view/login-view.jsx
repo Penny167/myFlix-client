@@ -33,7 +33,7 @@ passing the username as the parameter. This will simulate logging on while we wo
         <Form.Label>Password:</Form.Label>
         <Form.Control type="text" value={password} onChange={e => setPassword(e.target.value)} />
       </Form.Group>
-      <Button variant="primary" type="submit" onClick={handleSubmit}>myFlix</Button>
+      <Button variant="danger" type="submit" onClick={handleSubmit}>myFlix</Button>
     </Form>
   );
 }

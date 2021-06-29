@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
 
 class MovieView extends React.Component {
   render() {
@@ -23,7 +24,7 @@ class MovieView extends React.Component {
         <span className="Label">Director: </span>
         <span className="Value">{movieData.Director.Name}</span>
       </div>
-      <button onClick={() => onBackClick(null)}>Back</button>
+      <Button variant="danger" onClick={() => onBackClick(null)}>Back</Button>
     </div>
     )
   }

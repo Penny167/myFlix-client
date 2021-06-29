@@ -27,7 +27,7 @@ user to the login view */
 
   return(
     <div className="registration-view">
-      <h1>Sign up to myFlix</h1>
+      <h2>Register for myFlix</h2>
       <Form>
         <Form.Group controlId="formUsername">  
           <Form.Label>Username:</Form.Label>
@@ -45,12 +45,13 @@ user to the login view */
           <Form.Label>Birthday:</Form.Label>
           <Form.Control type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
         </Form.Group>  
-        <Button variant="primary" type="submit" onClick={handleRegistration}>Submit</Button>
+        <Button variant="danger" type="submit" onClick={handleRegistration}>Submit</Button>
       </Form>
-      <h2>Login to myFlix account</h2>
-      <Button variant="primary" type="button" onClick={handleGoToLogin}>Take me to login screen</Button>
+      <br></br>
+      <h3>myFlix members</h3>
+      <Button variant="danger" type="button" onClick={handleGoToLogin}>Login</Button>
     </div>  
-  ); 
+  ) 
 
 }
 

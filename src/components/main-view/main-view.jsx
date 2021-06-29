@@ -43,7 +43,13 @@ class MainView extends React.Component {
 
   render() {
     const { movies, selectedMovie, user, registeredUser } = this.state;
-    if (!registeredUser) return <RegistrationView onRegistered={registered => this.onRegistered(registered)} />;
+    if (!registeredUser) return (
+      <Row className="registration-view justify-content-center">
+        <Col>
+          <RegistrationView onRegistered={registered => this.onRegistered(registered)} />
+        </Col>
+      </Row>
+    )
     if (!user) return (
       <Row className="login-view justify-content-center">
         <Col xs={6} lg={4}>
