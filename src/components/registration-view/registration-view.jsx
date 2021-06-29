@@ -1,6 +1,8 @@
 import React from 'react';
 import {useState} from 'react';
 import PropTypes from 'prop-types';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function RegistrationView(props) {
 
@@ -26,23 +28,27 @@ user to the login view */
   return(
     <div className="registration-view">
       <h1>Sign up to myFlix</h1>
-      <form>
-        <label>Username:
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-        </label>
-        <label>Password:
-          <input type="text" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
-        <label>Email:
-          <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
-        </label>
-        <label>Birthday:
-          <input type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
-        </label>
-        <button type="submit" onClick={handleRegistration}>Submit</button>
-      </form>
+      <Form>
+        <Form.Group controlId="formUsername">  
+          <Form.Label>Username:</Form.Label>
+          <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} />
+        </Form.Group> 
+        <Form.Group controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control type="text" value={password} onChange={e => setPassword(e.target.value)} />
+        </Form.Group> 
+        <Form.Group controlId="formEmail"> 
+          <Form.Label>Email:</Form.Label>
+          <Form.Control type="text" value={email} onChange={e => setEmail(e.target.value)} />
+        </Form.Group>
+        <Form.Group controlId="formBirthday">
+          <Form.Label>Birthday:</Form.Label>
+          <Form.Control type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
+        </Form.Group>  
+        <Button variant="primary" type="submit" onClick={handleRegistration}>Submit</Button>
+      </Form>
       <h2>Login to myFlix account</h2>
-      <button type="button" onClick={handleGoToLogin}>Take me to login screen</button>
+      <Button variant="primary" type="button" onClick={handleGoToLogin}>Take me to login screen</Button>
     </div>  
   ); 
 
