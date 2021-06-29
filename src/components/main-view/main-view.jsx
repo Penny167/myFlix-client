@@ -47,21 +47,23 @@ class MainView extends React.Component {
     if (!user) return <LoginView onLoggedIn={username => this.onLoggedIn(username)} />;
     if (movies.length === 0) return <div className="main-view" />;
     return (
-      <div className="main-view">
+      <Row className="main-view justify-content-md-center">
         {selectedMovie
           ? (
-            <Row className="justify-content-md-center">
               <Col md={8}>
                 <MovieView movieData={selectedMovie} onBackClick={movie =>
                   this.setSelectedMovie(movie)} />
               </Col>
-            </Row>
           )
-          : movies.map(movie => 
-            <MovieCard key={movie._id} movieData={movie} onMovieClick={movie =>
-              this.setSelectedMovie(movie)} />)
+          : movies.map(movie => (
+              <Col md={3}>
+                <MovieCard key={movie._id} movieData={movie} onMovieClick={movie =>
+                  this.setSelectedMovie(movie)} />
+              </Col>
+            )
+          )
         }
-      </div>
+      </Row>
     )
   }
 
