@@ -2,6 +2,8 @@ import React from 'react';
 // Import useState hook from the React library
 import {useState} from 'react';
 import PropTypes from 'prop-types';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 // Create function component
 function LoginView(props) {
@@ -22,15 +24,17 @@ passing the username as the parameter. This will simulate logging on while we wo
 
 // Return statement
   return(
-    <form>
-      <label>Username:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>Password:
-        <input type="text" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <button type="submit" onClick={handleSubmit}>Submit</button>
-    </form>
+    <Form>
+      <Form.Group controlId="formUsername">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} />
+      </Form.Group>
+      <Form.Group controlId="formPassword">
+        <Form.Label>Password:</Form.Label>
+        <Form.Control type="text" value={password} onChange={e => setPassword(e.target.value)} />
+      </Form.Group>
+      <Button variant="primary" type="submit" onClick={handleSubmit}>myFlix</Button>
+    </Form>
   );
 }
 
