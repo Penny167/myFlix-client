@@ -22074,20 +22074,35 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this
         }));
-        if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_loginViewDefault.default, {
+        if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
+            className: "login-view justify-content-center",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 48
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+            xs: 6,
+            lg: 4,
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 49
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_loginViewDefault.default, {
             onLoggedIn: (username)=>this.onLoggedIn(username)
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 47
+                lineNumber: 50
             },
             __self: this
-        }));
+        }))));
         if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "main-view",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 48
+                lineNumber: 54
             },
             __self: this
         }));
@@ -22095,14 +22110,14 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view justify-content-md-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 50
+                lineNumber: 56
             },
             __self: this
         }, selectedMovie ? /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
             md: 8,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 53
+                lineNumber: 59
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_movieViewDefault.default, {
@@ -22111,14 +22126,14 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 54
+                lineNumber: 60
             },
             __self: this
         })) : movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                 md: 3,
                 __source: {
                     fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                    lineNumber: 59
+                    lineNumber: 65
                 },
                 __self: this
             }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCardDefault.default, {
@@ -22128,7 +22143,7 @@ class MainView extends _reactDefault.default.Component {
                 ,
                 __source: {
                     fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                    lineNumber: 60
+                    lineNumber: 66
                 },
                 __self: this
             }))
