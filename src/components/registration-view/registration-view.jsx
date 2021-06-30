@@ -27,7 +27,7 @@ user to the login view */
 
   return(
     <div className="registration-view">
-      <h2>Register for myFlix</h2>
+      <h2>Sign up to myFlix</h2>
       <Form>
         <Form.Group controlId="formUsername">  
           <Form.Label>Username:</Form.Label>

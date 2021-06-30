@@ -25028,7 +25028,7 @@ user to the login view */ const handleRegistration = (e)=>{
             lineNumber: 30
         },
         __self: this
-    }, "Register for myFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+    }, "Sign up to myFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
             lineNumber: 31
