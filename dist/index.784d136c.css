@@ -5,5 +5,26 @@
 .app-container {
   background-color: #0c0d0d;
   color: #dc3545;
+  height: 100%;
+}
+.movie-card {
+  margin-top: 15vh;
+  margin-bottom: 2vh;
+}
+
+#moviecardButton {
+  border-color: #fff;
+}
+.movie-view {
+  margin-top: 8rem;
+  padding-bottom: 30vh;
+}
+.registration-view {
+  margin-top: 3rem;
+  padding-bottom: 10vh;
+}
+.login-view {
+  margin-top: 3rem;
+  padding-bottom: 50vh;
 }
 /*# sourceMappingURL=index.784d136c.css.map */

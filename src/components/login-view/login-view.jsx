@@ -4,6 +4,7 @@ import {useState} from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import './login-view.scss';
 
 // Create function component
 function LoginView(props) {
@@ -24,7 +25,7 @@ passing the username as the parameter. This will simulate logging on while we wo
 
 // Return statement
   return(
-    <div>
+    <div className="login-view">
       <h2>Log in to myFlix</h2>
       <Form>
         <Form.Group controlId="formUsername">
