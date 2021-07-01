@@ -9,7 +9,7 @@ class MovieCard extends React.Component {
     const { movieData, onMovieClick } = this.props;
     return (
       <div>
-      <Card className="movie-card" text="light" bg="danger">
+      <Card className="movie-card" text="light" bg="danger" border="dark">
         <Card.Img variant="top" src={movieData.ImagePath} />
         <Card.Body>
           <Card.Title>{movieData.Title}</Card.Title>

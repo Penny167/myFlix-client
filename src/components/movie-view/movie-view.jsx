@@ -9,6 +9,7 @@ class MovieView extends React.Component {
     return ( 
     <div className="movie-view">
       <div className="movie-image"><img src={movieData.ImagePath} /></div>
+      <br></br>
       <div className="movie-title">
         <span className="Label">Title: </span>
         <span className="Value">{movieData.Title}</span>
@@ -25,6 +26,7 @@ class MovieView extends React.Component {
         <span className="Label">Director: </span>
         <span className="Value">{movieData.Director.Name}</span>
       </div>
+      <br></br>
       <Button variant="danger" onClick={() => onBackClick(null)}>Back</Button>
     </div>
     )
