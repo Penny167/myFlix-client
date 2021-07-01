@@ -17,8 +17,13 @@
 }
 .movie-view {
   margin-top: 8rem;
-  padding-bottom: 30vh;
+  padding-bottom: 50vh;
   color: #fff;
+}
+
+#image {
+  float: left;
+  margin-right: 2vw;
 }
 .registration-view {
   margin-top: 3rem;
