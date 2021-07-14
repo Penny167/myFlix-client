@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './login-view.scss';
+// Import Axios to enable authentication routing
+import axios from 'axios';
 
 // Create function component
 function LoginView(props) {
@@ -13,15 +15,21 @@ function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-/* Function to handle submission of form data. Note that this will be updated to send a request
-for proper authentication of credentials in a future exercise */
+/* Function to handle submission of form data. Form data is posted to login route for authentication. If successful
+the authenticated user data (which includes the JWT) is passed to the onLoggedIn method */
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-/* We will give the component a property called onLoggedIn within MainView. We will then call it here
-passing the username as the parameter. This will simulate logging on while we work on styling */
-    props.onLoggedIn(username);
-  }
+    console.log(username + ' ' + password);
+    axios.post('https://intense-depths-38257.herokuapp.com/login', 
+      {Username: username, Password: password})
+    .then (res => {
+      const loginData = res.data;
+      props.onLoggedIn(loginData)
+    })
+    .catch (err => {
+      console.log('No such user')
+    }) 
+  }   
 
 // Return statement
   return(

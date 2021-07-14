@@ -19,14 +19,35 @@ class MainView extends React.Component {
     }
   }
 
-  componentDidMount(){
-    axios.get('https://intense-depths-38257.herokuapp.com/movies')
-      .then(res => {
-        this.setState({movies: res.data});
-      })
-      .catch(err => {
-        console.log(err);
-      })
+  onLoggedIn(loginData) {
+    console.log(loginData);
+    this.setState({user: loginData.user.Username});
+    localStorage.setItem('user', loginData.user.Username);
+    localStorage.setItem('token', loginData.token);
+    this.getMovies(loginData.token);
+  }
+
+  componentDidMount() {
+    let token = localStorage.getItem('token');
+    if (token !== null) {
+      this.setState({user: localStorage.getItem('user')});
+      console.log(localStorage.getItem('user'));
+      console.log(this.state); // the state here shows user as null even though we just set it
+      this.getMovies(token);
+    }
+  } 
+
+  getMovies(token) {
+    axios.get('https://intense-depths-38257.herokuapp.com/movies',
+              {headers: { Authorization: `Bearer ${token}`}}
+              )
+    .then(res => {
+      this.setState({movies: res.data});
+      console.log(this.state); // the state here now shows the movies AND the user
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 
   setSelectedMovie(selectedMovieData) {
@@ -37,23 +58,19 @@ class MainView extends React.Component {
     this.setState({registeredUser: registered})
   }
 
-  onLoggedIn(username) {
-    this.setState({user: username})
-  }
-
   render() {
     const { movies, selectedMovie, user, registeredUser } = this.state;
-    if (!registeredUser) return (
+  /*  if (!registeredUser) return (
       <Row className="registration-view justify-content-center">
         <Col xs={8} md={6} lg={4}>
           <RegistrationView onRegistered={registered => this.onRegistered(registered)} />
         </Col>
       </Row>
-    )
+    ) */
     if (!user) return (
       <Row className="login-view justify-content-center">
         <Col xs={6} lg={4}>
-          {<LoginView onLoggedIn={username => this.onLoggedIn(username)} />}
+          {<LoginView onLoggedIn={loginData => this.onLoggedIn(loginData)} />}
         </Col>
       </Row>
     )
