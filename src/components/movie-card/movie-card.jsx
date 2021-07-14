@@ -12,8 +12,8 @@ class MovieCard extends React.Component {
       <Card className="movie-card" text="light" bg="danger" border="dark">
         <Card.Img variant="top" src={movieData.ImagePath} />
         <Card.Body>
-          <Card.Title>{movieData.Title}</Card.Title>
-          <Card.Text>{movieData.Description}</Card.Text> 
+          <Card.Title className="card-title">{movieData.Title}</Card.Title>
+          <Card.Text className="card-text">{movieData.Description}</Card.Text> 
           <Button variant="danger" id="moviecardButton" onClick={() => onMovieClick(movieData)}>Open</Button> 
         </Card.Body>
       </Card>

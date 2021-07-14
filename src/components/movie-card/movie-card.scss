@@ -6,3 +6,14 @@
 #moviecardButton {
   border-color: #fff;
 }
+
+.card-text {
+  height: 100px;
+  overflow:auto;
+}
+
+.card-title {
+  white-space: nowrap; // this prevents the text from wrapping
+  overflow: hidden; // this hides any text that overflows
+  text-overflow: ellipsis; // this replaces the hidden text with dots ...
+}

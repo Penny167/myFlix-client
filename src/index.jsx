@@ -17,7 +17,7 @@ class MyFlixApplication extends React.Component {
         </Navbar>
         <MainView />
       </Container>
-    );
+    )
   }
 }
 

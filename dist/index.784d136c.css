@@ -15,6 +15,17 @@
 #moviecardButton {
   border-color: #fff;
 }
+
+.card-text {
+  height: 100px;
+  overflow: auto;
+}
+
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .movie-view {
   margin-top: 8rem;
   padding-bottom: 50vh;
