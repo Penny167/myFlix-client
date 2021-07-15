@@ -14,7 +14,7 @@ class MovieCard extends React.Component {
         <Card.Body>
           <Card.Title className="card-title">{movieData.Title}</Card.Title>
           <Card.Text className="card-text">{movieData.Description}</Card.Text> 
-          <Button variant="danger" id="moviecardButton" onClick={() => onMovieClick(movieData)}>Open</Button> 
+          <Button variant="danger" id="moviecardButton" onClick={() => onMovieClick(movieData)}>open</Button> 
         </Card.Body>
       </Card>
       </div>

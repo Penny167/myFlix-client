@@ -872,8 +872,6 @@ var _reactDom = require("react-dom");
 var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
-var _navbar = require("react-bootstrap/Navbar");
-var _navbarDefault = parcelHelpers.interopDefault(_navbar);
 var _mainView = require("./components/main-view/main-view");
 var _mainViewDefault = parcelHelpers.interopDefault(_mainView);
 var _indexScss = require("./index.scss");
@@ -883,33 +881,13 @@ class MyFlixApplication extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_containerDefault.default, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/index.jsx",
+                lineNumber: 11
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_mainViewDefault.default, {
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/index.jsx",
                 lineNumber: 12
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default, {
-            bg: "danger",
-            fixed: "top",
-            __source: {
-                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/index.jsx",
-                lineNumber: 13
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Brand, {
-            __source: {
-                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/index.jsx",
-                lineNumber: 14
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("h5", {
-            __source: {
-                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/index.jsx",
-                lineNumber: 15
-            },
-            __self: this
-        }, "myFlix"))), /*#__PURE__*/ _reactDefault.default.createElement(_mainViewDefault.default, {
-            __source: {
-                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/index.jsx",
-                lineNumber: 18
             },
             __self: this
         })));
@@ -925,7 +903,7 @@ _reactDomDefault.default.render(/*#__PURE__*/ _reactDefault.default.createElemen
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-dom":"2sg1U","./index.scss":"5uvKF","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","./components/main-view/main-view":"63s4H","react-bootstrap/Container":"3Mt3t","react-bootstrap/Navbar":"3qLFd"}],"3b2NM":[function(require,module,exports) {
+},{"react":"3b2NM","react-dom":"2sg1U","./index.scss":"5uvKF","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","./components/main-view/main-view":"63s4H","react-bootstrap/Container":"3Mt3t"}],"3b2NM":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react.development.js');
 
@@ -22047,6 +22025,8 @@ var _movieCard = require("../movie-card/movie-card");
 var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
 var _movieView = require("../movie-view/movie-view");
 var _movieViewDefault = parcelHelpers.interopDefault(_movieView);
+var _mynavbar = require("../mynavbar/mynavbar");
+var _mynavbarDefault = parcelHelpers.interopDefault(_mynavbar);
 var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
 var _col = require("react-bootstrap/Col");
@@ -22069,6 +22049,17 @@ class MainView extends _reactDefault.default.Component {
         localStorage.setItem('user', loginData.user.Username);
         localStorage.setItem('token', loginData.token);
         this.getMovies(loginData.token);
+    }
+    logOut() {
+        this.setState({
+            user: null
+        });
+        this.setState({
+            selectedMovie: null
+        });
+        localStorage.removeItem('user', null);
+        localStorage.removeItem('token', null);
+        console.log('logged out');
     }
     componentDidMount() {
         let token = localStorage.getItem('token');
@@ -22113,11 +22104,25 @@ class MainView extends _reactDefault.default.Component {
           <RegistrationView onRegistered={registered => this.onRegistered(registered)} />
         </Col>
       </Row>
-    ) */ if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
+    ) */ if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 80
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
+            logOut: ()=>this.logOut()
+            ,
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 81
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "login-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 71
+                lineNumber: 82
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
@@ -22125,7 +22130,7 @@ class MainView extends _reactDefault.default.Component {
             lg: 4,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 72
+                lineNumber: 83
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_loginViewDefault.default, {
@@ -22133,23 +22138,37 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 73
+                lineNumber: 84
             },
             __self: this
-        }))));
+        })))));
         if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "main-view",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 77
+                lineNumber: 89
             },
             __self: this
         }));
-        return(/*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 91
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
+            logOut: ()=>this.logOut()
+            ,
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 92
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 79
+                lineNumber: 93
             },
             __self: this
         }, selectedMovie ? /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
@@ -22157,7 +22176,7 @@ class MainView extends _reactDefault.default.Component {
             md: 8,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 82
+                lineNumber: 96
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_movieViewDefault.default, {
@@ -22166,7 +22185,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 83
+                lineNumber: 97
             },
             __self: this
         })) : movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
@@ -22176,7 +22195,7 @@ class MainView extends _reactDefault.default.Component {
                 lg: 3,
                 __source: {
                     fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                    lineNumber: 88
+                    lineNumber: 102
                 },
                 __self: this
             }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCardDefault.default, {
@@ -22186,11 +22205,11 @@ class MainView extends _reactDefault.default.Component {
                 ,
                 __source: {
                     fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                    lineNumber: 89
+                    lineNumber: 103
                 },
                 __self: this
             }))
-        )));
+        ))));
     }
 }
 exports.default = MainView;
@@ -22200,7 +22219,7 @@ exports.default = MainView;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../movie-card/movie-card":"VFCZ2","../movie-view/movie-view":"67UYI","axios":"7rA65","../registration-view/registration-view":"1nt2p","../login-view/login-view":"6aBEq","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8"}],"VFCZ2":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../movie-card/movie-card":"VFCZ2","../movie-view/movie-view":"67UYI","axios":"7rA65","../registration-view/registration-view":"1nt2p","../login-view/login-view":"6aBEq","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","../mynavbar/mynavbar":"31Qie"}],"VFCZ2":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -22275,7 +22294,7 @@ class MovieCard extends _reactDefault.default.Component {
                 lineNumber: 17
             },
             __self: this
-        }, "Open")))));
+        }, "open")))));
     }
 }
 MovieCard.propTypes = {
@@ -23641,7 +23660,7 @@ class MovieView extends _reactDefault.default.Component {
                 lineNumber: 30
             },
             __self: this
-        }, "Back")));
+        }, "back")));
     }
 }
 MovieView.propTypes = {
@@ -26500,42 +26519,75 @@ var _default = Row;
 exports.default = _default;
 module.exports = exports["default"];
 
-},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","./ThemeProvider":"4rz1S"}],"3Mt3t":[function(require,module,exports) {
-"use strict";
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-exports.__esModule = true;
-exports.default = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
-var _classnames = _interopRequireDefault(require("classnames"));
-var _react = _interopRequireDefault(require("react"));
-var _ThemeProvider = require("./ThemeProvider");
-var _excluded = [
-    "bsPrefix",
-    "fluid",
-    "as",
-    "className"
-];
-var defaultProps = {
-    fluid: false
-};
-var Container = /*#__PURE__*/ _react.default.forwardRef(function(_ref, ref) {
-    var bsPrefix = _ref.bsPrefix, fluid = _ref.fluid, _ref$as = _ref.as, Component = _ref$as === void 0 ? 'div' : _ref$as, className = _ref.className, props = _objectWithoutPropertiesLoose2.default(_ref, _excluded);
-    var prefix = _ThemeProvider.useBootstrapPrefix(bsPrefix, 'container');
-    var suffix = typeof fluid === 'string' ? "-" + fluid : '-fluid';
-    return(/*#__PURE__*/ _react.default.createElement(Component, _extends2.default({
-        ref: ref
-    }, props, {
-        className: _classnames.default(className, fluid ? "" + prefix + suffix : prefix)
-    })));
-});
-Container.displayName = 'Container';
-Container.defaultProps = defaultProps;
-var _default = Container;
-exports.default = _default;
-module.exports = exports["default"];
+},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","./ThemeProvider":"4rz1S"}],"31Qie":[function(require,module,exports) {
+var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
 
-},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","./ThemeProvider":"4rz1S"}],"3qLFd":[function(require,module,exports) {
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _navbar = require("react-bootstrap/Navbar");
+var _navbarDefault = parcelHelpers.interopDefault(_navbar);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _mynavbarScss = require("./mynavbar.scss");
+function MyFlixNavbar(props) {
+    const handleLogout = ()=>{
+        props.logOut();
+    };
+    return(/*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default, {
+        bg: "danger",
+        fixed: "top",
+        className: "justify-content-between",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
+            lineNumber: 14
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Brand, {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
+            lineNumber: 15
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement("h5", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
+            lineNumber: 15
+        },
+        __self: this
+    }, "myFlix")), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        variant: "danger",
+        type: "button",
+        id: "logoutButton",
+        onClick: handleLogout,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
+            lineNumber: 16
+        },
+        __self: this
+    }, "logout")));
+}
+_c = MyFlixNavbar;
+MyFlixNavbar.propTypes = {
+    logOut: _propTypesDefault.default.func.isRequired
+};
+exports.default = MyFlixNavbar;
+var _c;
+$RefreshReg$(_c, "MyFlixNavbar");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","react-bootstrap/Navbar":"3qLFd","react-bootstrap/Button":"1ru0l","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","./mynavbar.scss":"HsDjH","prop-types":"4dfy5"}],"3qLFd":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
@@ -28386,6 +28438,41 @@ exports.makeEventKey = makeEventKey;
 var _default = SelectableContext;
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","react":"3b2NM"}]},["1j6wU","1Ai42","2uel2"], "2uel2", "parcelRequire279c")
+},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","react":"3b2NM"}],"HsDjH":[function() {},{}],"3Mt3t":[function(require,module,exports) {
+"use strict";
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+exports.__esModule = true;
+exports.default = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
+var _classnames = _interopRequireDefault(require("classnames"));
+var _react = _interopRequireDefault(require("react"));
+var _ThemeProvider = require("./ThemeProvider");
+var _excluded = [
+    "bsPrefix",
+    "fluid",
+    "as",
+    "className"
+];
+var defaultProps = {
+    fluid: false
+};
+var Container = /*#__PURE__*/ _react.default.forwardRef(function(_ref, ref) {
+    var bsPrefix = _ref.bsPrefix, fluid = _ref.fluid, _ref$as = _ref.as, Component = _ref$as === void 0 ? 'div' : _ref$as, className = _ref.className, props = _objectWithoutPropertiesLoose2.default(_ref, _excluded);
+    var prefix = _ThemeProvider.useBootstrapPrefix(bsPrefix, 'container');
+    var suffix = typeof fluid === 'string' ? "-" + fluid : '-fluid';
+    return(/*#__PURE__*/ _react.default.createElement(Component, _extends2.default({
+        ref: ref
+    }, props, {
+        className: _classnames.default(className, fluid ? "" + prefix + suffix : prefix)
+    })));
+});
+Container.displayName = 'Container';
+Container.defaultProps = defaultProps;
+var _default = Container;
+exports.default = _default;
+module.exports = exports["default"];
+
+},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","./ThemeProvider":"4rz1S"}]},["1j6wU","1Ai42","2uel2"], "2uel2", "parcelRequire279c")
 
 //# sourceMappingURL=index.cbbfa84d.js.map

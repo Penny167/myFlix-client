@@ -4,6 +4,7 @@ import RegistrationView from '../registration-view/registration-view';
 import LoginView from '../login-view/login-view';
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
+import MyFlixNavbar from '../mynavbar/mynavbar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -25,6 +26,14 @@ class MainView extends React.Component {
     localStorage.setItem('user', loginData.user.Username);
     localStorage.setItem('token', loginData.token);
     this.getMovies(loginData.token);
+  }
+
+  logOut() {
+    this.setState({user: null});
+    this.setState({selectedMovie: null});
+    localStorage.removeItem('user', null);
+    localStorage.removeItem('token', null);
+    console.log('logged out')
   }
 
   componentDidMount() {
@@ -68,14 +77,19 @@ class MainView extends React.Component {
       </Row>
     ) */
     if (!user) return (
+    <div>
+      <MyFlixNavbar logOut={() => this.logOut()}/>
       <Row className="login-view justify-content-center">
         <Col xs={6} lg={4}>
           {<LoginView onLoggedIn={loginData => this.onLoggedIn(loginData)} />}
         </Col>
       </Row>
+    </div>  
     )
     if (movies.length === 0) return <div className="main-view" />;
     return (
+    <div>
+      <MyFlixNavbar logOut={() => this.logOut()}/>
       <Row className="main-view justify-content-center">
         {selectedMovie
           ? (
@@ -93,6 +107,7 @@ class MainView extends React.Component {
           )
         }
       </Row>
+    </div>
     )
   }
 

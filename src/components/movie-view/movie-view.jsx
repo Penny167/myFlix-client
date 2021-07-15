@@ -27,7 +27,7 @@ class MovieView extends React.Component {
         <span className="Value">{movieData.Director.Name}</span>
       </div>
       <br></br>
-      <Button variant="danger" onClick={() => onBackClick(null)}>Back</Button>
+      <Button variant="danger" onClick={() => onBackClick(null)}>back</Button>
     </div>
     )
   }

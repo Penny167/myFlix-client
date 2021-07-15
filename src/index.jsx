@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
 import MainView from './components/main-view/main-view';
 import './index.scss';
 
@@ -10,11 +9,6 @@ class MyFlixApplication extends React.Component {
   render() {
     return (
       <Container>
-        <Navbar bg="danger" fixed="top">
-          <Navbar.Brand>
-            <h5>myFlix</h5>
-          </Navbar.Brand>
-        </Navbar>
         <MainView />
       </Container>
     )
