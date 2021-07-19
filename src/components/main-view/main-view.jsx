@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import RegistrationView from '../registration-view/registration-view';
+// import RegistrationView from '../registration-view/registration-view';
 import LoginView from '../login-view/login-view';
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
@@ -15,8 +15,7 @@ class MainView extends React.Component {
     super();
     this.state = {
       movies: [],
-      selectedMovie: null,
-      registeredUser: null,
+//    registeredUser: null,
       user: null
     }
   }
@@ -31,7 +30,6 @@ class MainView extends React.Component {
 
   logOut() {
     this.setState({user: null});
-    this.setState({selectedMovie: null});
     localStorage.removeItem('user', null);
     localStorage.removeItem('token', null);
     console.log('logged out')
@@ -60,23 +58,24 @@ class MainView extends React.Component {
     })
   }
 
-  setSelectedMovie(selectedMovieData) {
-    this.setState({selectedMovie: selectedMovieData})
-  }
+/* Commenting out registration method until routing logic determined
 
   onRegistered(registered) {
     this.setState({registeredUser: registered})
   }
+*/
 
   render() {
-    const { movies, selectedMovie, user, registeredUser } = this.state;
+    const { movies, user /* registeredUser */ } = this.state;
+//  Commenting out the registered user view until the routing has been determined
   /*  if (!registeredUser) return (
       <Row className="registration-view justify-content-center">
         <Col xs={8} md={6} lg={4}>
           <RegistrationView onRegistered={registered => this.onRegistered(registered)} />
         </Col>
       </Row>
-    ) */
+    ) 
+  */
     if (!user) return (
     <div>
       <MyFlixNavbar logOut={() => this.logOut()}/>
@@ -89,26 +88,24 @@ class MainView extends React.Component {
     )
     if (movies.length === 0) return <div className="main-view" />;
     return (
-    <div>
+    <Router>
       <MyFlixNavbar logOut={() => this.logOut()}/>
       <Row className="main-view justify-content-center">
         {selectedMovie
           ? (
               <Col xs={10} md={8}>
-                <MovieView movieData={selectedMovie} onBackClick={movie =>
-                  this.setSelectedMovie(movie)} />
+                <MovieView movieData={selectedMovie} /* onBackClick={movie => this.setSelectedMovie(movie)} */ />
               </Col>
           )
           : movies.map(movie => (
               <Col xs={7} sm={6} md={4} lg={3}>
-                <MovieCard key={movie._id} movieData={movie} onMovieClick={movie =>
-                  this.setSelectedMovie(movie)} />
+                <MovieCard key={movie._id} movieData={movie} /* onMovieClick={movie => this.setSelectedMovie(movie)} */ />
               </Col>
             )
           )
         }
       </Row>
-    </div>
+    </Router>
     )
   }
 
