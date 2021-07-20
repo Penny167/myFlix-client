@@ -5,7 +5,7 @@ import './movie-view.scss';
 
 class MovieView extends React.Component {
   render() {
-    const { movieData, onBackClick } = this.props;
+    const { movieData/*, onBackClick*/ } = this.props;
     return ( 
     <div className="movie-view">
       <div className="movie-image"><img id="image" src={movieData.ImagePath} /></div>
@@ -27,7 +27,7 @@ class MovieView extends React.Component {
         <span className="Value">{movieData.Director.Name}</span>
       </div>
       <br></br>
-      <Button variant="danger" onClick={() => onBackClick(null)}>back</Button>
+      <Button variant="danger" /*onClick={() => onBackClick(null)}*/>back</Button>
     </div>
     )
   }
@@ -43,7 +43,7 @@ MovieView.propTypes = {
     Director: PropTypes.shape({Name: PropTypes.string.isRequired})  
   }).isRequired,
 
-  onBackClick: PropTypes.func.isRequired
+//  onBackClick: PropTypes.func.isRequired
 
 };
 
