@@ -22166,13 +22166,26 @@ class MainView extends _reactDefault.default.Component {
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
-            path: "/movies",
+            path: "/",
+            render: ()=>{
+                return movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+                        xs: 7,
+                        sm: 6,
+                        md: 4,
+                        lg: 3,
+                        key: movie._id
+                    }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCardDefault.default, {
+                        movieData: movie
+                    }))
+                );
+            },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
                 lineNumber: 94
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            exact: true,
             path: "/movies/:movieId",
             render: ({ match  })=>{
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
@@ -22185,7 +22198,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 95
+                lineNumber: 102
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22193,7 +22206,7 @@ class MainView extends _reactDefault.default.Component {
             path: "/director/:name",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 101
+                lineNumber: 108
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22201,7 +22214,7 @@ class MainView extends _reactDefault.default.Component {
             path: "/genre/:name",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 102
+                lineNumber: 109
             },
             __self: this
         }))));
@@ -22234,7 +22247,7 @@ var _cardDefault = parcelHelpers.interopDefault(_card);
 var _movieCardScss = require("./movie-card.scss");
 class MovieCard extends _reactDefault.default.Component {
     render() {
-        const { movieData , onMovieClick  } = this.props;
+        const { movieData /*, onMovieClick */  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-card/movie-card.jsx",
@@ -22282,8 +22295,6 @@ class MovieCard extends _reactDefault.default.Component {
         }, movieData.Description), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
             variant: "danger",
             id: "moviecardButton",
-            onClick: ()=>onMovieClick(movieData)
-            ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-card/movie-card.jsx",
                 lineNumber: 17
@@ -22303,8 +22314,7 @@ MovieCard.propTypes = {
         Director: _propTypesDefault.default.shape({
             Name: _propTypesDefault.default.string.isRequired
         })
-    }).isRequired,
-    onMovieClick: _propTypesDefault.default.func.isRequired
+    }).isRequired
 };
 exports.default = MovieCard;
 

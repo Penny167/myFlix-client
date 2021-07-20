@@ -91,9 +91,16 @@ class MainView extends React.Component {
     <Router>
       <MyFlixNavbar logOut={() => this.logOut()}/>
       <Row className="main-view justify-content-center">
-        <Route exact path="/movies" />
-        <Route path="/movies/:movieId" render={({match}) => {
-          return  <Col xs={10} md={8}>
+        <Route exact path="/" render={() => {
+          return movies.map(movie => (
+            <Col xs={7} sm={6} md={4} lg={3} key={movie._id}>
+              <MovieCard movieData={movie} />
+            </Col>
+          ))
+        }}
+        />
+        <Route exact path="/movies/:movieId" render={({match}) => {
+          return  <Col xs={10} md={8} >
                     <MovieView movieData={movies.find((movie) => movie._id === match.params.movieId)}/>
                   </Col>
           }} 

@@ -6,7 +6,7 @@ import './movie-card.scss';
 
 class MovieCard extends React.Component {
   render() {
-    const { movieData, onMovieClick } = this.props;
+    const { movieData /*, onMovieClick */} = this.props;
     return (
       <div>
       <Card className="movie-card" text="light" bg="danger" border="dark">
@@ -14,7 +14,7 @@ class MovieCard extends React.Component {
         <Card.Body>
           <Card.Title className="card-title">{movieData.Title}</Card.Title>
           <Card.Text className="card-text">{movieData.Description}</Card.Text> 
-          <Button variant="danger" id="moviecardButton" onClick={() => onMovieClick(movieData)}>open</Button> 
+          <Button variant="danger" id="moviecardButton" /*onClick={() => onMovieClick(movieData)}*/>open</Button> 
         </Card.Body>
       </Card>
       </div>
@@ -32,7 +32,7 @@ MovieCard.propTypes = {
     Director: PropTypes.shape({Name: PropTypes.string.isRequired})  
   }).isRequired,
 
-  onMovieClick: PropTypes.func.isRequired
+//  onMovieClick: PropTypes.func.isRequired
 
 };
 
