@@ -6,6 +6,7 @@ import LoginView from '../login-view/login-view';
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
 import MyFlixNavbar from '../mynavbar/mynavbar';
+import DirectorView from '../director-view/director-view';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -105,7 +106,12 @@ class MainView extends React.Component {
                   </Col>
           }} 
         />
-        <Route exact path="/director/:name" />
+        <Route exact path="/director/:name" render={({match}) => {
+          return  <Col xs={10} md={8} >
+                    <DirectorView directorData={movies.filter((movie) => movie.Director.Name === match.params.name)}/>
+                  </Col>
+          }}
+        />
         <Route exact path="/genre/:name" />
       </Row>
     </Router>
