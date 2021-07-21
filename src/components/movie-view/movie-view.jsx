@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import './movie-view.scss';
 
 class MovieView extends React.Component {
   render() {
-    const { movieData/*, onBackClick*/ } = this.props;
+    const { movieData } = this.props;
     return ( 
     <div className="movie-view">
       <div className="movie-image"><img id="image" src={movieData.ImagePath} /></div>
@@ -20,14 +21,20 @@ class MovieView extends React.Component {
       <br></br>
       <div className="movie-genre">
         <span className="Label">Genre: </span>
+      <Link className="link" to={"/genre/" + movieData.Genre.Name}>
         <span className="Value">{movieData.Genre.Name}</span>
+      </Link>
       </div>
       <div className="movie-director">
         <span className="Label">Director: </span>
+      <Link className="link" to={"/director/" + movieData.Director.Name}>
         <span className="Value">{movieData.Director.Name}</span>
+      </Link>
       </div>
       <br></br>
-      <Button variant="danger" /*onClick={() => onBackClick(null)}*/>back</Button>
+      <Link to="/">
+          <Button variant="danger" >back</Button> 
+      </Link>
     </div>
     )
   }
@@ -42,8 +49,6 @@ MovieView.propTypes = {
     Genre: PropTypes.shape({Name: PropTypes.string.isRequired}),
     Director: PropTypes.shape({Name: PropTypes.string.isRequired})  
   }).isRequired,
-
-//  onBackClick: PropTypes.func.isRequired
 
 };
 
