@@ -1,12 +1,13 @@
 import React from 'react';
+import './genre-view.scss';
 
-function GenreView() {
+function GenreView(props) {
+console.log(props);
 return(
-  <div className="director-view">
-    <div>Director name</div>
-    <div>Bio</div>
-    <div>Birth year</div>
-    <div>Death year</div>
+  <div className="genre-view">
+    <div>Genre name</div>
+    <div>Genre description</div>
+    <div>myFlix movies in the GenreName genre</div>
   </div>
 );
 }

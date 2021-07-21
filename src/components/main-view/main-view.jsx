@@ -7,6 +7,7 @@ import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
 import MyFlixNavbar from '../mynavbar/mynavbar';
 import DirectorView from '../director-view/director-view';
+import GenreView from '../genre-view/genre-view';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -112,7 +113,12 @@ class MainView extends React.Component {
                   </Col>
           }}
         />
-        <Route exact path="/genre/:name" />
+        <Route exact path="/genre/:name" render={({match}) => {
+          return  <Col xs={10} md={8} >
+          <GenreView genreData={movies.filter((movie) => movie.Genre.Name === match.params.name)}/>
+        </Col>
+        }}
+        />
       </Row>
     </Router>
     )
