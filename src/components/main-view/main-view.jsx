@@ -105,7 +105,7 @@ class MainView extends React.Component {
           return  <Col xs={10} md={8} >
                     <MovieView movieData={movies.find((movie) => movie._id === match.params.movieId)}/>
                   </Col>
-          }} 
+        }} 
         />
         <Route exact path="/director/:name" render={({match, history}) => {
           return  <Col xs={10} md={8} >
@@ -113,12 +113,14 @@ class MainView extends React.Component {
                     onBackClick={() => history.goBack()}
                     />
                   </Col>
-          }}
+        }}
         />
-        <Route exact path="/genre/:name" render={({match}) => {
+        <Route exact path="/genre/:name" render={({match, history}) => {
           return  <Col xs={10} md={8} >
-          <GenreView genreData={movies.filter((movie) => movie.Genre.Name === match.params.name)}/>
-        </Col>
+                    <GenreView genreData={movies.filter((movie) => movie.Genre.Name === match.params.name)}
+                    onBackClick={() => history.goBack()}
+                    />
+                  </Col>
         }}
         />
       </Row>

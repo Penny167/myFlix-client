@@ -22226,13 +22226,14 @@ class MainView extends _reactDefault.default.Component {
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
             path: "/genre/:name",
-            render: ({ match  })=>{
+            render: ({ match , history  })=>{
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     xs: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_genreViewDefault.default, {
                     genreData: movies.filter((movie)=>movie.Genre.Name === match.params.name
-                    )
+                    ),
+                    onBackClick: ()=>history.goBack()
                 })));
             },
             __source: {
@@ -30700,65 +30701,64 @@ var _directorViewScss = require("./director-view.scss");
 function DirectorView({ directorData , onBackClick  }) {
     // Each movie has the same director data so we will extract the first one and access director data from there
     const director = directorData[0].Director;
-    console.log(directorData);
     return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "director-view",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 13
+            lineNumber: 12
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h4", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 14
+            lineNumber: 13
         },
         __self: this
     }, director.Name), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 15
+            lineNumber: 14
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 16
+            lineNumber: 15
         },
         __self: this
     }, "Bio: ", director.Bio), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 17
+            lineNumber: 16
         },
         __self: this
     }, "Dates: ", director.Birth, "-", director.Death), /*#__PURE__*/ _reactDefault.default.createElement("h6", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 18
+            lineNumber: 17
         },
         __self: this
     }, "MyFlix movies directed by ", director.Name, ":"), /*#__PURE__*/ _reactDefault.default.createElement("ul", {
         id: "list",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 21
+            lineNumber: 20
         },
         __self: this
     }, " ", directorData.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             id: "link",
+            key: movie._id,
             to: "/movies/" + movie._id,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-                lineNumber: 22
+                lineNumber: 21
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("li", {
             className: "listItem",
-            key: movie._id,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-                lineNumber: 23
+                lineNumber: 22
             },
             __self: this
         }, movie.Title))
@@ -30768,7 +30768,7 @@ function DirectorView({ directorData , onBackClick  }) {
         onClick: onBackClick,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 27
+            lineNumber: 26
         },
         __self: this
     }, "back")));
@@ -30794,35 +30794,77 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _reactRouterDom = require("react-router-dom");
 var _genreViewScss = require("./genre-view.scss");
-function GenreView(props) {
-    console.log(props);
+function GenreView({ genreData , onBackClick  }) {
+    const genre = genreData[0].Genre;
     return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "genre-view",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-            lineNumber: 7
+            lineNumber: 11
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }, /*#__PURE__*/ _reactDefault.default.createElement("h4", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-            lineNumber: 8
+            lineNumber: 12
         },
         __self: this
-    }, "Genre name"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }, genre.Name), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-            lineNumber: 9
+            lineNumber: 13
         },
         __self: this
-    }, "Genre description"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-            lineNumber: 10
+            lineNumber: 14
         },
         __self: this
-    }, "myFlix movies in the GenreName genre")));
+    }, "Description: ", genre.Description), /*#__PURE__*/ _reactDefault.default.createElement("h6", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
+            lineNumber: 15
+        },
+        __self: this
+    }, "myFlix movies in the ", genre.Name, " genre:"), /*#__PURE__*/ _reactDefault.default.createElement("ul", {
+        id: "list",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
+            lineNumber: 17
+        },
+        __self: this
+    }, " ", genreData.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            id: "link",
+            key: movie._id,
+            to: "/movies/" + movie._id,
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 18
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("li", {
+            className: "listItem",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 19
+            },
+            __self: this
+        }, movie.Title))
+    )), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        variant: "danger",
+        id: "backButton",
+        onClick: onBackClick,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
+            lineNumber: 23
+        },
+        __self: this
+    }, "back")));
 }
 _c = GenreView;
 exports.default = GenreView;
@@ -30834,7 +30876,7 @@ $RefreshReg$(_c, "GenreView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","./genre-view.scss":"2kAV8","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"2kAV8":[function() {},{}],"3Mt3t":[function(require,module,exports) {
+},{"react":"3b2NM","./genre-view.scss":"2kAV8","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Button":"1ru0l","react-router-dom":"1PMSK"}],"2kAV8":[function() {},{}],"3Mt3t":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
