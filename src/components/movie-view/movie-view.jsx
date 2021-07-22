@@ -6,7 +6,7 @@ import './movie-view.scss';
 
 class MovieView extends React.Component {
   render() {
-    const { movieData } = this.props;
+    const { movieData, onBackClick } = this.props;
     return ( 
     <div className="movie-view">
       <div className="movie-image"><img id="image" src={movieData.ImagePath} /></div>
@@ -32,9 +32,7 @@ class MovieView extends React.Component {
       </Link>
       </div>
       <br></br>
-      <Link to="/">
-          <Button variant="danger" >back</Button> 
-      </Link>
+      <Button variant="danger" id="backButton" onClick={onBackClick}>back</Button> 
     </div>
     )
   }

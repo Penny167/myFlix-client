@@ -22191,13 +22191,14 @@ class MainView extends _reactDefault.default.Component {
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
             path: "/movies/:movieId",
-            render: ({ match  })=>{
+            render: ({ match , history  })=>{
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     xs: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_movieViewDefault.default, {
                     movieData: movies.find((movie)=>movie._id === match.params.movieId
-                    )
+                    ),
+                    onBackClick: ()=>history.goBack()
                 })));
             },
             __source: {
@@ -22220,7 +22221,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 110
+                lineNumber: 112
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22238,7 +22239,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 118
+                lineNumber: 120
             },
             __self: this
         }))));
@@ -25971,7 +25972,7 @@ var _reactRouterDom = require("react-router-dom");
 var _movieViewScss = require("./movie-view.scss");
 class MovieView extends _reactDefault.default.Component {
     render() {
-        const { movieData  } = this.props;
+        const { movieData , onBackClick  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-view",
             __source: {
@@ -26106,21 +26107,16 @@ class MovieView extends _reactDefault.default.Component {
                 lineNumber: 34
             },
             __self: this
-        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
-            to: "/",
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            variant: "danger",
+            id: "backButton",
+            onClick: onBackClick,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
                 lineNumber: 35
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
-            variant: "danger",
-            __source: {
-                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
-                lineNumber: 36
-            },
-            __self: this
-        }, "back"))));
+        }, "back")));
     }
 }
 MovieView.propTypes = {
