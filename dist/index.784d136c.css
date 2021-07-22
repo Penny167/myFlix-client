@@ -38,11 +38,11 @@
 }
 
 .link {
-  color: #dc3545;
+  color: #fff;
 }
 
 .link:hover {
-  color: #fff;
+  color: #dc3545;
   text-decoration: none;
 }
 .login-view {
@@ -57,6 +57,23 @@
   margin-top: 8rem;
   padding-bottom: 50vh;
   color: #fff;
+}
+
+#list {
+  padding-left: 0px;
+}
+
+.listItem {
+  list-style: none;
+}
+
+#link {
+  color: #fff;
+}
+
+#link:hover {
+  color: #dc3545;
+  text-decoration: none;
 }
 .genre-view {
   margin-top: 8rem;

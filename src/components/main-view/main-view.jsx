@@ -107,9 +107,11 @@ class MainView extends React.Component {
                   </Col>
           }} 
         />
-        <Route exact path="/director/:name" render={({match}) => {
+        <Route exact path="/director/:name" render={({match, history}) => {
           return  <Col xs={10} md={8} >
-                    <DirectorView directorData={movies.filter((movie) => movie.Director.Name === match.params.name)}/>
+                    <DirectorView directorData={movies.filter((movie) => movie.Director.Name === match.params.name)}
+                    onBackClick={() => history.goBack()}
+                    />
                   </Col>
           }}
         />

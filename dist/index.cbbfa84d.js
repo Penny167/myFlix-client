@@ -22208,13 +22208,14 @@ class MainView extends _reactDefault.default.Component {
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
             path: "/director/:name",
-            render: ({ match  })=>{
+            render: ({ match , history  })=>{
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     xs: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_directorViewDefault.default, {
                     directorData: movies.filter((movie)=>movie.Director.Name === match.params.name
-                    )
+                    ),
+                    onBackClick: ()=>history.goBack()
                 })));
             },
             __source: {
@@ -22236,7 +22237,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 116
+                lineNumber: 118
             },
             __self: this
         }))));
@@ -30691,46 +30692,86 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _reactRouterDom = require("react-router-dom");
 var _directorViewScss = require("./director-view.scss");
-function DirectorView(props) {
+// Deconstruct props so we can use the individual props directly
+function DirectorView({ directorData , onBackClick  }) {
+    // Each movie has the same director data so we will extract the first one and access director data from there
+    const director = directorData[0].Director;
+    console.log(directorData);
     return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "director-view",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 8
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 9
-        },
-        __self: this
-    }, "Director name"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 10
-        },
-        __self: this
-    }, "Bio"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 11
-        },
-        __self: this
-    }, "Birth year"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
-            lineNumber: 12
-        },
-        __self: this
-    }, "Death year"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
             lineNumber: 13
         },
         __self: this
-    }, "MyFlix movies by Director name")));
+    }, /*#__PURE__*/ _reactDefault.default.createElement("h4", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
+            lineNumber: 14
+        },
+        __self: this
+    }, director.Name), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
+            lineNumber: 15
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement("p", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
+            lineNumber: 16
+        },
+        __self: this
+    }, "Bio: ", director.Bio), /*#__PURE__*/ _reactDefault.default.createElement("p", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
+            lineNumber: 17
+        },
+        __self: this
+    }, "Dates: ", director.Birth, "-", director.Death), /*#__PURE__*/ _reactDefault.default.createElement("h6", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
+            lineNumber: 18
+        },
+        __self: this
+    }, "MyFlix movies directed by ", director.Name, ":"), /*#__PURE__*/ _reactDefault.default.createElement("ul", {
+        id: "list",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
+            lineNumber: 21
+        },
+        __self: this
+    }, " ", directorData.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            id: "link",
+            to: "/movies/" + movie._id,
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
+                lineNumber: 22
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("li", {
+            className: "listItem",
+            key: movie._id,
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
+                lineNumber: 23
+            },
+            __self: this
+        }, movie.Title))
+    )), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        variant: "danger",
+        id: "backButton",
+        onClick: onBackClick,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/director-view/director-view.jsx",
+            lineNumber: 27
+        },
+        __self: this
+    }, "back")));
 }
 _c = DirectorView;
 exports.default = DirectorView;
@@ -30742,7 +30783,7 @@ $RefreshReg$(_c, "DirectorView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","./director-view.scss":"293O2"}],"293O2":[function() {},{}],"GvXIx":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","./director-view.scss":"293O2","react-bootstrap/Button":"1ru0l","react-router-dom":"1PMSK"}],"293O2":[function() {},{}],"GvXIx":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
