@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
-import PropTypes from 'prop-types';
+import {useHistory} from 'react-router-dom';
+import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './registration-view.scss';
@@ -11,19 +12,20 @@ function RegistrationView(props) {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
+  const history = useHistory();
 
-/* Function to handle submission of registration form. Successful registration should take the new
+/* Function to handle submission of registration form. Successful registration should redirect the new
 user to the login view */
   const handleRegistration = (e) => {
     e.preventDefault();
     console.log('registration submitted');
-    props.onRegistered(username);
-  }
-
-// Function to go straight to login where user already registered
-  const handleGoToLogin = (registered) => {
-    console.log('take me to login');
-    props.onRegistered(registered);
+    axios.post('https://intense-depths-38257.herokuapp.com/users',
+    {Username: username, Password: password, Email: email, Birthday: birthday})
+    .then(res => {
+      console.log(res);
+      history.push('/')})
+    .catch(err => {
+      console.log('Registration failed')})
   }
 
   return(
@@ -54,10 +56,6 @@ user to the login view */
     </div>  
   ) 
 
-}
-
-RegistrationView.propTypes = {
-  onRegistered:PropTypes.func.isRequired
 }
 
 export default RegistrationView;
