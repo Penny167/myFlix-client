@@ -22153,7 +22153,7 @@ class MainView extends _reactDefault.default.Component {
                     lg: 4
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_registrationViewDefault.default, {
                     history: history
-                }), " "));
+                })));
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
@@ -30939,7 +30939,7 @@ user to the login view */ const handleRegistration = (e)=>{
             Email: email,
             Birthday: birthday
         }).then((res)=>{
-            console.log(res);
+            console.log(res.data);
             history.push('/');
         }).catch((err)=>{
             console.log('Registration failed');
@@ -31065,7 +31065,7 @@ user to the login view */ const handleRegistration = (e)=>{
             lineNumber: 49
         },
         __self: this
-    }, "Submit"))));
+    }, "Register"))));
 }
 _s(RegistrationView, "tdA1KK8yaZidqYo0wscqshHt/KE=");
 _c = RegistrationView;

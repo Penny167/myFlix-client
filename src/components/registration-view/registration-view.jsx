@@ -20,7 +20,7 @@ user to the login view */
     axios.post('https://intense-depths-38257.herokuapp.com/users',
     {Username: username, Password: password, Email: email, Birthday: birthday})
     .then(res => {
-      console.log(res);
+      console.log(res.data);
       history.push('/')})
     .catch(err => {
       console.log('Registration failed')})
@@ -46,7 +46,7 @@ user to the login view */
           <Form.Label>Birthday:</Form.Label>
           <Form.Control type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
         </Form.Group>  
-        <Button variant="danger" type="submit" onClick={handleRegistration}>Submit</Button>
+        <Button variant="danger" type="submit" onClick={handleRegistration}>Register</Button>
       </Form>
     </div>  
   ) 
