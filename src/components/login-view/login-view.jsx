@@ -9,7 +9,7 @@ import './login-view.scss';
 import axios from 'axios';
 
 // Create function component
-function LoginView(props) {
+function LoginView({onLoggedIn, goToRegistration}) {
 
 // Use destructuring to set initial values for username and password and name functions to update values
   const [username, setUsername] = useState('');
@@ -24,13 +24,13 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
       {Username: username, Password: password})
     .then (res => {
       const loginData = res.data;
-      props.onLoggedIn(loginData)
+      onLoggedIn(loginData)
     })
     .catch (err => {
       console.log('No such user')
     }) 
-  }   
-
+  } 
+  
 // Return statement
   return(
     <div className="login-view">
@@ -49,7 +49,7 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
       <br></br>
       <br></br>
       <h2>Sign up to myFlix</h2>
-      <Button variant="danger" type="button" >Register</Button>
+      <Button variant="danger" type="button" onClick={goToRegistration}>Register</Button>
     </div>
   );
 }

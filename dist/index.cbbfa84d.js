@@ -22112,12 +22112,14 @@ class MainView extends _reactDefault.default.Component {
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
             path: "/",
-            render: ()=>{
+            render: ({ history  })=>{
                 if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     xs: 6,
                     lg: 4
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_loginViewDefault.default, {
                     onLoggedIn: (loginData)=>this.onLoggedIn(loginData)
+                    ,
+                    goToRegistration: ()=>history.push('/register')
                 })));
                 if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
                     className: "main-view"
@@ -22141,7 +22143,7 @@ class MainView extends _reactDefault.default.Component {
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
             path: "/register",
-            render: ()=>{
+            render: ({ history  })=>{
                 if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Redirect, {
                     to: "/"
                 }));
@@ -22149,11 +22151,13 @@ class MainView extends _reactDefault.default.Component {
                     xs: 8,
                     md: 6,
                     lg: 4
-                }, /*#__PURE__*/ _reactDefault.default.createElement(_registrationViewDefault.default, null), " "));
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_registrationViewDefault.default, {
+                    history: history
+                }), " "));
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 79
+                lineNumber: 81
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22165,6 +22169,8 @@ class MainView extends _reactDefault.default.Component {
                     lg: 4
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_loginViewDefault.default, {
                     onLoggedIn: (loginData)=>this.onLoggedIn(loginData)
+                    ,
+                    goToRegistration: ()=>history.push('/register')
                 })));
                 if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
                     className: "main-view"
@@ -22180,7 +22186,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 84
+                lineNumber: 86
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22192,6 +22198,8 @@ class MainView extends _reactDefault.default.Component {
                     lg: 4
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_loginViewDefault.default, {
                     onLoggedIn: (loginData)=>this.onLoggedIn(loginData)
+                    ,
+                    goToRegistration: ()=>history.push('/register')
                 })));
                 if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
                     className: "main-view"
@@ -22207,7 +22215,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 93
+                lineNumber: 97
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22219,6 +22227,8 @@ class MainView extends _reactDefault.default.Component {
                     lg: 4
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_loginViewDefault.default, {
                     onLoggedIn: (loginData)=>this.onLoggedIn(loginData)
+                    ,
+                    goToRegistration: ()=>history.push('/register')
                 })));
                 if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
                     className: "main-view"
@@ -22234,7 +22244,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 102
+                lineNumber: 108
             },
             __self: this
         }))));
@@ -27523,7 +27533,7 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _s = $RefreshSig$();
 // Create function component
-function LoginView(props) {
+function LoginView({ onLoggedIn , goToRegistration  }) {
     _s();
     // Use destructuring to set initial values for username and password and name functions to update values
     const [username, setUsername] = _react.useState('');
@@ -27537,7 +27547,7 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
             Password: password
         }).then((res)=>{
             const loginData = res.data;
-            props.onLoggedIn(loginData);
+            onLoggedIn(loginData);
         }).catch((err)=>{
             console.log('No such user');
         });
@@ -27638,6 +27648,7 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
     }, "Sign up to myFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
         variant: "danger",
         type: "button",
+        onClick: goToRegistration,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
             lineNumber: 52
