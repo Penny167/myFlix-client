@@ -48,9 +48,6 @@ user to the login view */
         </Form.Group>  
         <Button variant="danger" type="submit" onClick={handleRegistration}>Submit</Button>
       </Form>
-      <br></br>
-      <h3>myFlix members</h3>
-      <Button variant="danger" type="button" onClick={handleGoToLogin}>Login</Button>
     </div>  
   ) 
 

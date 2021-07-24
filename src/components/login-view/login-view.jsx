@@ -46,6 +46,10 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
         </Form.Group>
         <Button variant="danger" type="submit" onClick={handleSubmit}>myFlix</Button>
       </Form>
+      <br></br>
+      <br></br>
+      <h2>Sign up to myFlix</h2>
+      <Button variant="danger" type="button" >Register</Button>
     </div>
   );
 }
