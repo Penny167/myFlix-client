@@ -9,6 +9,7 @@ import MovieView from '../movie-view/movie-view';
 import MyFlixNavbar from '../mynavbar/mynavbar';
 import DirectorView from '../director-view/director-view';
 import GenreView from '../genre-view/genre-view';
+import ProfileView from '../profile-view/profile-view';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -114,6 +115,14 @@ class MainView extends React.Component {
                       <GenreView genreData={movies.filter((movie) => movie.Genre.Name === match.params.name)}
                       onBackClick={() => history.goBack()}/>
                     </Col>
+          }}/>
+
+          <Route exact path="/user/:Username" render={({match, history}) => {
+            if (!user) return <Col xs={6} lg={4}>
+            <LoginView onLoggedIn={loginData => this.onLoggedIn(loginData)} 
+            goToRegistration={() => history.push('/register')}/></Col>
+            if (movies.length === 0) return <div className="main-view" />;
+            return  <Col xs={6} lg={4}><ProfileView /></Col>
           }}/>
 
         </Row>
