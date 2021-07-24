@@ -1,18 +1,16 @@
 import React from 'react';
 import {useState} from 'react';
-import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './registration-view.scss';
 
-function RegistrationView(props) {
+function RegistrationView({history}) {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
-  const history = useHistory();
 
 /* Function to handle submission of registration form. Successful registration should redirect the new
 user to the login view */
