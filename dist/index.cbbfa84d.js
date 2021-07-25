@@ -22261,9 +22261,6 @@ class MainView extends _reactDefault.default.Component {
                     ,
                     goToRegistration: ()=>history.push('/register')
                 })));
-                if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-                    className: "main-view"
-                }));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     xs: 6,
                     lg: 4
@@ -22284,7 +22281,7 @@ exports.default = MainView;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../movie-card/movie-card":"VFCZ2","../movie-view/movie-view":"67UYI","axios":"7rA65","../login-view/login-view":"6aBEq","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-router-dom":"1PMSK","../mynavbar/mynavbar":"31Qie","../director-view/director-view":"4Ed7m","../genre-view/genre-view":"GvXIx","../registration-view/registration-view":"1nt2p","../profile-view/profile-view":"16TE9"}],"VFCZ2":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../movie-card/movie-card":"VFCZ2","../movie-view/movie-view":"67UYI","axios":"7rA65","../registration-view/registration-view":"1nt2p","../login-view/login-view":"6aBEq","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-router-dom":"1PMSK","../mynavbar/mynavbar":"31Qie","../director-view/director-view":"4Ed7m","../genre-view/genre-view":"GvXIx","../profile-view/profile-view":"16TE9"}],"VFCZ2":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27537,7 +27534,7 @@ module.exports = CancelToken;
     return typeof payload === 'object' && payload.isAxiosError === true;
 };
 
-},{}],"6aBEq":[function(require,module,exports) {
+},{}],"1nt2p":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27548,68 +27545,66 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _form = require("react-bootstrap/Form");
 var _formDefault = parcelHelpers.interopDefault(_form);
 var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
-var _loginViewScss = require("./login-view.scss");
-// Import Axios to enable authentication routing
-var _axios = require("axios");
-var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _registrationViewScss = require("./registration-view.scss");
 var _s = $RefreshSig$();
-// Create function component
-function LoginView({ onLoggedIn , goToRegistration  }) {
+function RegistrationView({ history  }) {
     _s();
-    // Use destructuring to set initial values for username and password and name functions to update values
     const [username, setUsername] = _react.useState('');
     const [password, setPassword] = _react.useState('');
-    /* Function to handle submission of form data. Form data is posted to login route for authentication. If successful
-the authenticated user data (which includes the JWT) is passed to the onLoggedIn method */ const handleSubmit = (e)=>{
+    const [email, setEmail] = _react.useState('');
+    const [birthday, setBirthday] = _react.useState('');
+    /* Function to handle submission of registration form. Successful registration should redirect the new
+user to the login view */ const handleRegistration = (e)=>{
         e.preventDefault();
-        console.log(username + ' ' + password);
-        _axiosDefault.default.post('https://intense-depths-38257.herokuapp.com/login', {
+        console.log('registration submitted');
+        _axiosDefault.default.post('https://intense-depths-38257.herokuapp.com/users', {
             Username: username,
-            Password: password
+            Password: password,
+            Email: email,
+            Birthday: birthday
         }).then((res)=>{
-            const loginData = res.data;
-            onLoggedIn(loginData);
+            console.log(res.data);
+            history.push('/');
         }).catch((err)=>{
-            console.log('No such user');
+            console.log('Registration failed');
         });
     };
-    // Return statement
     return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-        className: "login-view",
+        className: "registration-view",
         __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 36
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 30
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
         __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 37
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 31
         },
         __self: this
-    }, "Log in to myFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+    }, "Sign up to myFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 38
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 32
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formUsername",
         __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 39
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 33
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 40
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 34
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -27618,21 +27613,21 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
         onChange: (e)=>setUsername(e.target.value)
         ,
         __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 41
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 35
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formPassword",
         __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 43
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 37
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 44
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 38
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -27641,63 +27636,79 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
         onChange: (e)=>setPassword(e.target.value)
         ,
         __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 39
+        },
+        __self: this
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        controlId: "formEmail",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 41
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 42
+        },
+        __self: this
+    }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        type: "text",
+        value: email,
+        onChange: (e)=>setEmail(e.target.value)
+        ,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 43
+        },
+        __self: this
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        controlId: "formBirthday",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
             lineNumber: 45
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 46
+        },
+        __self: this
+    }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        type: "date",
+        value: birthday,
+        onChange: (e)=>setBirthday(e.target.value)
+        ,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
+            lineNumber: 47
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
         variant: "danger",
         type: "submit",
-        onClick: handleSubmit,
+        onClick: handleRegistration,
         __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 47
-        },
-        __self: this
-    }, "myFlix")), /*#__PURE__*/ _reactDefault.default.createElement("br", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
             lineNumber: 49
         },
         __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("br", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 50
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("h2", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 51
-        },
-        __self: this
-    }, "Sign up to myFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
-        variant: "danger",
-        type: "button",
-        onClick: goToRegistration,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 52
-        },
-        __self: this
-    }, "Register")));
+    }, "Register"))));
 }
-_s(LoginView, "wuQOK7xaXdVz4RMrZQhWbI751Oc=");
-_c = LoginView;
-LoginView.propTypes = {
-    onLoggedIn: _propTypesDefault.default.func.isRequired
-};
-exports.default = LoginView;
+_s(RegistrationView, "tdA1KK8yaZidqYo0wscqshHt/KE=");
+_c = RegistrationView;
+exports.default = RegistrationView;
 var _c;
-$RefreshReg$(_c, "LoginView");
+$RefreshReg$(_c, "RegistrationView");
 
   helpers.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","prop-types":"4dfy5","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","./login-view.scss":"7tNiX","axios":"7rA65"}],"6A5ko":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","./registration-view.scss":"6qaib","axios":"7rA65"}],"6A5ko":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
@@ -28784,7 +28795,167 @@ var _default = Switch;
 exports.default = _default;
 module.exports = exports["default"];
 
-},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","react":"3b2NM","./FormCheck":"6WcKM"}],"7tNiX":[function() {},{}],"3fzwD":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","react":"3b2NM","./FormCheck":"6WcKM"}],"6qaib":[function() {},{}],"6aBEq":[function(require,module,exports) {
+var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _form = require("react-bootstrap/Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _loginViewScss = require("./login-view.scss");
+// Import Axios to enable authentication routing
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _s = $RefreshSig$();
+// Create function component
+function LoginView({ onLoggedIn , goToRegistration  }) {
+    _s();
+    // Use destructuring to set initial values for username and password and name functions to update values
+    const [username, setUsername] = _react.useState('');
+    const [password, setPassword] = _react.useState('');
+    /* Function to handle submission of form data. Form data is posted to login route for authentication. If successful
+the authenticated user data (which includes the JWT) is passed to the onLoggedIn method */ const handleSubmit = (e)=>{
+        e.preventDefault();
+        console.log(username + ' ' + password);
+        _axiosDefault.default.post('https://intense-depths-38257.herokuapp.com/login', {
+            Username: username,
+            Password: password
+        }).then((res)=>{
+            const loginData = res.data;
+            onLoggedIn(loginData);
+        }).catch((err)=>{
+            console.log('No such user');
+        });
+    };
+    // Return statement
+    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "login-view",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 36
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 37
+        },
+        __self: this
+    }, "Log in to myFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 38
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        controlId: "formUsername",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 39
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 40
+        },
+        __self: this
+    }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        type: "text",
+        value: username,
+        onChange: (e)=>setUsername(e.target.value)
+        ,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 41
+        },
+        __self: this
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        controlId: "formPassword",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 43
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 44
+        },
+        __self: this
+    }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        type: "text",
+        value: password,
+        onChange: (e)=>setPassword(e.target.value)
+        ,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 45
+        },
+        __self: this
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        variant: "danger",
+        type: "submit",
+        onClick: handleSubmit,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 47
+        },
+        __self: this
+    }, "myFlix")), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 49
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 50
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement("h2", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 51
+        },
+        __self: this
+    }, "Sign up to myFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        variant: "danger",
+        type: "button",
+        onClick: goToRegistration,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 52
+        },
+        __self: this
+    }, "Register")));
+}
+_s(LoginView, "wuQOK7xaXdVz4RMrZQhWbI751Oc=");
+_c = LoginView;
+LoginView.propTypes = {
+    onLoggedIn: _propTypesDefault.default.func.isRequired
+};
+exports.default = LoginView;
+var _c;
+$RefreshReg$(_c, "LoginView");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","prop-types":"4dfy5","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","./login-view.scss":"7tNiX","axios":"7rA65"}],"7tNiX":[function() {},{}],"3fzwD":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
@@ -30838,7 +31009,7 @@ $RefreshReg$(_c, "DirectorView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","./director-view.scss":"293O2","react-bootstrap/Button":"1ru0l","react-router-dom":"1PMSK"}],"293O2":[function() {},{}],"GvXIx":[function(require,module,exports) {
+},{"react":"3b2NM","react-bootstrap/Button":"1ru0l","react-router-dom":"1PMSK","./director-view.scss":"293O2","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"293O2":[function() {},{}],"GvXIx":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -30931,7 +31102,7 @@ $RefreshReg$(_c, "GenreView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","./genre-view.scss":"2kAV8","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Button":"1ru0l","react-router-dom":"1PMSK"}],"2kAV8":[function() {},{}],"1nt2p":[function(require,module,exports) {
+},{"react":"3b2NM","react-bootstrap/Button":"1ru0l","react-router-dom":"1PMSK","./genre-view.scss":"2kAV8","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"2kAV8":[function() {},{}],"16TE9":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -30944,237 +31115,81 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-var _form = require("react-bootstrap/Form");
-var _formDefault = parcelHelpers.interopDefault(_form);
-var _button = require("react-bootstrap/Button");
-var _buttonDefault = parcelHelpers.interopDefault(_button);
-var _registrationViewScss = require("./registration-view.scss");
-var _s = $RefreshSig$();
-function RegistrationView({ history  }) {
-    _s();
-    const [username, setUsername] = _react.useState('');
-    const [password, setPassword] = _react.useState('');
-    const [email, setEmail] = _react.useState('');
-    const [birthday, setBirthday] = _react.useState('');
-    /* Function to handle submission of registration form. Successful registration should redirect the new
-user to the login view */ const handleRegistration = (e)=>{
-        e.preventDefault();
-        console.log('registration submitted');
-        _axiosDefault.default.post('https://intense-depths-38257.herokuapp.com/users', {
-            Username: username,
-            Password: password,
-            Email: email,
-            Birthday: birthday
-        }).then((res)=>{
-            console.log(res.data);
-            history.push('/');
-        }).catch((err)=>{
-            console.log('Registration failed');
-        });
-    };
-    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-        className: "registration-view",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 30
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 31
-        },
-        __self: this
-    }, "Sign up to myFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 32
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formUsername",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 33
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 34
-        },
-        __self: this
-    }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "text",
-        value: username,
-        onChange: (e)=>setUsername(e.target.value)
-        ,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 35
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formPassword",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 37
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 38
-        },
-        __self: this
-    }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "text",
-        value: password,
-        onChange: (e)=>setPassword(e.target.value)
-        ,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 39
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formEmail",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 41
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 42
-        },
-        __self: this
-    }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "text",
-        value: email,
-        onChange: (e)=>setEmail(e.target.value)
-        ,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 43
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formBirthday",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 45
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 46
-        },
-        __self: this
-    }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "date",
-        value: birthday,
-        onChange: (e)=>setBirthday(e.target.value)
-        ,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 47
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
-        variant: "danger",
-        type: "submit",
-        onClick: handleRegistration,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 49
-        },
-        __self: this
-    }, "Register"))));
-}
-_s(RegistrationView, "tdA1KK8yaZidqYo0wscqshHt/KE=");
-_c = RegistrationView;
-exports.default = RegistrationView;
-var _c;
-$RefreshReg$(_c, "RegistrationView");
-
-  helpers.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react":"3b2NM","axios":"7rA65","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","./registration-view.scss":"6qaib","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"6qaib":[function() {},{}],"16TE9":[function(require,module,exports) {
-var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-helpers.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
 var _profileViewScss = require("./profile-view.scss");
+var _s = $RefreshSig$();
 function ProfileView() {
+    _s();
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    const [profile, setProfile] = _react.useState('');
+    // We need to be asking for the specific user that will be in the URL
+    _axiosDefault.default.get(`https://intense-depths-38257.herokuapp.com/users/${username}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }).then((res)=>{
+        setProfile(res.data);
+    }).catch((err)=>{
+        console.log("Couldn't get profile");
+    });
     return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "profile-view",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 7
+            lineNumber: 21
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 8
+            lineNumber: 22
         },
         __self: this
     }, "myProfile"), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 9
+            lineNumber: 23
         },
         __self: this
-    }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement("p", {
+    }, "myUsername: ", profile.Username), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 10
+            lineNumber: 24
         },
         __self: this
-    }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement("p", {
+    }, "myPassword: ", profile.Password), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 11
+            lineNumber: 25
         },
         __self: this
-    }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement("p", {
+    }, "myEmail: ", profile.Email), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 12
+            lineNumber: 26
         },
         __self: this
-    }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+    }, "myBirthday: ", profile.Birthday), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 13
+            lineNumber: 27
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("h4", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 14
+            lineNumber: 28
         },
         __self: this
     }, "myFavourites"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 15
+            lineNumber: 29
         },
         __self: this
-    }, "movie data")));
+    }, profile.FavouriteMovies)));
 }
+_s(ProfileView, "RXsC0pfMljtQcQZ5X7Nyx6wrSoU=");
 _c = ProfileView;
 exports.default = ProfileView;
 var _c;
@@ -31185,7 +31200,7 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","./profile-view.scss":"CWyO5"}],"CWyO5":[function() {},{}],"3Mt3t":[function(require,module,exports) {
+},{"react":"3b2NM","axios":"7rA65","./profile-view.scss":"CWyO5","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"CWyO5":[function() {},{}],"3Mt3t":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;

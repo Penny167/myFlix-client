@@ -45,6 +45,10 @@
   color: #dc3545;
   text-decoration: none;
 }
+.registration-view {
+  margin-top: 20vh;
+  padding-bottom: 10vh;
+}
 .login-view {
   margin-top: 20vh;
   padding-bottom: 50vh;
@@ -79,10 +83,6 @@
   margin-top: 8rem;
   padding-bottom: 50vh;
   color: #fff;
-}
-.registration-view {
-  margin-top: 20vh;
-  padding-bottom: 10vh;
 }
 .profile-view {
   margin-top: 20vh;

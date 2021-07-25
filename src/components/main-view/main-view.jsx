@@ -121,7 +121,6 @@ class MainView extends React.Component {
             if (!user) return <Col xs={6} lg={4}>
             <LoginView onLoggedIn={loginData => this.onLoggedIn(loginData)} 
             goToRegistration={() => history.push('/register')}/></Col>
-            if (movies.length === 0) return <div className="main-view" />;
             return  <Col xs={6} lg={4}><ProfileView /></Col>
           }}/>
 
