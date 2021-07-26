@@ -38,6 +38,7 @@ class MainView extends React.Component {
     localStorage.removeItem('user', null);
     localStorage.removeItem('token', null);
     console.log('logged out')
+    window.open('/','_self');
   }
 
   getProfile() {

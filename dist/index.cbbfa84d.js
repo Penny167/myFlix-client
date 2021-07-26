@@ -22064,6 +22064,7 @@ class MainView extends _reactDefault.default.Component {
         localStorage.removeItem('user', null);
         localStorage.removeItem('token', null);
         console.log('logged out');
+        window.open('/', '_self');
     }
     getProfile() {
         let username = localStorage.getItem('user');
@@ -22112,7 +22113,7 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 87
+                lineNumber: 88
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
@@ -22122,14 +22123,14 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 88
+                lineNumber: 89
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 91
+                lineNumber: 92
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22160,7 +22161,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 93
+                lineNumber: 94
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22180,7 +22181,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 103
+                lineNumber: 104
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22214,7 +22215,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 108
+                lineNumber: 109
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22243,7 +22244,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 123
+                lineNumber: 124
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22272,7 +22273,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 134
+                lineNumber: 135
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22294,7 +22295,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 145
+                lineNumber: 146
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22316,7 +22317,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 152
+                lineNumber: 153
             },
             __self: this
         }))));
@@ -40101,7 +40102,7 @@ var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _updateViewScss = require("./update-view.scss");
 var _s = $RefreshSig$();
-function UpdateView({ history  }) {
+function UpdateView() {
     _s();
     const [username, setUsername] = _react.useState('');
     const [password, setPassword] = _react.useState('');
@@ -40113,7 +40114,7 @@ we know they are an authenticated user. When they log out, the user state will b
 updated with their new username (where applicable) when they next log in */ const handleUpdate = (e)=>{
         e.preventDefault();
         const token = localStorage.getItem('token');
-        console.log(token, 'update submitted');
+        console.log('update submitted');
         _axiosDefault.default.put(`https://intense-depths-38257.herokuapp.com/users/${username}`, {
             Username: username,
             Password: password,
@@ -40125,7 +40126,7 @@ updated with their new username (where applicable) when they next log in */ cons
             }
         }).then((res)=>{
             console.log(res.data);
-            history.push('/');
+            window.open('/', '_self');
         }).catch((err)=>{
             console.log('Update failed');
         });
@@ -40149,7 +40150,7 @@ updated with their new username (where applicable) when they next log in */ cons
             lineNumber: 39
         },
         __self: this
-    }, "Please complete all fields"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+    }, "Please complete ALL fields"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
             lineNumber: 40
@@ -40256,7 +40257,7 @@ updated with their new username (where applicable) when they next log in */ cons
             lineNumber: 57
         },
         __self: this
-    }, "Register"))));
+    }, "submit"))));
 }
 _s(UpdateView, "tdA1KK8yaZidqYo0wscqshHt/KE=");
 _c = UpdateView;

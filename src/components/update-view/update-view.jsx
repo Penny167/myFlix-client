@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import './update-view.scss';
 
 
-function UpdateView({history}) {
+function UpdateView() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -21,14 +21,14 @@ updated with their new username (where applicable) when they next log in */
   const handleUpdate = (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    console.log(token, 'update submitted');
+    console.log('update submitted');
     axios.put(`https://intense-depths-38257.herokuapp.com/users/${username}`,
     {Username: username, Password: password, Email: email, Birthday: birthday},
     {headers: { Authorization: `Bearer ${token}`}}
     )
     .then(res => {
       console.log(res.data);
-      history.push('/')})
+      window.open('/', '_self')})
     .catch(err => {
       console.log('Update failed')})
   }
@@ -36,7 +36,7 @@ updated with their new username (where applicable) when they next log in */
   return(
     <div className="update-view">
       <h2>Update myProfile</h2>
-      <p>Please complete all fields</p>
+      <p>Please complete ALL fields</p>
       <Form>
         <Form.Group controlId="formUsername">  
           <Form.Label>Username:</Form.Label>
@@ -54,7 +54,7 @@ updated with their new username (where applicable) when they next log in */
           <Form.Label>Birthday:</Form.Label>
           <Form.Control type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
         </Form.Group>  
-        <Button variant="danger" type="submit" onClick={handleUpdate}>Register</Button>
+        <Button variant="danger" type="submit" onClick={handleUpdate}>submit</Button>
       </Form>
     </div>
   )
