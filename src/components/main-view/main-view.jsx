@@ -62,6 +62,19 @@ class MainView extends React.Component {
     })
   }
 
+  addToFavourites(movieID) {
+    const user = this.state.user;
+    const token = localStorage.getItem('token');
+    axios.put(`https://intense-depths-38257.herokuapp.com/users/${user}/${movieID}`,
+              {headers: { Authorization: `Bearer ${token}`}}
+              )
+    .then(res => {  
+      console.log(res)})
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   render() {
     const { movies, user } = this.state;
     return (
@@ -91,7 +104,11 @@ class MainView extends React.Component {
             if (movies.length === 0) return <div className="main-view" />;
             return  <Col xs={10} md={8} >
                       <MovieView movieData={movies.find((movie) => movie._id === match.params.movieId)}
-                      onBackClick={() => history.goBack()}/>
+                      onBackClick={() => history.goBack()}
+                      onAddMovie={() => {
+                          const movieID = match.params.movieId;
+                          this.addToFavourites(movieID)}}
+                      />
                     </Col>
           }}/>
 

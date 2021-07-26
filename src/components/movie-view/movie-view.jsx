@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 import './movie-view.scss';
 
 class MovieView extends React.Component {
+
   render() {
-    const { movieData, onBackClick } = this.props;
+    const { movieData, onBackClick, onAddMovie } = this.props;
+    
     return ( 
     <div className="movie-view">
       <div className="movie-image"><img id="image" src={movieData.ImagePath} /></div>
@@ -32,6 +34,8 @@ class MovieView extends React.Component {
       </Link>
       </div>
       <br></br>
+      <Button variant="danger" id="addMovieButton" onClick={onAddMovie}>add to myFlix</Button>
+      <span className="space">s</span> 
       <Button variant="danger" id="backButton" onClick={onBackClick}>back</Button> 
     </div>
     )
@@ -47,6 +51,9 @@ MovieView.propTypes = {
     Genre: PropTypes.shape({Name: PropTypes.string.isRequired}),
     Director: PropTypes.shape({Name: PropTypes.string.isRequired})  
   }).isRequired,
+  
+  onAddMovie: PropTypes.func.isRequired,
+  onBackClick: PropTypes.func.isRequired
 
 };
 

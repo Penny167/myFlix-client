@@ -45,6 +45,10 @@
   color: #dc3545;
   text-decoration: none;
 }
+
+.space {
+  color: #0c0d0d;
+}
 .registration-view {
   margin-top: 20vh;
   padding-bottom: 10vh;
