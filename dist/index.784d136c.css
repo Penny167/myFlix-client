@@ -53,9 +53,14 @@
   margin-top: 20vh;
   padding-bottom: 50vh;
 }
-#logoutButton {
-  color: white;
-  border-color: white;
+#navButton {
+  color: #0c0d0d;
+  border: none;
+}
+
+#navButton:hover {
+  text-decoration: underline;
+  background-color: #dc3545;
 }
 .director-view {
   margin-top: 8rem;

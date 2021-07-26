@@ -3,6 +3,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import './mynavbar.scss';
+import { Nav } from 'react-bootstrap';
+
 
 function MyFlixNavbar(props) {
 
@@ -11,9 +13,17 @@ function MyFlixNavbar(props) {
   }
 
   return (
-    <Navbar bg="danger" fixed="top" className="justify-content-between">
+    <Navbar bg="danger" fixed="top" expand="md">
       <Navbar.Brand><h5>myFlix</h5></Navbar.Brand>
-      <Button variant="danger" type="button" id="logoutButton" onClick={handleLogout}>logout</Button>
+      <Navbar.Toggle />
+      <Navbar.Collapse className="justify-content-end">
+        <Nav>
+            <Nav.Link href="/" id="navButton">Home</Nav.Link>
+            <Button variant="danger" type="button" id="navButton">myProfile</Button>
+            <Button variant="danger" type="button" id="navButton" onClick={handleLogout}>logout</Button>
+        </Nav>
+        
+      </Navbar.Collapse>
     </Navbar>
   );
 }

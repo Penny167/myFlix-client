@@ -1,5 +1,9 @@
-#logoutButton {
-  color: white;
-  border-color: white;
+#navButton {
+  color: #0c0d0d;
+  border: none;
 }
 
+#navButton:hover {
+  text-decoration: underline;
+  background-color: #dc3545;
+}
