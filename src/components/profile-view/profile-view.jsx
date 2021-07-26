@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 import './profile-view.scss';
 
 function ProfileView() {
@@ -17,6 +18,10 @@ function ProfileView() {
   .catch(err => {
     console.log("Couldn't get profile")});
 
+  const handleUpdate = () => {
+    window.open('/updateProfile', '_self');
+  }
+
 return (
   <div className="profile-view">
     <h2>myProfile</h2>
@@ -24,9 +29,12 @@ return (
     <p>myPassword: {profile.Password}</p>
     <p>myEmail: {profile.Email}</p>
     <p>myBirthday: {profile.Birthday}</p>
+    <Button variant="danger" type="submit" onClick={handleUpdate}>update</Button>
+    <br />
     <br />
     <h4>myFavourites</h4>
     <div>{profile.FavouriteMovies}</div>
+    
   </div>
 )
 

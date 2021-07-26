@@ -59,3 +59,5 @@ updated with their new username (where applicable) when they next log in */
     </div>
   )
 }
+
+export default UpdateView
