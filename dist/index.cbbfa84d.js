@@ -22276,7 +22276,7 @@ class MainView extends _reactDefault.default.Component {
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
             path: "/user/:Username",
-            render: ({ match , history  })=>{
+            render: ({ history  })=>{
                 if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     xs: 6,
                     lg: 4
@@ -22293,6 +22293,28 @@ class MainView extends _reactDefault.default.Component {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
                 lineNumber: 144
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            exact: true,
+            path: "/updateProfile",
+            render: ({ history  })=>{
+                if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+                    xs: 6,
+                    lg: 4
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_loginViewDefault.default, {
+                    onLoggedIn: (loginData)=>this.onLoggedIn(loginData)
+                    ,
+                    goToRegistration: ()=>history.push('/register')
+                })));
+                return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+                    xs: 6,
+                    lg: 4
+                }, /*#__PURE__*/ _reactDefault.default.createElement(UpdateView, null)));
+            },
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 151
             },
             __self: this
         }))));

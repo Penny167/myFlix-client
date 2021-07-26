@@ -141,12 +141,19 @@ class MainView extends React.Component {
                     </Col>
           }}/>
 
-          <Route exact path="/user/:Username" render={({match, history}) => {
+          <Route exact path="/user/:Username" render={({history}) => {
             if (!user) return <Col xs={6} lg={4}>
             <LoginView onLoggedIn={loginData => this.onLoggedIn(loginData)} 
             goToRegistration={() => history.push('/register')}/></Col>
             return  <Col xs={6} lg={4}><ProfileView /></Col>
           }}/>
+
+          <Route exact path="/updateProfile" render={({history}) => {
+            if (!user) return <Col xs={6} lg={4}>
+            <LoginView onLoggedIn={loginData => this.onLoggedIn(loginData)} 
+            goToRegistration={() => history.push('/register')}/></Col>
+            return  <Col xs={6} lg={4}><UpdateView /></Col>
+          }}/>  
 
         </Row>
       </Router>
