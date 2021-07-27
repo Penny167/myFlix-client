@@ -28,9 +28,11 @@ updated with their new username (where applicable) when they next log in */
     )
     .then(res => {
       console.log(res.data);
-      window.open('/', '_self')})
+      window.open('/', '_self');
+    })
     .catch(err => {
-      console.log('Update failed')})
+      console.log('Update failed');
+    })
   }
 
   return(
