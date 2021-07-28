@@ -27658,6 +27658,7 @@ user to the login view */ const handleRegistration = (e)=>{
         },
         __self: this
     }, "Sign up to myFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+        onSubmit: handleRegistration,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
             lineNumber: 32
@@ -27677,7 +27678,11 @@ user to the login view */ const handleRegistration = (e)=>{
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        required: true,
         type: "text",
+        minLength: "5",
+        pattern: "[a-zA-Z0-9]+",
+        placeholder: "Please enter a valid username",
         value: username,
         onChange: (e)=>setUsername(e.target.value)
         ,
@@ -27690,81 +27695,86 @@ user to the login view */ const handleRegistration = (e)=>{
         controlId: "formPassword",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 37
+            lineNumber: 38
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 38
+            lineNumber: 39
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        required: true,
         type: "text",
+        minLength: "8",
+        placeholder: "Please enter a valid password",
         value: password,
         onChange: (e)=>setPassword(e.target.value)
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 39
+            lineNumber: 40
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formEmail",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 41
+            lineNumber: 43
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 42
+            lineNumber: 44
         },
         __self: this
     }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "text",
+        required: true,
+        type: "email",
+        placeholder: "Please enter a valid email address",
         value: email,
         onChange: (e)=>setEmail(e.target.value)
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 43
+            lineNumber: 45
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formBirthday",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 45
+            lineNumber: 48
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 46
+            lineNumber: 49
         },
         __self: this
     }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        required: true,
         type: "date",
         value: birthday,
         onChange: (e)=>setBirthday(e.target.value)
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 47
+            lineNumber: 50
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
         variant: "danger",
         type: "submit",
-        onClick: handleRegistration,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/registration-view/registration-view.jsx",
-            lineNumber: 49
+            lineNumber: 52
         },
         __self: this
-    }, "Register"))));
+    }, "Submit"))));
 }
 _s(RegistrationView, "tdA1KK8yaZidqYo0wscqshHt/KE=");
 _c = RegistrationView;
@@ -28903,7 +28913,8 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
             const loginData = res.data;
             onLoggedIn(loginData);
         }).catch((err)=>{
-            console.log('No such user');
+            console.log(err, 'No such user');
+            window.open('/', '_self');
         });
     };
     // Return statement
@@ -28911,92 +28922,99 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
         className: "login-view",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 36
+            lineNumber: 37
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 37
+            lineNumber: 38
         },
         __self: this
     }, "Log in to myFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+        onSubmit: handleSubmit,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 38
+            lineNumber: 39
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 39
+            lineNumber: 40
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 40
+            lineNumber: 41
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        required: true,
         type: "text",
+        minLength: "5",
+        pattern: "[a-zA-Z0-9]+",
+        placeholder: "Username",
         value: username,
         onChange: (e)=>setUsername(e.target.value)
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 41
+            lineNumber: 42
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formPassword",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 43
+            lineNumber: 45
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 44
+            lineNumber: 46
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        required: true,
         type: "text",
+        minLength: "8",
+        placeholder: "Password",
         value: password,
         onChange: (e)=>setPassword(e.target.value)
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 45
+            lineNumber: 47
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
         variant: "danger",
         type: "submit",
-        onClick: handleSubmit,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 47
-        },
-        __self: this
-    }, "myFlix")), /*#__PURE__*/ _reactDefault.default.createElement("br", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 49
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
             lineNumber: 50
         },
         __self: this
+    }, "myFlix")), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 52
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 53
+        },
+        __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("h2", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 51
+            lineNumber: 54
         },
         __self: this
     }, "Sign up to myFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -29005,15 +29023,16 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
         onClick: goToRegistration,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 52
+            lineNumber: 55
         },
         __self: this
-    }, "Register")));
+    }, "Sign up")));
 }
 _s(LoginView, "wuQOK7xaXdVz4RMrZQhWbI751Oc=");
 _c = LoginView;
 LoginView.propTypes = {
-    onLoggedIn: _propTypesDefault.default.func.isRequired
+    onLoggedIn: _propTypesDefault.default.func.isRequired,
+    goToRegistration: _propTypesDefault.default.func.isRequired
 };
 exports.default = LoginView;
 var _c;
@@ -40183,6 +40202,7 @@ updated with their new username (where applicable) when they next log in */ cons
         },
         __self: this
     }, "Please complete ALL fields"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+        onSubmit: handleUpdate,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
             lineNumber: 42
@@ -40202,7 +40222,11 @@ updated with their new username (where applicable) when they next log in */ cons
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        required: true,
         type: "text",
+        minLength: "5",
+        pattern: "[a-zA-Z0-9]+",
+        placeholder: "Please enter a valid username",
         value: username,
         onChange: (e)=>setUsername(e.target.value)
         ,
@@ -40215,78 +40239,83 @@ updated with their new username (where applicable) when they next log in */ cons
         controlId: "formPassword",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 47
+            lineNumber: 48
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 48
+            lineNumber: 49
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        required: true,
         type: "text",
+        minLength: "8",
+        placeholder: "Please enter a valid password",
         value: password,
         onChange: (e)=>setPassword(e.target.value)
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 49
+            lineNumber: 50
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formEmail",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 51
+            lineNumber: 53
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 52
+            lineNumber: 54
         },
         __self: this
     }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "text",
+        required: true,
+        type: "email",
+        placeholder: "Please enter a valid email address",
         value: email,
         onChange: (e)=>setEmail(e.target.value)
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 53
+            lineNumber: 55
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formBirthday",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 55
+            lineNumber: 58
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 56
+            lineNumber: 59
         },
         __self: this
     }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        required: true,
         type: "date",
         value: birthday,
         onChange: (e)=>setBirthday(e.target.value)
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 57
+            lineNumber: 60
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
         variant: "danger",
         type: "submit",
-        onClick: handleUpdate,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 59
+            lineNumber: 62
         },
         __self: this
     }, "submit"))));

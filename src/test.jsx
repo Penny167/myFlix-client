@@ -38,3 +38,15 @@ import PropTypes from 'prop-types';
 //  <br></br>
 //  <h3>myFlix members</h3>
 //  <Button variant="danger" type="button" onClick={handleGoToLogin}>Login</Button>
+
+const [validated, setValidated] = useState(false);
+
+const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+
+      setValidated(true);
+      if (validated === true) {
+        noValidate validated={validated} 
+        <InputGroup hasValidation></InputGroup>
+        <Form.Control.Feedback type="invalid">Please enter your username</Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">Please enter your password</Form.Control.Feedback>

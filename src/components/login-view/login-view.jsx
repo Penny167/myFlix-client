@@ -27,7 +27,8 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
       onLoggedIn(loginData)
     })
     .catch (err => {
-      console.log('No such user')
+      console.log(err, 'No such user')
+      window.open('/', '_self');
     }) 
   } 
   
@@ -35,27 +36,30 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
   return(
     <div className="login-view">
       <h2>Log in to myFlix</h2>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formUsername">
           <Form.Label>Username:</Form.Label>
-          <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} />
+          <Form.Control required type="text" minLength="5" pattern="[a-zA-Z0-9]+" placeholder="Username" 
+          value={username} onChange={e => setUsername(e.target.value)} /> 
         </Form.Group>
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
-          <Form.Control type="text" value={password} onChange={e => setPassword(e.target.value)} />
+          <Form.Control required type="text" minLength="8" placeholder="Password" 
+          value={password} onChange={e => setPassword(e.target.value)} />
         </Form.Group>
-        <Button variant="danger" type="submit" onClick={handleSubmit}>myFlix</Button>
+        <Button variant="danger" type="submit">myFlix</Button>
       </Form>
       <br></br>
       <br></br>
       <h2>Sign up to myFlix</h2>
-      <Button variant="danger" type="button" onClick={goToRegistration}>Register</Button>
+      <Button variant="danger" type="button" onClick={goToRegistration}>Sign up</Button>
     </div>
   );
 }
 
 LoginView.propTypes = {
-  onLoggedIn:PropTypes.func.isRequired
+  onLoggedIn:PropTypes.func.isRequired,
+  goToRegistration:PropTypes.func.isRequired
 }
 
 export default LoginView

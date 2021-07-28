@@ -39,24 +39,27 @@ updated with their new username (where applicable) when they next log in */
     <div className="update-view">
       <h2>Update myProfile</h2>
       <p>Please complete ALL fields</p>
-      <Form>
+      <Form onSubmit={handleUpdate}>
         <Form.Group controlId="formUsername">  
           <Form.Label>Username:</Form.Label>
-          <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} />
+          <Form.Control required type="text" minLength="5" pattern="[a-zA-Z0-9]+" placeholder="Please enter a valid username"
+          value={username} onChange={e => setUsername(e.target.value)} />
         </Form.Group> 
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
-          <Form.Control type="text" value={password} onChange={e => setPassword(e.target.value)} />
+          <Form.Control required type="text" minLength="8" placeholder="Please enter a valid password"
+          value={password} onChange={e => setPassword(e.target.value)} />
         </Form.Group> 
         <Form.Group controlId="formEmail"> 
           <Form.Label>Email:</Form.Label>
-          <Form.Control type="text" value={email} onChange={e => setEmail(e.target.value)} />
+          <Form.Control required type="email" placeholder="Please enter a valid email address"
+          value={email} onChange={e => setEmail(e.target.value)} />
         </Form.Group>
         <Form.Group controlId="formBirthday">
           <Form.Label>Birthday:</Form.Label>
-          <Form.Control type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
+          <Form.Control required type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
         </Form.Group>  
-        <Button variant="danger" type="submit" onClick={handleUpdate}>submit</Button>
+        <Button variant="danger" type="submit">submit</Button>
       </Form>
     </div>
   )
