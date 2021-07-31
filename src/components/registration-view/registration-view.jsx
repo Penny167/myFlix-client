@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './registration-view.scss';
 
-function RegistrationView({history}) {
+function RegistrationView() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -21,9 +21,9 @@ user to the login view */
     {Username: username, Password: password, Email: email, Birthday: birthday})
     .then(res => {
       console.log(res.data);
-      history.push('/')})
+      window.open('/', '_self')})
     .catch(err => {
-      console.log('Registration failed')})
+      console.log(err, 'Registration failed')})
   }
 
   return(

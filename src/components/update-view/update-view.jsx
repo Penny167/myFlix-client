@@ -21,6 +21,7 @@ updated with their new username (where applicable) when they next log in */
   const handleUpdate = (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
+    localStorage.setItem('password', password);
     console.log('update submitted');
     axios.put(`https://intense-depths-38257.herokuapp.com/users/${username}`,
     {Username: username, Password: password, Email: email, Birthday: birthday},
@@ -28,10 +29,10 @@ updated with their new username (where applicable) when they next log in */
     )
     .then(res => {
       console.log(res.data);
-      window.open('/', '_self');
+      window.open(`/user/${username}`, '_self');
     })
     .catch(err => {
-      console.log('Update failed');
+      console.log(err, 'Update failed');
     })
   }
 

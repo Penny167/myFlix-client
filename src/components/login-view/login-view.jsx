@@ -20,6 +20,7 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username + ' ' + password);
+    localStorage.setItem('password', password);
     axios.post('https://intense-depths-38257.herokuapp.com/login', 
       {Username: username, Password: password})
     .then (res => {
@@ -28,6 +29,7 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
     })
     .catch (err => {
       console.log(err, 'No such user')
+      localStorage.removeItem('password', null);
       window.open('/', '_self');
     }) 
   } 

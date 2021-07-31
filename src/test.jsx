@@ -39,7 +39,7 @@ import PropTypes from 'prop-types';
 //  <h3>myFlix members</h3>
 //  <Button variant="danger" type="button" onClick={handleGoToLogin}>Login</Button>
 
-const [validated, setValidated] = useState(false);
+/*const [validated, setValidated] = useState(false);
 
 const form = e.currentTarget;
     if (form.checkValidity() === false) {
@@ -50,3 +50,21 @@ const form = e.currentTarget;
         <InputGroup hasValidation></InputGroup>
         <Form.Control.Feedback type="invalid">Please enter your username</Form.Control.Feedback>
         <Form.Control.Feedback type="invalid">Please enter your password</Form.Control.Feedback>
+
+<script>
+  var date = new date('2013-04-01T19:45:11.000Z');
+  var day = date.getDate();
+  var month = date.getMonth();
+  var year = date.getFullYear();
+
+  document.write(year + '-' + month + '-' + day);
+</script> */
+
+
+/*(!profile) return null;
+        (profile.Birthday).split("",10);
+        return date[8]+date[9]+date[7]+date[5]+date[6]+date[4]+date[0]+date[1]+date[2]+date[3];}); 
+        
+        <span className="space"> i</span>
+        
+        */
