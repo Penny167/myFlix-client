@@ -74,7 +74,8 @@ class MainView extends React.Component {
     const user = this.state.user;
     const token = localStorage.getItem('token');
     axios.put(`https://intense-depths-38257.herokuapp.com/users/${user}/${movieID}`,
-              {headers: { Authorization: `Bearer ${token}`}}
+    {FavouriteMovies: movieID},
+    {headers: { Authorization: `Bearer ${token}`}}
               )
     .then(res => {  
       console.log(res)})
