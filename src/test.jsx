@@ -67,4 +67,10 @@ const form = e.currentTarget;
         
         <span className="space"> i</span>
         
-        */
+        
+
+        const movieList = favourites.length ? (
+          favourites.map(favourite => {
+            return (<div className="movie">{favourite.Title}</div>)
+          })
+        ): (<div>No favourite movies selected yet</div>); */

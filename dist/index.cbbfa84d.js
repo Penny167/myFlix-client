@@ -22296,6 +22296,8 @@ class MainView extends _reactDefault.default.Component {
                     lg: 4
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_profileViewDefault.default, {
                     logout: ()=>this.logOut()
+                    ,
+                    movieArray: movies
                 })));
             },
             __source: {
@@ -22322,7 +22324,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 155
+                lineNumber: 156
             },
             __self: this
         }))));
@@ -40012,7 +40014,7 @@ var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _profileViewScss = require("./profile-view.scss");
 var _s = $RefreshSig$();
-function ProfileView({ logout  }) {
+function ProfileView({ logout , movieArray  }) {
     _s();
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -40035,37 +40037,46 @@ function ProfileView({ logout  }) {
                 birthday: date[8] + date[9] + date[7] + date[5] + date[6] + date[4] + date[0] + date[1] + date[2] + date[3],
                 favourites: res.data.FavouriteMovies
             });
-            const favMovies = res.data.FavouriteMovies;
-            console.log(favMovies);
-            const movieList = favMovies.length ? favMovies.map((favMovie)=>{
+            let favMovies = res.data.FavouriteMovies;
+            setProfileMovies(movieList);
+            let movieList = favMovies.length ? favMovies.map((favMovie)=>{
+                let movie = movieArray.find((movie1)=>movie1._id === favMovie
+                );
+                console.log(movie);
                 return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-                    key: favMovie.id,
-                    __source: {
-                        fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-                        lineNumber: 36
-                    },
-                    __self: this
-                }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
-                    __source: {
-                        fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-                        lineNumber: 37
-                    },
-                    __self: this
-                }, favMovie.Title), /*#__PURE__*/ _reactDefault.default.createElement("button", {
+                    className: "movieContainer",
+                    key: movie._id,
                     __source: {
                         fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
                         lineNumber: 38
                     },
                     __self: this
-                }, "Remove")));
+                }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+                    className: "favourite",
+                    __source: {
+                        fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
+                        lineNumber: 39
+                    },
+                    __self: this
+                }, movie.Title), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+                    variant: "danger",
+                    type: "button",
+                    size: "sm",
+                    onClick: ()=>handleRemove(favMovie)
+                    ,
+                    __source: {
+                        fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
+                        lineNumber: 40
+                    },
+                    __self: this
+                }, "remove")));
             }) : /*#__PURE__*/ _reactDefault.default.createElement("p", {
                 __source: {
                     fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-                    lineNumber: 43
+                    lineNumber: 45
                 },
                 __self: this
             }, "Browse movies and select your favourites");
-            setProfileMovies(movieList);
             console.log(profile);
         }).catch((err)=>{
             console.log(err, "Couldn't get profile");
@@ -40088,114 +40099,128 @@ function ProfileView({ logout  }) {
             console.log(err, 'Deregistration failed');
         });
     };
+    const handleRemove = (favMovie)=>{
+        const token1 = localStorage.getItem('token');
+        console.log('remove request submitted');
+        _axiosDefault.default.delete(`https://intense-depths-38257.herokuapp.com/users/${username}/${favMovie}`, {
+            headers: {
+                Authorization: `Bearer ${token1}`
+            }
+        }).then((res)=>{
+            console.log(res.data);
+            window.open(`/user/${username}`, '_self');
+        }).catch((err)=>{
+            console.log(err, 'remove movie failed');
+        });
+    };
     return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "profile-view",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 73
+            lineNumber: 90
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
         className: "header",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 74
+            lineNumber: 91
         },
         __self: this
     }, "myProfile"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 75
+            lineNumber: 92
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 76
+            lineNumber: 93
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 77
+            lineNumber: 94
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         defaultValue: username,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 78
+            lineNumber: 95
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formPassword",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 79
+            lineNumber: 96
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 80
+            lineNumber: 97
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         defaultValue: password,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 81
+            lineNumber: 98
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formEmail",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 82
+            lineNumber: 99
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 83
+            lineNumber: 100
         },
         __self: this
     }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         defaultValue: profile.email,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 84
+            lineNumber: 101
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formBirthday",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 85
+            lineNumber: 102
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 86
+            lineNumber: 103
         },
         __self: this
     }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         defaultValue: profile.birthday,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 87
+            lineNumber: 104
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 89
+            lineNumber: 106
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -40204,14 +40229,14 @@ function ProfileView({ logout  }) {
         onClick: handleDeregister,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 90
+            lineNumber: 107
         },
         __self: this
     }, "deregister"), /*#__PURE__*/ _reactDefault.default.createElement("span", {
         className: "space",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 91
+            lineNumber: 108
         },
         __self: this
     }, " i"), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -40220,45 +40245,46 @@ function ProfileView({ logout  }) {
         onClick: handleUpdate,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 92
+            lineNumber: 109
         },
         __self: this
     }, "update"), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 93
+            lineNumber: 110
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 94
+            lineNumber: 111
         },
         __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("h4", {
+    }), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 112
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement("h2", {
         className: "header",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 95
+            lineNumber: 113
         },
         __self: this
     }, "myFavourites"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 96
+            lineNumber: 114
         },
         __self: this
-    }, profileMovies), /*#__PURE__*/ _reactDefault.default.createElement("br", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 97
-        },
-        __self: this
-    })));
+    }, profileMovies)));
 }
 _s(ProfileView, "S8LS6w/en5yznrAh6ifwlBN4V6g=");
 _c = ProfileView;
 ProfileView.propTypes = {
+    movieArray: _propTypesDefault.default.array.isRequired,
     logout: _propTypesDefault.default.func.isRequired
 };
 exports.default = ProfileView;

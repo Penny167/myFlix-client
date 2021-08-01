@@ -149,7 +149,8 @@ class MainView extends React.Component {
             if (!user) return <Col xs={6} lg={4}>
             <LoginView onLoggedIn={loginData => this.onLoggedIn(loginData)} 
             goToRegistration={() => history.push('/register')}/></Col>
-            return  <Col xs={6} lg={4}><ProfileView logout={() => this.logOut()} /></Col>
+            return  <Col xs={6} lg={4}><ProfileView logout={() => this.logOut()} 
+                    movieArray={movies} /></Col>
           }}/>
 
           <Route exact path="/updateProfile" render={({history}) => {

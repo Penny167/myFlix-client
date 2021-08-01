@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './profile-view.scss';
 
-function ProfileView({logout}) {
+function ProfileView({logout, movieArray}) {
 
   const username = localStorage.getItem('user');
   const token = localStorage.getItem('token');
@@ -28,21 +28,23 @@ function ProfileView({logout}) {
         birthday: date[8]+date[9]+date[7]+date[5]+date[6]+date[4]+date[0]+date[1]+date[2]+date[3],
         favourites: res.data.FavouriteMovies
       });
-      const favMovies = res.data.FavouriteMovies;
-      console.log(favMovies);
-      const movieList = favMovies.length ? (
+      let favMovies = res.data.FavouriteMovies;
+      setProfileMovies(movieList);
+      let movieList = favMovies.length ? (
         favMovies.map(favMovie => {
+          let movie = movieArray.find((movie) => movie._id === favMovie);
+          console.log(movie);
           return (
-                <div key={favMovie.id}>
-                  <span>{favMovie.Title}</span>
-                  <button>Remove</button>
+                <div className="movieContainer" key={movie._id}>
+                  <div className="favourite">{movie.Title}</div>
+                  <Button variant="danger" type="button" size="sm" onClick={() => handleRemove(favMovie)}>remove</Button>
                 </div>
           )
         })
       ):(
         <p>Browse movies and select your favourites</p>
       )
-      setProfileMovies(movieList);
+      
       console.log(profile); 
     })
     .catch(err => {
@@ -69,6 +71,21 @@ function ProfileView({logout}) {
     })
   }
 
+  const handleRemove = (favMovie) => {
+    const token = localStorage.getItem('token');
+    console.log('remove request submitted');
+    axios.delete(`https://intense-depths-38257.herokuapp.com/users/${username}/${favMovie}`,
+    {headers: { Authorization: `Bearer ${token}`}}
+    )
+    .then(res => {
+      console.log(res.data);
+      window.open(`/user/${username}`, '_self');
+    })
+    .catch(err => {
+      console.log(err, 'remove movie failed');
+    })
+  }
+
   return (
     <div className="profile-view">
       <h2 className="header">myProfile</h2>
@@ -92,16 +109,17 @@ function ProfileView({logout}) {
       <Button variant="danger" type="submit" onClick={handleUpdate}>update</Button>
       <br />
       <br />
-      <h4 className="header">myFavourites</h4>
-      <div>{profileMovies}</div>
       <br />
+      <h2 className="header">myFavourites</h2>
+      <div>{profileMovies}</div>
     </div>
   )
   
 }
 
 ProfileView.propTypes = {
+  movieArray:PropTypes.array.isRequired,
   logout:PropTypes.func.isRequired,
-}
+};
 
 export default ProfileView
