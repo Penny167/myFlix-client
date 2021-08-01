@@ -14,8 +14,8 @@ function ProfileView({logout, movieArray}) {
   const password = localStorage.getItem('password');
   const [profile, setProfile] = useState(''); 
   const [profileMovies, setProfileMovies] = useState('');
-
-// Using useEffect hook to control when the data is fetched
+/* Using useEffect hook to control when the data is fetched. We only want this request to run
+once when the profile page is initially loaded */
 // We need to be asking for the specific user that will be in the URL
   useEffect(() => {
     axios.get(`https://intense-depths-38257.herokuapp.com/users/${username}`,
@@ -25,15 +25,12 @@ function ProfileView({logout, movieArray}) {
       const date = (res.data.Birthday).split("",10);
       setProfile({
         email: res.data.Email,
-        birthday: date[8]+date[9]+date[7]+date[5]+date[6]+date[4]+date[0]+date[1]+date[2]+date[3],
-        favourites: res.data.FavouriteMovies
-      });
+        birthday: date[8]+date[9]+date[7]+date[5]+date[6]+date[4]+date[0]+date[1]+date[2]+date[3]
+      })
       let favMovies = res.data.FavouriteMovies;
-      setProfileMovies(movieList);
-      let movieList = favMovies.length ? (
+      let matchedMovies = (favMovies.length ? (
         favMovies.map(favMovie => {
-          let movie = movieArray.find((movie) => movie._id === favMovie);
-          console.log(movie);
+        let movie =  movieArray.find((movie) => movie._id === favMovie);
           return (
                 <div className="movieContainer" key={movie._id}>
                   <div className="favourite">{movie.Title}</div>
@@ -44,13 +41,12 @@ function ProfileView({logout, movieArray}) {
       ):(
         <p>Browse movies and select your favourites</p>
       )
-      
-      console.log(profile); 
+      ) 
+      setProfileMovies(matchedMovies);
     })
     .catch(err => {
       console.log(err, "Couldn't get profile")});
-  },[]);
-
+  }),[];  
 
   const handleUpdate = () => {
     window.open('/updateProfile', '_self');
@@ -79,7 +75,7 @@ function ProfileView({logout, movieArray}) {
     )
     .then(res => {
       console.log(res.data);
-      window.open(`/user/${username}`, '_self');
+      window.open(`/user/${username}`, '_self');    
     })
     .catch(err => {
       console.log(err, 'remove movie failed');
