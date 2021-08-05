@@ -27711,7 +27711,7 @@ user to the login view */ const handleRegistration = (e)=>{
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         required: true,
-        type: "text",
+        type: "password",
         minLength: "8",
         placeholder: "Please enter a valid password",
         value: password,
@@ -28987,7 +28987,7 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         required: true,
-        type: "text",
+        type: "password",
         minLength: "8",
         placeholder: "Password",
         value: password,
@@ -40165,6 +40165,7 @@ once when the profile page is initially loaded */ // We need to be asking for th
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        type: "password",
         defaultValue: password,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
@@ -40408,7 +40409,7 @@ updated with their new username (where applicable) when they next log in */ cons
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         required: true,
-        type: "text",
+        type: "password",
         minLength: "8",
         placeholder: "Please enter a valid password",
         value: password,

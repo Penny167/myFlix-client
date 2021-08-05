@@ -46,7 +46,7 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
         </Form.Group>
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
-          <Form.Control required type="text" minLength="8" placeholder="Password" 
+          <Form.Control required type="password" minLength="8" placeholder="Password" 
           value={password} onChange={e => setPassword(e.target.value)} />
         </Form.Group>
         <Button variant="danger" type="submit">myFlix</Button>
