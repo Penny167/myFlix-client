@@ -40014,7 +40014,7 @@ var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _profileViewScss = require("./profile-view.scss");
 var _s = $RefreshSig$();
-function ProfileView({ logout , movieArray  }) {
+function ProfileView({ logout  }) {
     _s();
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -40037,12 +40037,11 @@ once when the profile page is initially loaded */ // We need to be asking for th
                 birthday: date[8] + date[9] + date[7] + date[5] + date[6] + date[4] + date[0] + date[1] + date[2] + date[3]
             });
             let favMovies = res.data.FavouriteMovies;
+            console.log(favMovies);
             let matchedMovies = favMovies.length ? favMovies.map((favMovie)=>{
-                let movie = movieArray.find((movie1)=>movie1._id === favMovie
-                );
                 return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
                     className: "movieContainer",
-                    key: movie._id,
+                    key: favMovie._id,
                     __source: {
                         fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
                         lineNumber: 35
@@ -40055,11 +40054,11 @@ once when the profile page is initially loaded */ // We need to be asking for th
                         lineNumber: 36
                     },
                     __self: this
-                }, movie.Title), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+                }, favMovie.Title), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
                     variant: "danger",
                     type: "button",
                     size: "sm",
-                    onClick: ()=>handleRemove(favMovie)
+                    onClick: ()=>handleRemove(favMovie._id)
                     ,
                     __source: {
                         fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
@@ -40078,7 +40077,7 @@ once when the profile page is initially loaded */ // We need to be asking for th
         }).catch((err)=>{
             console.log(err, "Couldn't get profile");
         });
-    });
+    }, []);
     const handleUpdate = ()=>{
         window.open('/updateProfile', '_self');
     };
@@ -40096,10 +40095,10 @@ once when the profile page is initially loaded */ // We need to be asking for th
             console.log(err, 'Deregistration failed');
         });
     };
-    const handleRemove = (favMovie)=>{
+    const handleRemove = (favMovieid)=>{
         const token1 = localStorage.getItem('token');
         console.log('remove request submitted');
-        _axiosDefault.default.delete(`https://intense-depths-38257.herokuapp.com/users/${username}/${favMovie}`, {
+        _axiosDefault.default.delete(`https://intense-depths-38257.herokuapp.com/users/${username}/${favMovieid}`, {
             headers: {
                 Authorization: `Bearer ${token1}`
             }
@@ -40281,7 +40280,6 @@ once when the profile page is initially loaded */ // We need to be asking for th
 _s(ProfileView, "S8LS6w/en5yznrAh6ifwlBN4V6g=");
 _c = ProfileView;
 ProfileView.propTypes = {
-    movieArray: _propTypesDefault.default.array.isRequired,
     logout: _propTypesDefault.default.func.isRequired
 };
 exports.default = ProfileView;

@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './profile-view.scss';
 
-function ProfileView({logout, movieArray}) {
+function ProfileView({logout}) {
 
   const username = localStorage.getItem('user');
   const token = localStorage.getItem('token');
@@ -28,13 +28,13 @@ once when the profile page is initially loaded */
         birthday: date[8]+date[9]+date[7]+date[5]+date[6]+date[4]+date[0]+date[1]+date[2]+date[3]
       })
       let favMovies = res.data.FavouriteMovies;
+      console.log(favMovies);
       let matchedMovies = (favMovies.length ? (
         favMovies.map(favMovie => {
-        let movie =  movieArray.find((movie) => movie._id === favMovie);
           return (
-                <div className="movieContainer" key={movie._id}>
-                  <div className="favourite">{movie.Title}</div>
-                  <Button variant="danger" type="button" size="sm" onClick={() => handleRemove(favMovie)}>remove</Button>
+                <div className="movieContainer" key={favMovie._id}>
+                  <div className="favourite">{favMovie.Title}</div>
+                  <Button variant="danger" type="button" size="sm" onClick={() => handleRemove(favMovie._id)}>remove</Button>
                 </div>
           )
         })
@@ -67,10 +67,10 @@ once when the profile page is initially loaded */
     })
   }
 
-  const handleRemove = (favMovie) => {
+  const handleRemove = (favMovieid) => {
     const token = localStorage.getItem('token');
     console.log('remove request submitted');
-    axios.delete(`https://intense-depths-38257.herokuapp.com/users/${username}/${favMovie}`,
+    axios.delete(`https://intense-depths-38257.herokuapp.com/users/${username}/${favMovieid}`,
     {headers: { Authorization: `Bearer ${token}`}}
     )
     .then(res => {
@@ -114,8 +114,7 @@ once when the profile page is initially loaded */
 }
 
 ProfileView.propTypes = {
-  movieArray:PropTypes.array.isRequired,
-  logout:PropTypes.func.isRequired,
+  logout:PropTypes.func.isRequired
 };
 
 export default ProfileView
