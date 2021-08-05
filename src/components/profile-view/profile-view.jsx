@@ -46,7 +46,7 @@ once when the profile page is initially loaded */
     })
     .catch(err => {
       console.log(err, "Couldn't get profile")});
-  }),[];  
+  },[]);  
 
   const handleUpdate = () => {
     window.open('/updateProfile', '_self');
