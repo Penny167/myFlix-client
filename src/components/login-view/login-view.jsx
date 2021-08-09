@@ -1,6 +1,7 @@
 import React from 'react';
 // Import useState hook from the React library
 import {useState} from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -9,7 +10,7 @@ import './login-view.scss';
 import axios from 'axios';
 
 // Create function component
-function LoginView({onLoggedIn, goToRegistration}) {
+function LoginView({onLoggedIn}) {
 
 // Use destructuring to set initial values for username and password and name functions to update values
   const [username, setUsername] = useState('');
@@ -54,14 +55,15 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
       <br></br>
       <br></br>
       <h2>Sign up to myFlix</h2>
-      <Button variant="danger" type="button" onClick={goToRegistration}>Sign up</Button>
+      <Link to='/register'>
+        <Button variant="danger" type="button">Sign up</Button>
+      </Link>
     </div>
   );
 }
 
 LoginView.propTypes = {
   onLoggedIn:PropTypes.func.isRequired,
-  goToRegistration:PropTypes.func.isRequired
 }
 
 export default LoginView
