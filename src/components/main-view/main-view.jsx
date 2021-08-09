@@ -42,11 +42,6 @@ class MainView extends React.Component {
     window.open('/','_self');
   }
 
-  getProfile() {
-    let username = localStorage.getItem('user');
-    window.open(`/user/${username}`,'_self');
-  }
-
   componentDidMount() {
     let token = localStorage.getItem('token');
     if (token !== null) {
@@ -88,9 +83,7 @@ class MainView extends React.Component {
     const { movies, user } = this.state;
     return (
       <Router>
-        <MyFlixNavbar logOut={() => this.logOut()}
-        getProfile={() => this.getProfile()}
-        />
+        <MyFlixNavbar logOut={() => this.logOut()} />
         <Row className="main-view justify-content-center">
 
           <Route exact path="/" render={() => {

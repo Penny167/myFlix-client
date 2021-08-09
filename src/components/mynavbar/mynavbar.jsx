@@ -6,15 +6,13 @@ import './mynavbar.scss';
 import { Nav } from 'react-bootstrap';
 
 
-function MyFlixNavbar({logOut, getProfile}) {
+function MyFlixNavbar({logOut}) {
 
   const handleLogout = () => {
     logOut();
   }
 
-  const fetchMyProfile = () => {
-    getProfile();
-  }
+  const username = localStorage.getItem('user');
 
   return (
     <Navbar bg="danger" fixed="top" expand="md">
@@ -23,18 +21,16 @@ function MyFlixNavbar({logOut, getProfile}) {
       <Navbar.Collapse className="justify-content-end">
         <Nav>
             <Nav.Link href="/" id="navButton">Home</Nav.Link>
-            <Button variant="danger" type="button" id="navButton" onClick={fetchMyProfile}>myProfile</Button>
+            <Nav.Link href={"/user/" + username} id="navButton">myProfile</Nav.Link>
             <Button variant="danger" type="button" id="navButton" onClick={handleLogout}>logout</Button>
         </Nav>
-        
       </Navbar.Collapse>
     </Navbar>
   );
 }
 
 MyFlixNavbar.propTypes = {
-  logOut:PropTypes.func.isRequired,
-  getProfile:PropTypes.func.isRequired
+  logOut:PropTypes.func.isRequired
 }
 
 export default MyFlixNavbar;

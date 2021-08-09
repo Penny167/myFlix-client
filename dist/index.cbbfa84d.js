@@ -22067,10 +22067,6 @@ class MainView extends _reactDefault.default.Component {
         console.log('logged out');
         window.open('/', '_self');
     }
-    getProfile() {
-        let username = localStorage.getItem('user');
-        window.open(`/user/${username}`, '_self');
-    }
     componentDidMount() {
         let token = localStorage.getItem('token');
         if (token !== null) {
@@ -22116,24 +22112,22 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 90
+                lineNumber: 85
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
             logOut: ()=>this.logOut()
             ,
-            getProfile: ()=>this.getProfile()
-            ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 91
+                lineNumber: 86
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 94
+                lineNumber: 87
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22162,7 +22156,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 96
+                lineNumber: 89
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22182,7 +22176,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 105
+                lineNumber: 98
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22214,7 +22208,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 110
+                lineNumber: 103
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22241,7 +22235,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 124
+                lineNumber: 117
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22268,7 +22262,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 134
+                lineNumber: 127
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22292,7 +22286,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 144
+                lineNumber: 137
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22312,7 +22306,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 151
+                lineNumber: 144
             },
             __self: this
         }))));
@@ -29119,52 +29113,50 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _mynavbarScss = require("./mynavbar.scss");
 var _reactBootstrap = require("react-bootstrap");
-function MyFlixNavbar({ logOut , getProfile  }) {
+function MyFlixNavbar({ logOut  }) {
     const handleLogout = ()=>{
         logOut();
     };
-    const fetchMyProfile = ()=>{
-        getProfile();
-    };
+    const username = localStorage.getItem('user');
     return(/*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default, {
         bg: "danger",
         fixed: "top",
         expand: "md",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 20
+            lineNumber: 18
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Brand, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 21
+            lineNumber: 19
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h5", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 21
+            lineNumber: 19
         },
         __self: this
     }, "myFlix")), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Toggle, {
         className: "justify-content-end",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 22
+            lineNumber: 20
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Collapse, {
         className: "justify-content-end",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 23
+            lineNumber: 21
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 24
+            lineNumber: 22
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
@@ -29172,17 +29164,15 @@ function MyFlixNavbar({ logOut , getProfile  }) {
         id: "navButton",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 25
+            lineNumber: 23
         },
         __self: this
-    }, "Home"), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
-        variant: "danger",
-        type: "button",
+    }, "Home"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
+        href: "/user/" + username,
         id: "navButton",
-        onClick: fetchMyProfile,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 26
+            lineNumber: 24
         },
         __self: this
     }, "myProfile"), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -29192,15 +29182,14 @@ function MyFlixNavbar({ logOut , getProfile  }) {
         onClick: handleLogout,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 27
+            lineNumber: 25
         },
         __self: this
     }, "logout")))));
 }
 _c = MyFlixNavbar;
 MyFlixNavbar.propTypes = {
-    logOut: _propTypesDefault.default.func.isRequired,
-    getProfile: _propTypesDefault.default.func.isRequired
+    logOut: _propTypesDefault.default.func.isRequired
 };
 exports.default = MyFlixNavbar;
 var _c;
