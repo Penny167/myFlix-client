@@ -8,10 +8,12 @@ import './update-view.scss';
 
 function UpdateView() {
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [birthday, setBirthday] = useState('');
+  const [username, setUsername] = useState(localStorage.getItem('user'));
+  const [password, setPassword] = useState(localStorage.getItem('password'));
+  const [email, setEmail] = useState(localStorage.getItem('email'));
+  const date = (localStorage.getItem('birthday')).split("",10);
+  const birthdate = date[0]+date[1]+date[2]+date[3]+date[7]+date[5]+date[6]+date[4]+date[8]+date[9];
+  const [birthday, setBirthday] = useState(birthdate);
 
 /* Function to handle submission of the new registration details. Successful update will redirect the
 user to the main view. They can continue to use their existing user credentials until they log out because
@@ -21,14 +23,18 @@ updated with their new username (where applicable) when they next log in */
   const handleUpdate = (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    localStorage.setItem('password', password);
+    const oldUsername = localStorage.getItem('user');
     console.log('update submitted');
-    axios.put(`https://intense-depths-38257.herokuapp.com/users/${username}`,
+    axios.put(`https://intense-depths-38257.herokuapp.com/users/${oldUsername}`,
     {Username: username, Password: password, Email: email, Birthday: birthday},
     {headers: { Authorization: `Bearer ${token}`}}
     )
     .then(res => {
       console.log(res.data);
+      localStorage.setItem('user', username);
+      localStorage.setItem('password', password);
+      localStorage.setItem('email', email);
+      localStorage.setItem('birthday', birthday);
       window.open(`/user/${username}`, '_self');
     })
     .catch(err => {
@@ -48,7 +54,7 @@ updated with their new username (where applicable) when they next log in */
         </Form.Group> 
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
-          <Form.Control required type="password" minLength="8" placeholder="Please enter a valid password"
+          <Form.Control required type="text" minLength="8" placeholder="Please enter a valid password"
           value={password} onChange={e => setPassword(e.target.value)} />
         </Form.Group> 
         <Form.Group controlId="formEmail"> 

@@ -30,6 +30,8 @@ class MainView extends React.Component {
     this.setState({user: loginData.user.Username});
     localStorage.setItem('user', loginData.user.Username);
     localStorage.setItem('token', loginData.token);
+    localStorage.setItem('email', loginData.user.Email);
+    localStorage.setItem('birthday', loginData.user.Birthday);
     this.getMovies(loginData.token);
   }
 
@@ -38,6 +40,8 @@ class MainView extends React.Component {
     localStorage.removeItem('user', null);
     localStorage.removeItem('token', null);
     localStorage.removeItem('password', null);
+    localStorage.removeItem('email', null);
+    localStorage.removeItem('birthday', null);
     console.log('logged out')
     window.open('/','_self');
   }

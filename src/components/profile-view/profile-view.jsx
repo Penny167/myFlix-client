@@ -88,7 +88,7 @@ once when the profile page is initially loaded */
           <Form.Control defaultValue={username} />
         <Form.Group controlId="formPassword" />
           <Form.Label className="label">Password:</Form.Label>
-          <Form.Control type="password" defaultValue={password} />
+          <Form.Control type="text" defaultValue={password} />
         <Form.Group controlId="formEmail" />
           <Form.Label className="label">Email:</Form.Label>
           <Form.Control defaultValue={profile.email} />

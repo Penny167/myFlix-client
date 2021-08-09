@@ -22055,6 +22055,8 @@ class MainView extends _reactDefault.default.Component {
         });
         localStorage.setItem('user', loginData.user.Username);
         localStorage.setItem('token', loginData.token);
+        localStorage.setItem('email', loginData.user.Email);
+        localStorage.setItem('birthday', loginData.user.Birthday);
         this.getMovies(loginData.token);
     }
     logOut() {
@@ -22064,6 +22066,8 @@ class MainView extends _reactDefault.default.Component {
         localStorage.removeItem('user', null);
         localStorage.removeItem('token', null);
         localStorage.removeItem('password', null);
+        localStorage.removeItem('email', null);
+        localStorage.removeItem('birthday', null);
         console.log('logged out');
         window.open('/', '_self');
     }
@@ -22112,7 +22116,7 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 85
+                lineNumber: 89
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
@@ -22120,14 +22124,14 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 86
+                lineNumber: 90
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 87
+                lineNumber: 91
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22156,7 +22160,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 89
+                lineNumber: 93
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22176,7 +22180,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 98
+                lineNumber: 102
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22208,7 +22212,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 103
+                lineNumber: 107
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22235,7 +22239,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 117
+                lineNumber: 121
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22262,7 +22266,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 127
+                lineNumber: 131
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22286,7 +22290,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 137
+                lineNumber: 141
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22306,7 +22310,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 144
+                lineNumber: 148
             },
             __self: this
         }))));
@@ -28970,7 +28974,7 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         required: true,
-        type: "password",
+        type: "text",
         minLength: "8",
         placeholder: "Password",
         value: password,
@@ -40146,7 +40150,7 @@ once when the profile page is initially loaded */ // We need to be asking for th
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "password",
+        type: "text",
         defaultValue: password,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
@@ -40300,19 +40304,21 @@ var _updateViewScss = require("./update-view.scss");
 var _s = $RefreshSig$();
 function UpdateView() {
     _s();
-    const [username, setUsername] = _react.useState('');
-    const [password, setPassword] = _react.useState('');
-    const [email, setEmail] = _react.useState('');
-    const [birthday, setBirthday] = _react.useState('');
+    const [username, setUsername] = _react.useState(localStorage.getItem('user'));
+    const [password, setPassword] = _react.useState(localStorage.getItem('password'));
+    const [email, setEmail] = _react.useState(localStorage.getItem('email'));
+    const date = localStorage.getItem('birthday').split("", 10);
+    const birthdate = date[0] + date[1] + date[2] + date[3] + date[7] + date[5] + date[6] + date[4] + date[8] + date[9];
+    const [birthday, setBirthday] = _react.useState(birthdate);
     /* Function to handle submission of the new registration details. Successful update will redirect the
 user to the main view. They can continue to use their existing user credentials until they log out because
 we know they are an authenticated user. When they log out, the user state will be reset to null and will be
 updated with their new username (where applicable) when they next log in */ const handleUpdate = (e)=>{
         e.preventDefault();
         const token = localStorage.getItem('token');
-        localStorage.setItem('password', password);
+        const oldUsername = localStorage.getItem('user');
         console.log('update submitted');
-        _axiosDefault.default.put(`https://intense-depths-38257.herokuapp.com/users/${username}`, {
+        _axiosDefault.default.put(`https://intense-depths-38257.herokuapp.com/users/${oldUsername}`, {
             Username: username,
             Password: password,
             Email: email,
@@ -40323,6 +40329,10 @@ updated with their new username (where applicable) when they next log in */ cons
             }
         }).then((res)=>{
             console.log(res.data);
+            localStorage.setItem('user', username);
+            localStorage.setItem('password', password);
+            localStorage.setItem('email', email);
+            localStorage.setItem('birthday', birthday);
             window.open(`/user/${username}`, '_self');
         }).catch((err)=>{
             console.log(err, 'Update failed');
@@ -40332,39 +40342,39 @@ updated with their new username (where applicable) when they next log in */ cons
         className: "update-view",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 40
+            lineNumber: 46
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 41
+            lineNumber: 47
         },
         __self: this
     }, "Update myProfile"), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 42
+            lineNumber: 48
         },
         __self: this
     }, "Please complete ALL fields"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         onSubmit: handleUpdate,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 43
+            lineNumber: 49
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 44
+            lineNumber: 50
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 45
+            lineNumber: 51
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -40378,25 +40388,25 @@ updated with their new username (where applicable) when they next log in */ cons
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 46
+            lineNumber: 52
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formPassword",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 49
+            lineNumber: 55
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 50
+            lineNumber: 56
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         required: true,
-        type: "password",
+        type: "text",
         minLength: "8",
         placeholder: "Please enter a valid password",
         value: password,
@@ -40404,20 +40414,20 @@ updated with their new username (where applicable) when they next log in */ cons
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 51
+            lineNumber: 57
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formEmail",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 54
+            lineNumber: 60
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 55
+            lineNumber: 61
         },
         __self: this
     }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -40429,20 +40439,20 @@ updated with their new username (where applicable) when they next log in */ cons
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 56
+            lineNumber: 62
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formBirthday",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 59
+            lineNumber: 65
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 60
+            lineNumber: 66
         },
         __self: this
     }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -40453,7 +40463,7 @@ updated with their new username (where applicable) when they next log in */ cons
         ,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 61
+            lineNumber: 67
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -40461,12 +40471,12 @@ updated with their new username (where applicable) when they next log in */ cons
         type: "submit",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 63
+            lineNumber: 69
         },
         __self: this
     }, "submit"))));
 }
-_s(UpdateView, "tdA1KK8yaZidqYo0wscqshHt/KE=");
+_s(UpdateView, "vWxJOndPbMh9QzI9BHBFHQaf4c8=");
 _c = UpdateView;
 exports.default = UpdateView;
 var _c;
