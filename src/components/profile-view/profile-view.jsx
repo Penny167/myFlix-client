@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
@@ -47,10 +48,6 @@ once when the profile page is initially loaded */
     .catch(err => {
       console.log(err, "Couldn't get profile")});
   },[]);  
-
-  const handleUpdate = () => {
-    window.open('/updateProfile', '_self');
-  }
 
   const handleDeregister = () => {
     const token = localStorage.getItem('token');
@@ -102,7 +99,9 @@ once when the profile page is initially loaded */
       <br />
       <Button variant="danger" type="button" onClick={handleDeregister}>deregister</Button>
       <span className="space"> i</span>
-      <Button variant="danger" type="submit" onClick={handleUpdate}>update</Button>
+      <Link to="/updateProfile">
+        <Button variant="danger" type="submit">update</Button>
+      </Link>
       <br />
       <br />
       <br />
