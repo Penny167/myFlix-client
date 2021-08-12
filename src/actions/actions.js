@@ -8,7 +8,7 @@ export const UPDATE_FAVOURITES = 'UPDATE_FAVOURITES';
  export const setMovies = (movies) => {
   return {
     type: SET_MOVIES,
-    movies: movies
+    payload: movies
   }  
 }
 
@@ -16,7 +16,7 @@ export const UPDATE_FAVOURITES = 'UPDATE_FAVOURITES';
 export const filterMovies = (filterstring) => {
   return {
     type: FILTER_MOVIES,
-    filterstring: filterstring
+    payload: filterstring
   }
 }
 
@@ -24,7 +24,7 @@ export const filterMovies = (filterstring) => {
 export const setUser = (user) => {
   return {
     type: SET_USER,
-    user: user
+    payload: user
   }
 }
 
@@ -32,15 +32,16 @@ export const setUser = (user) => {
 export const updateUser = (user) => {
   return {
     type: UPDATE_USER,
-    user: user
+    payload: user
   }
 }
 
 /* favourites is the updated favourites array returned from the database following a successful put or 
-delete request: in each case the new array will be sent to the store to update the user state */
+delete request: in each case the new array will be sent to the store to update the user state so we only
+require one action type to cover both scenarios*/
 export const updateFavourites = (favourites) => {
   return {
     type: UPDATE_FAVOURITES,
-    favourites: favourites
+    payload: favourites
   }
 }
