@@ -38,6 +38,7 @@ const userReducer = (state=null, action) => {
         favouriteMovies: action.payload
       }
     }
+    default: return state
   }
 }
 
