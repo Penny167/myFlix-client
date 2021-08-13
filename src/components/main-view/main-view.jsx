@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import RegistrationView from '../registration-view/registration-view';
 import LoginView from '../login-view/login-view';
@@ -19,10 +20,6 @@ class MainView extends React.Component {
 
   constructor() {
     super();
-    this.state = {
-      movies: [],
-      user: null
-    }
   }
 
   onLoggedIn(loginData) {
@@ -84,7 +81,7 @@ class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user } = this.state;
+    const { movies, user } = this.props;
     return (
       <Router>
         <MyFlixNavbar logOut={() => this.logOut()} />
@@ -158,4 +155,11 @@ class MainView extends React.Component {
 
 }
 
-export default MainView;
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(MainView);
