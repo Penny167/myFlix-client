@@ -3,6 +3,10 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+/* importing action creators that will be used when dispatching actions to the store 
+to change the user and movies state, replacing setState */
+import { setUser, setMovies } from '../../actions/actions';
+
 import RegistrationView from '../registration-view/registration-view';
 import LoginView from '../login-view/login-view';
 import MovieCard from '../movie-card/movie-card';
@@ -24,7 +28,12 @@ class MainView extends React.Component {
 
   onLoggedIn(loginData) {
     console.log(loginData);
-    this.setState({user: loginData.user.Username});
+//    this.setState({user: loginData.user.Username});
+// Now dispatching action to change user state in the store rather than setting locally
+    this.props.setUser(loginData.user.Username);
+/* The full user data still needs to be stored in local storage because if a page is refreshed,
+we don't want the user to have to log in again in order to see or update their profile.
+This is the only way to persist access to the login data without logging in. */
     localStorage.setItem('user', loginData.user.Username);
     localStorage.setItem('token', loginData.token);
     localStorage.setItem('email', loginData.user.Email);
@@ -46,9 +55,8 @@ class MainView extends React.Component {
   componentDidMount() {
     let token = localStorage.getItem('token');
     if (token !== null) {
-      this.setState({user: localStorage.getItem('user')});
+      this.props.setUser(localStorage.getItem('user'));
       console.log(localStorage.getItem('user'));
-      console.log(this.state); // the state here shows user as null even though we just set it
       this.getMovies(token);
     }
   } 
@@ -58,8 +66,7 @@ class MainView extends React.Component {
               {headers: { Authorization: `Bearer ${token}`}}
               )
     .then(res => {
-      this.setState({movies: res.data});
-      console.log(this.state); // the state here now shows the movies AND the user
+      this.props.setMovies(res.data);
     })
     .catch(err => {
       console.log(err);
@@ -162,4 +169,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(MainView);
+export default connect(mapStateToProps, { setUser, setMovies })(MainView);

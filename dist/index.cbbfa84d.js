@@ -22032,6 +22032,8 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactRouterDom = require("react-router-dom");
 var _reactRedux = require("react-redux");
+/* importing action creators that will be used when dispatching actions to the store 
+to change the user and movies state, replacing setState */ var _actions = require("../../actions/actions");
 var _registrationView = require("../registration-view/registration-view");
 var _registrationViewDefault = parcelHelpers.interopDefault(_registrationView);
 var _loginView = require("../login-view/login-view");
@@ -22060,10 +22062,12 @@ class MainView extends _reactDefault.default.Component {
     }
     onLoggedIn(loginData) {
         console.log(loginData);
-        this.setState({
-            user: loginData.user.Username
-        });
-        localStorage.setItem('user', loginData.user.Username);
+        //    this.setState({user: loginData.user.Username});
+        // Now dispatching action to change user state in the store rather than setting locally
+        this.props.setUser(loginData.user.Username);
+        /* The full user data still needs to be stored in local storage because if a page is refreshed,
+we don't want the user to have to log in again in order to see or update their profile.
+This is the only way to persist access to the login data without logging in. */ localStorage.setItem('user', loginData.user.Username);
         localStorage.setItem('token', loginData.token);
         localStorage.setItem('email', loginData.user.Email);
         localStorage.setItem('birthday', loginData.user.Birthday);
@@ -22084,11 +22088,8 @@ class MainView extends _reactDefault.default.Component {
     componentDidMount() {
         let token = localStorage.getItem('token');
         if (token !== null) {
-            this.setState({
-                user: localStorage.getItem('user')
-            });
+            this.props.setUser(localStorage.getItem('user'));
             console.log(localStorage.getItem('user'));
-            console.log(this.state); // the state here shows user as null even though we just set it
             this.getMovies(token);
         }
     }
@@ -22098,10 +22099,7 @@ class MainView extends _reactDefault.default.Component {
                 Authorization: `Bearer ${token}`
             }
         }).then((res)=>{
-            this.setState({
-                movies: res.data
-            });
-            console.log(this.state); // the state here now shows the movies AND the user
+            this.props.setMovies(res.data);
         }).catch((err)=>{
             console.log(err);
         });
@@ -22126,7 +22124,7 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 86
+                lineNumber: 93
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
@@ -22134,14 +22132,14 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 87
+                lineNumber: 94
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 88
+                lineNumber: 95
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22170,7 +22168,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 90
+                lineNumber: 97
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22190,7 +22188,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 99
+                lineNumber: 106
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22222,7 +22220,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 104
+                lineNumber: 111
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22249,7 +22247,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 118
+                lineNumber: 125
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22276,7 +22274,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 128
+                lineNumber: 135
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22300,7 +22298,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 138
+                lineNumber: 145
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22320,7 +22318,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 145
+                lineNumber: 152
             },
             __self: this
         }))));
@@ -22332,14 +22330,17 @@ const mapStateToProps = (state)=>{
         user: state.user
     };
 };
-exports.default = _reactRedux.connect(mapStateToProps)(MainView);
+exports.default = _reactRedux.connect(mapStateToProps, {
+    setUser: _actions.setUser,
+    setMovies: _actions.setMovies
+})(MainView);
 
   helpers.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../movie-card/movie-card":"VFCZ2","../movie-view/movie-view":"67UYI","axios":"7rA65","../registration-view/registration-view":"1nt2p","../login-view/login-view":"6aBEq","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-router-dom":"1PMSK","../mynavbar/mynavbar":"31Qie","../director-view/director-view":"4Ed7m","../genre-view/genre-view":"GvXIx","../profile-view/profile-view":"16TE9","../update-view/update-view":"J2RKh","react-redux":"7GDa4"}],"VFCZ2":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../movie-card/movie-card":"VFCZ2","../movie-view/movie-view":"67UYI","axios":"7rA65","../registration-view/registration-view":"1nt2p","../login-view/login-view":"6aBEq","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-router-dom":"1PMSK","../mynavbar/mynavbar":"31Qie","../director-view/director-view":"4Ed7m","../genre-view/genre-view":"GvXIx","../profile-view/profile-view":"16TE9","../update-view/update-view":"J2RKh","react-redux":"7GDa4","../../actions/actions":"5S6cN"}],"VFCZ2":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41738,7 +41739,66 @@ exports.unstable_batchedUpdates = void 0;
 var _reactDom = require("react-dom");
 exports.unstable_batchedUpdates = _reactDom.unstable_batchedUpdates;
 
-},{"react-dom":"2sg1U"}],"7panR":[function(require,module,exports) {
+},{"react-dom":"2sg1U"}],"5S6cN":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "SET_MOVIES", ()=>SET_MOVIES
+);
+parcelHelpers.export(exports, "FILTER_MOVIES", ()=>FILTER_MOVIES
+);
+parcelHelpers.export(exports, "SET_USER", ()=>SET_USER
+);
+parcelHelpers.export(exports, "UPDATE_USER", ()=>UPDATE_USER
+);
+parcelHelpers.export(exports, "UPDATE_FAVOURITES", ()=>UPDATE_FAVOURITES
+);
+parcelHelpers.export(exports, "setMovies", ()=>setMovies
+);
+parcelHelpers.export(exports, "filterMovies", ()=>filterMovies
+);
+parcelHelpers.export(exports, "setUser", ()=>setUser
+);
+parcelHelpers.export(exports, "updateUser", ()=>updateUser
+);
+parcelHelpers.export(exports, "updateFavourites", ()=>updateFavourites
+);
+const SET_MOVIES = 'SET_MOVIES';
+const FILTER_MOVIES = 'FILTER_MOVIES';
+const SET_USER = 'SET_USER';
+const UPDATE_USER = 'UPDATE_USER';
+const UPDATE_FAVOURITES = 'UPDATE_FAVOURITES';
+const setMovies = (movies)=>{
+    return {
+        type: SET_MOVIES,
+        payload: movies
+    };
+};
+const filterMovies = (filterstring)=>{
+    return {
+        type: FILTER_MOVIES,
+        payload: filterstring
+    };
+};
+const setUser = (user)=>{
+    return {
+        type: SET_USER,
+        payload: user
+    };
+};
+const updateUser = (user)=>{
+    return {
+        type: UPDATE_USER,
+        payload: user
+    };
+};
+const updateFavourites = (favourites)=>{
+    return {
+        type: UPDATE_FAVOURITES,
+        payload: favourites
+    };
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"59uFI"}],"7panR":[function(require,module,exports) {
 'use strict';
 Object.defineProperty(exports, '__esModule', {
     value: true
@@ -42349,65 +42409,6 @@ const appReducer = _redux.combineReducers({
 });
 exports.default = appReducer;
 
-},{"../actions/actions":"5S6cN","redux":"7panR","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI"}],"5S6cN":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "SET_MOVIES", ()=>SET_MOVIES
-);
-parcelHelpers.export(exports, "FILTER_MOVIES", ()=>FILTER_MOVIES
-);
-parcelHelpers.export(exports, "SET_USER", ()=>SET_USER
-);
-parcelHelpers.export(exports, "UPDATE_USER", ()=>UPDATE_USER
-);
-parcelHelpers.export(exports, "UPDATE_FAVOURITES", ()=>UPDATE_FAVOURITES
-);
-parcelHelpers.export(exports, "setMovies", ()=>setMovies
-);
-parcelHelpers.export(exports, "filterMovies", ()=>filterMovies
-);
-parcelHelpers.export(exports, "setUser", ()=>setUser
-);
-parcelHelpers.export(exports, "updateUser", ()=>updateUser
-);
-parcelHelpers.export(exports, "updateFavourites", ()=>updateFavourites
-);
-const SET_MOVIES = 'SET_MOVIES';
-const FILTER_MOVIES = 'FILTER_MOVIES';
-const SET_USER = 'SET_USER';
-const UPDATE_USER = 'UPDATE_USER';
-const UPDATE_FAVOURITES = 'UPDATE_FAVOURITES';
-const setMovies = (movies)=>{
-    return {
-        type: SET_MOVIES,
-        payload: movies
-    };
-};
-const filterMovies = (filterstring)=>{
-    return {
-        type: FILTER_MOVIES,
-        payload: filterstring
-    };
-};
-const setUser = (user)=>{
-    return {
-        type: SET_USER,
-        payload: user
-    };
-};
-const updateUser = (user)=>{
-    return {
-        type: UPDATE_USER,
-        payload: user
-    };
-};
-const updateFavourites = (favourites)=>{
-    return {
-        type: UPDATE_FAVOURITES,
-        payload: favourites
-    };
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"59uFI"}]},["1j6wU","1Ai42","2uel2"], "2uel2", "parcelRequire279c")
+},{"../actions/actions":"5S6cN","redux":"7panR","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI"}]},["1j6wU","1Ai42","2uel2"], "2uel2", "parcelRequire279c")
 
 //# sourceMappingURL=index.cbbfa84d.js.map
