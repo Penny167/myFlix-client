@@ -41688,8 +41688,160 @@ const updateFavourites = (favourites)=>{
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"59uFI"}],"EAUU1":[function(require,module,exports) {
+var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
 
-},{}],"7panR":[function(require,module,exports) {
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+// We have not wrapped MoviesList within a column when rendered within MainView
+var _reactBootstrap = require("react-bootstrap");
+var _reactBootstrapDefault = parcelHelpers.interopDefault(_reactBootstrap);
+var _reactRedux = require("react-redux");
+var _movieCard = require("../movie-card/movie-card");
+var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
+function MoviesList({ movies  }) {
+    return movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrapDefault.default, {
+            xs: 7,
+            sm: 6,
+            md: 4,
+            lg: 3,
+            key: movie._id,
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
+                lineNumber: 11
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCardDefault.default, {
+            movieData: movie,
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
+                lineNumber: 12
+            },
+            __self: this
+        }))
+    );
+}
+_c = MoviesList;
+exports.default = MoviesList;
+var _c;
+$RefreshReg$(_c, "MoviesList");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","react-bootstrap":"4n7hB","react-redux":"7GDa4","../movie-card/movie-card":"VFCZ2","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"VFCZ2":[function(require,module,exports) {
+var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _card = require("react-bootstrap/Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+var _reactRouterDom = require("react-router-dom");
+var _movieCardScss = require("./movie-card.scss");
+class MovieCard extends _reactDefault.default.Component {
+    render() {
+        const { movieData  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 12
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default, {
+            className: "movie-card",
+            text: "light",
+            bg: "danger",
+            border: "dark",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 13
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Img, {
+            variant: "top",
+            src: movieData.ImagePath,
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 14
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Body, {
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 15
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Title, {
+            className: "card-title",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 16
+            },
+            __self: this
+        }, movieData.Title), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Text, {
+            className: "card-text",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 17
+            },
+            __self: this
+        }, movieData.Description), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: "/movies/" + movieData._id,
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 18
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            variant: "danger",
+            id: "moviecardButton",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 19
+            },
+            __self: this
+        }, "open"))))));
+    }
+}
+MovieCard.propTypes = {
+    movieData: _propTypesDefault.default.shape({
+        Title: _propTypesDefault.default.string.isRequired,
+        Description: _propTypesDefault.default.string.isRequired,
+        ImagePath: _propTypesDefault.default.string.isRequired,
+        _id: _propTypesDefault.default.string.isRequired,
+        Genre: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        }),
+        Director: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        })
+    }).isRequired
+};
+exports.default = MovieCard;
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap/Button":"1ru0l","react-bootstrap/Card":"1CZWQ","react-router-dom":"1PMSK","./movie-card.scss":"4xSPx","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"4xSPx":[function() {},{}],"7panR":[function(require,module,exports) {
 'use strict';
 Object.defineProperty(exports, '__esModule', {
     value: true
