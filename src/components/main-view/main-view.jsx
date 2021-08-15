@@ -9,7 +9,8 @@ import { setUser, setMovies } from '../../actions/actions';
 
 import RegistrationView from '../registration-view/registration-view';
 import LoginView from '../login-view/login-view';
-import MovieCard from '../movie-card/movie-card';
+// import MovieCard from '../movie-card/movie-card'; This is going to be replaced
+import MoviesList from '../movies-list/movies-list';
 import MovieView from '../movie-view/movie-view';
 import MyFlixNavbar from '../mynavbar/mynavbar';
 import DirectorView from '../director-view/director-view';
@@ -98,9 +99,7 @@ This is the only way to persist access to the login data without logging in. */
             if (!user) return <Col xs={6} lg={4}>
               <LoginView onLoggedIn={loginData => this.onLoggedIn(loginData)} /></Col>
             if (movies.length === 0) return <div className="main-view" />;
-            return movies.map(movie => (
-              <Col xs={7} sm={6} md={4} lg={3} key={movie._id}><MovieCard movieData={movie} /></Col>
-            ))
+            return <MoviesList movies={movies} />;
           }}/>
 
           <Route exact path="/register" render={({history}) => {
