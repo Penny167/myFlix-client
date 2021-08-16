@@ -41699,13 +41699,13 @@ parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 // We have not wrapped MoviesList within a column when rendered within MainView
-var _reactBootstrap = require("react-bootstrap");
-var _reactBootstrapDefault = parcelHelpers.interopDefault(_reactBootstrap);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
 var _reactRedux = require("react-redux");
 var _movieCard = require("../movie-card/movie-card");
 var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
 function MoviesList({ movies  }) {
-    return movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrapDefault.default, {
+    return movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
             xs: 7,
             sm: 6,
             md: 4,
@@ -41736,7 +41736,7 @@ $RefreshReg$(_c, "MoviesList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-bootstrap":"4n7hB","react-redux":"7GDa4","../movie-card/movie-card":"VFCZ2","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"VFCZ2":[function(require,module,exports) {
+},{"react":"3b2NM","react-redux":"7GDa4","../movie-card/movie-card":"VFCZ2","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Col":"2D0r8"}],"VFCZ2":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
