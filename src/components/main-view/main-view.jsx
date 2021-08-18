@@ -20,6 +20,7 @@ import UpdateView from '../update-view/update-view';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import './main-view.scss';
 
 class MainView extends React.Component {
 
