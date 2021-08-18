@@ -13,7 +13,8 @@ function MoviesList({ movies, movieFilter }) {
   }
   return <>
     <Col md={12} style={{ margin: '1em'}}>
-      <MoviesFilterInput movieFilter={movieFilter} />
+      <MoviesFilterInput movieFilter={movieFilter} /> {/* The movieFilter store state is 
+      passed to the movie-filter component as a prop */}
     </Col>
     {filteredMovies.map(movie => (
     <Col xs={7} sm={6} md={4} lg={3} key={movie._id}>

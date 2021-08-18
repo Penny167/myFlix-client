@@ -41728,7 +41728,7 @@ function MoviesList({ movies , movieFilter  }) {
             lineNumber: 16
         },
         __self: this
-    })), filteredMovies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+    }), " "), filteredMovies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
             xs: 7,
             sm: 6,
             md: 4,
@@ -41736,14 +41736,14 @@ function MoviesList({ movies , movieFilter  }) {
             key: movie._id,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-                lineNumber: 19
+                lineNumber: 20
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCardDefault.default, {
             movieData: movie,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-                lineNumber: 20
+                lineNumber: 21
             },
             __self: this
         }))
