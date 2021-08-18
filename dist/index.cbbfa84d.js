@@ -22087,11 +22087,24 @@ been stored when submitting the login form */ localStorage.setItem('user', login
     }
     componentDidMount() {
         let token = localStorage.getItem('token');
+        let username = localStorage.getItem('user');
         if (token !== null) {
-            this.props.setUser(localStorage.getItem('user'));
-            console.log(localStorage.getItem('user'));
+            /*  this.props.setUser(localStorage.getItem('user')); // We are replacing this with a
+call to the database to get the full user object, which is then used as the payload for
+the setUser function. This all now happens within the new getUser function */ this.getUser(username, token);
             this.getMovies(token);
         }
+    }
+    getUser(username, token) {
+        _axiosDefault.default.get(`https://intense-depths-38257.herokuapp.com/users/${username}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((res)=>{
+            this.props.setUser(res.data);
+        }).catch((err)=>{
+            console.log(err);
+        });
     }
     getMovies(token) {
         _axiosDefault.default.get('https://intense-depths-38257.herokuapp.com/movies', {
@@ -22104,11 +22117,11 @@ been stored when submitting the login form */ localStorage.setItem('user', login
             console.log(err);
         });
     }
-    // Remember user here is now full object so update user code to get Username
+    // For consistency I am using username and token retrieved from local storage for all axios requests
     addToFavourites(movieID) {
-        const user = this.state.user;
-        const token = localStorage.getItem('token');
-        _axiosDefault.default.put(`https://intense-depths-38257.herokuapp.com/users/${user}/${movieID}`, {
+        let username = localStorage.getItem('user');
+        let token = localStorage.getItem('token');
+        _axiosDefault.default.put(`https://intense-depths-38257.herokuapp.com/users/${username}/${movieID}`, {
             FavouriteMovies: movieID
         }, {
             headers: {
@@ -22125,7 +22138,7 @@ been stored when submitting the login form */ localStorage.setItem('user', login
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 96
+                lineNumber: 110
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
@@ -22133,14 +22146,14 @@ been stored when submitting the login form */ localStorage.setItem('user', login
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 97
+                lineNumber: 111
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 98
+                lineNumber: 112
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22162,7 +22175,7 @@ been stored when submitting the login form */ localStorage.setItem('user', login
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 100
+                lineNumber: 114
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22182,7 +22195,7 @@ been stored when submitting the login form */ localStorage.setItem('user', login
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 107
+                lineNumber: 121
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22214,7 +22227,7 @@ been stored when submitting the login form */ localStorage.setItem('user', login
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 112
+                lineNumber: 126
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22241,7 +22254,7 @@ been stored when submitting the login form */ localStorage.setItem('user', login
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 126
+                lineNumber: 140
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22268,7 +22281,7 @@ been stored when submitting the login form */ localStorage.setItem('user', login
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 136
+                lineNumber: 150
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22292,7 +22305,7 @@ been stored when submitting the login form */ localStorage.setItem('user', login
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 146
+                lineNumber: 160
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22312,7 +22325,7 @@ been stored when submitting the login form */ localStorage.setItem('user', login
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 153
+                lineNumber: 167
             },
             __self: this
         }))));

@@ -56,12 +56,26 @@ been stored when submitting the login form */
 
   componentDidMount() {
     let token = localStorage.getItem('token');
+    let username = localStorage.getItem('user');
     if (token !== null) {
-      this.props.setUser(localStorage.getItem('user'));
-      console.log(localStorage.getItem('user'));
-      this.getMovies(token);
+/*  this.props.setUser(localStorage.getItem('user')); // We are replacing this with a
+call to the database to get the full user object, which is then used as the payload for
+the setUser function. This all now happens within the new getUser function */
+    this.getUser(username, token)  
+    this.getMovies(token);
     }
   } 
+
+  getUser(username, token) {
+    axios.get(`https://intense-depths-38257.herokuapp.com/users/${username}`,
+              {headers: { Authorization: `Bearer ${token}`}})
+    .then(res => {
+      this.props.setUser(res.data)
+    })
+    .catch(err => {
+      console.log(err);
+    })  
+  }
 
   getMovies(token) {
     axios.get('https://intense-depths-38257.herokuapp.com/movies',
@@ -75,11 +89,11 @@ been stored when submitting the login form */
     })
   }
 
-// Remember user here is now full object so update user code to get Username
+// For consistency I am using username and token retrieved from local storage for all axios requests
   addToFavourites(movieID) {
-    const user = this.state.user;
-    const token = localStorage.getItem('token');
-    axios.put(`https://intense-depths-38257.herokuapp.com/users/${user}/${movieID}`,
+    let username = localStorage.getItem('user');
+    let token = localStorage.getItem('token');
+    axios.put(`https://intense-depths-38257.herokuapp.com/users/${username}/${movieID}`,
     {FavouriteMovies: movieID},
     {headers: { Authorization: `Bearer ${token}`}}
               )
