@@ -12,7 +12,7 @@ export const UPDATE_FAVOURITES = 'UPDATE_FAVOURITES';
   }  
 }
 
-// filterstring is a search string that will contain details of whatever we want to view from the movies array eg movie title, director, genre
+// filterstring will be populated by the user via a search bar input, with the title of a movie that they are searching for
 export const filterMovies = (filterstring) => {
   return {
     type: FILTER_MOVIES,
