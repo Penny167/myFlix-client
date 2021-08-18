@@ -22038,7 +22038,6 @@ var _registrationView = require("../registration-view/registration-view");
 var _registrationViewDefault = parcelHelpers.interopDefault(_registrationView);
 var _loginView = require("../login-view/login-view");
 var _loginViewDefault = parcelHelpers.interopDefault(_loginView);
-// import MovieCard from '../movie-card/movie-card'; This is going to be replaced
 var _moviesList = require("../movies-list/movies-list");
 var _moviesListDefault = parcelHelpers.interopDefault(_moviesList);
 var _movieView = require("../movie-view/movie-view");
@@ -22064,26 +22063,25 @@ class MainView extends _reactDefault.default.Component {
     }
     onLoggedIn(loginData) {
         console.log(loginData);
-        //    this.setState({user: loginData.user.Username});
-        // Now dispatching action to change user state in the store rather than setting locally
-        this.props.setUser(loginData.user.Username);
-        /* The full user data still needs to be stored in local storage because if a page is refreshed,
-we don't want the user to have to log in again in order to see or update their profile.
-This is the only way to persist access to the login data without logging in. */ localStorage.setItem('user', loginData.user.Username);
+        // Dispatching action to change user state in the store rather than setting state locally
+        // Using the full user object rather than just username so we can use the other properties as needed
+        this.props.setUser(loginData.user);
+        /* Some user data needs to be stored in local storage because if a page is refreshed we need
+to send axios requests to reset the movies and user states. Note that password has already
+been stored when submitting the login form */ localStorage.setItem('user', loginData.user.Username);
         localStorage.setItem('token', loginData.token);
-        localStorage.setItem('email', loginData.user.Email);
-        localStorage.setItem('birthday', loginData.user.Birthday);
+        //    localStorage.setItem('email', loginData.user.Email);
+        //    localStorage.setItem('birthday', loginData.user.Birthday);
         this.getMovies(loginData.token);
     }
     logOut() {
-        this.setState({
-            user: null
-        });
+        // Using setUser function again to reset the user state in the store to null
+        this.props.setUser(null);
         localStorage.removeItem('user', null);
         localStorage.removeItem('token', null);
         localStorage.removeItem('password', null);
-        localStorage.removeItem('email', null);
-        localStorage.removeItem('birthday', null);
+        //    localStorage.removeItem('email', null);
+        //    localStorage.removeItem('birthday', null);
         console.log('logged out');
         window.open('/', '_self');
     }
@@ -22106,6 +22104,7 @@ This is the only way to persist access to the login data without logging in. */ 
             console.log(err);
         });
     }
+    // Remember user here is now full object so update user code to get Username
     addToFavourites(movieID) {
         const user = this.state.user;
         const token = localStorage.getItem('token');
@@ -22126,7 +22125,7 @@ This is the only way to persist access to the login data without logging in. */ 
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 95
+                lineNumber: 96
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
@@ -22134,14 +22133,14 @@ This is the only way to persist access to the login data without logging in. */ 
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 96
+                lineNumber: 97
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 97
+                lineNumber: 98
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22163,7 +22162,7 @@ This is the only way to persist access to the login data without logging in. */ 
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 99
+                lineNumber: 100
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22183,7 +22182,7 @@ This is the only way to persist access to the login data without logging in. */ 
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 106
+                lineNumber: 107
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22215,7 +22214,7 @@ This is the only way to persist access to the login data without logging in. */ 
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 111
+                lineNumber: 112
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22242,7 +22241,7 @@ This is the only way to persist access to the login data without logging in. */ 
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 125
+                lineNumber: 126
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22269,7 +22268,7 @@ This is the only way to persist access to the login data without logging in. */ 
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 135
+                lineNumber: 136
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22293,7 +22292,7 @@ This is the only way to persist access to the login data without logging in. */ 
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 145
+                lineNumber: 146
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22313,7 +22312,7 @@ This is the only way to persist access to the login data without logging in. */ 
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 152
+                lineNumber: 153
             },
             __self: this
         }))));
