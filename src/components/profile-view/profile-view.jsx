@@ -95,7 +95,16 @@ used in the template also to avoid defining username twice within the same compo
 }
 
 ProfileView.propTypes = {
-  logout:PropTypes.func.isRequired
+
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string.isRequired,
+    FavouriteMovies: PropTypes.array}).isRequired,
+
+  logout:PropTypes.func.isRequired,
+  updateFavourites:PropTypes.func.isRequired
 };
 
 export default connect(null, { updateFavourites })(ProfileView);

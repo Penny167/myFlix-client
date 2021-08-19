@@ -40203,7 +40203,15 @@ used in the template also to avoid defining username twice within the same compo
 }
 _c = ProfileView;
 ProfileView.propTypes = {
-    logout: _propTypesDefault.default.func.isRequired
+    user: _propTypesDefault.default.shape({
+        Username: _propTypesDefault.default.string.isRequired,
+        Password: _propTypesDefault.default.string.isRequired,
+        Email: _propTypesDefault.default.string.isRequired,
+        Birthday: _propTypesDefault.default.string.isRequired,
+        FavouriteMovies: _propTypesDefault.default.array
+    }).isRequired,
+    logout: _propTypesDefault.default.func.isRequired,
+    updateFavourites: _propTypesDefault.default.func.isRequired
 };
 exports.default = _reactRedux.connect(null, {
     updateFavourites: _actions.updateFavourites
