@@ -39831,6 +39831,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _reactRouterDom = require("react-router-dom");
@@ -39841,38 +39843,38 @@ function GenreView({ genreData , onBackClick  }) {
         className: "genre-view",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-            lineNumber: 11
+            lineNumber: 12
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h4", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-            lineNumber: 12
+            lineNumber: 13
         },
         __self: this
     }, genre.Name), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-            lineNumber: 13
+            lineNumber: 14
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-            lineNumber: 14
+            lineNumber: 15
         },
         __self: this
     }, "Description: ", genre.Description), /*#__PURE__*/ _reactDefault.default.createElement("h6", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-            lineNumber: 15
+            lineNumber: 16
         },
         __self: this
     }, "myFlix movies in the ", genre.Name, " genre:"), /*#__PURE__*/ _reactDefault.default.createElement("ul", {
         id: "list",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-            lineNumber: 17
+            lineNumber: 18
         },
         __self: this
     }, " ", genreData.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
@@ -39881,14 +39883,14 @@ function GenreView({ genreData , onBackClick  }) {
             to: "/movies/" + movie._id,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-                lineNumber: 18
+                lineNumber: 19
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("li", {
             className: "listItem",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-                lineNumber: 19
+                lineNumber: 20
             },
             __self: this
         }, movie.Title))
@@ -39898,12 +39900,26 @@ function GenreView({ genreData , onBackClick  }) {
         onClick: onBackClick,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/genre-view/genre-view.jsx",
-            lineNumber: 23
+            lineNumber: 24
         },
         __self: this
     }, "back")));
 }
 _c = GenreView;
+GenreView.propTypes = {
+    genreData: _propTypesDefault.default.shape({
+        Title: _propTypesDefault.default.string.isRequired,
+        Description: _propTypesDefault.default.string.isRequired,
+        ImagePath: _propTypesDefault.default.string.isRequired,
+        Genre: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        }),
+        Director: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        })
+    }).isRequired,
+    onBackClick: _propTypesDefault.default.func.isRequired
+};
 exports.default = GenreView;
 var _c;
 $RefreshReg$(_c, "GenreView");
@@ -39913,7 +39929,7 @@ $RefreshReg$(_c, "GenreView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-bootstrap/Button":"1ru0l","react-router-dom":"1PMSK","./genre-view.scss":"2kAV8","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"2kAV8":[function() {},{}],"16TE9":[function(require,module,exports) {
+},{"react":"3b2NM","react-bootstrap/Button":"1ru0l","react-router-dom":"1PMSK","./genre-view.scss":"2kAV8","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","prop-types":"4dfy5"}],"2kAV8":[function() {},{}],"16TE9":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

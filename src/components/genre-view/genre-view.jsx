@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import './genre-view.scss';
@@ -25,5 +26,19 @@ function GenreView({ genreData, onBackClick }) {
     </div>
   );
 }
+
+GenreView.propTypes = {
+
+  genreData: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({Name: PropTypes.string.isRequired}),
+    Director: PropTypes.shape({Name: PropTypes.string.isRequired})  
+  }).isRequired,
+  
+  onBackClick: PropTypes.func.isRequired
+
+};
 
 export default GenreView
