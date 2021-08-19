@@ -111,7 +111,7 @@ the setUser function. This all now happens within the new getUser function */
           <Route exact path="/" render={() => {
             if (!user) return <Col xs={6} lg={4}>
               <LoginView onLoggedIn={loginData => this.onLoggedIn(loginData)} /></Col>
-            if (movies.length === 0) return <div className="main-view" />;
+            if (movies.length === 0) return <div className="empty-view" />;
             return <MoviesList movies={movies} />;
           }}/>
 

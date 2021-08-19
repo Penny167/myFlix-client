@@ -22164,7 +22164,7 @@ the setUser function. This all now happens within the new getUser function */ th
                     onLoggedIn: (loginData)=>this.onLoggedIn(loginData)
                 })));
                 if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-                    className: "main-view"
+                    className: "empty-view"
                 }));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_moviesListDefault.default, {
                     movies: movies
@@ -41703,10 +41703,36 @@ var _moviesFilterInput = require("../movies-filter-input/movies-filter-input");
 var _moviesFilterInputDefault = parcelHelpers.interopDefault(_moviesFilterInput);
 var _movieCard = require("../movie-card/movie-card");
 var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
+var _moviesListScss = require("./movies-list.scss");
 function MoviesList({ movies , movieFilter  }) {
     let filteredMovies = movies; // Our default unfiltered view is of the whole movies array
     if (movieFilter !== '') filteredMovies = movies.filter((movie)=>movie.Title.toLowerCase().includes(movieFilter.toLowerCase())
     );
+    if (filteredMovies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+        md: 12,
+        style: {
+            margin: '1em'
+        },
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
+            lineNumber: 18
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_moviesFilterInputDefault.default, {
+        movieFilter: movieFilter,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
+            lineNumber: 19
+        },
+        __self: this
+    }), " "), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "empty-view",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
+            lineNumber: 22
+        },
+        __self: this
+    }), " "));
     return(/*#__PURE__*/ _reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
         md: 12,
         style: {
@@ -41714,14 +41740,14 @@ function MoviesList({ movies , movieFilter  }) {
         },
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-            lineNumber: 15
+            lineNumber: 24
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_moviesFilterInputDefault.default, {
         movieFilter: movieFilter,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-            lineNumber: 16
+            lineNumber: 25
         },
         __self: this
     }), " "), filteredMovies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
@@ -41732,14 +41758,14 @@ function MoviesList({ movies , movieFilter  }) {
             key: movie._id,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-                lineNumber: 20
+                lineNumber: 29
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCardDefault.default, {
             movieData: movie,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-                lineNumber: 21
+                lineNumber: 30
             },
             __self: this
         }))
@@ -41760,7 +41786,7 @@ $RefreshReg$(_c, "MoviesList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-redux":"7GDa4","../movie-card/movie-card":"VFCZ2","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Col":"2D0r8","../movies-filter-input/movies-filter-input":"6yMWk"}],"VFCZ2":[function(require,module,exports) {
+},{"react":"3b2NM","react-redux":"7GDa4","../movie-card/movie-card":"VFCZ2","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Col":"2D0r8","../movies-filter-input/movies-filter-input":"6yMWk","./movies-list.scss":"4PcYw"}],"VFCZ2":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41908,7 +41934,7 @@ $RefreshReg$(_c, "MoviesFilterInput");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-bootstrap/Form":"6A5ko","react-redux":"7GDa4","../../actions/actions":"5S6cN","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","./movies-filter-input.scss":"5qxhk"}],"5qxhk":[function() {},{}],"4yZvk":[function() {},{}],"7panR":[function(require,module,exports) {
+},{"react":"3b2NM","react-bootstrap/Form":"6A5ko","react-redux":"7GDa4","../../actions/actions":"5S6cN","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","./movies-filter-input.scss":"5qxhk"}],"5qxhk":[function() {},{}],"4PcYw":[function() {},{}],"4yZvk":[function() {},{}],"7panR":[function(require,module,exports) {
 'use strict';
 Object.defineProperty(exports, '__esModule', {
     value: true

@@ -8,8 +8,7 @@
   height: 100%;
 }
 .movie-view {
-  margin-top: 8rem;
-  padding-bottom: 50vh;
+  margin-top: 30vh;
   color: #fff;
 }
 
@@ -49,8 +48,7 @@
   background-color: #dc3545;
 }
 .director-view {
-  margin-top: 8rem;
-  padding-bottom: 50vh;
+  margin-top: 30vh;
   color: #fff;
 }
 
@@ -71,8 +69,7 @@
   text-decoration: none;
 }
 .genre-view {
-  margin-top: 8rem;
-  padding-bottom: 50vh;
+  margin-top: 30vh;
   color: #fff;
 }
 .profile-view {
@@ -102,7 +99,7 @@
 }
 .update-view {
   margin-top: 20vh;
-  padding-bottom: 30vh;
+  padding-bottom: 10vh;
 }
 .movie-card {
   margin-top: 5vh;
@@ -132,7 +129,15 @@
 #input:focus {
   border: none;
 }
-.main-view {
+.empty-view {
+  background-color: #0c0d0d;
+  height: 100%;
+}
+.empty-view {
   padding-bottom: 100vh;
+}
+
+.main-view {
+  padding-bottom: 30vh;
 }
 /*# sourceMappingURL=index.784d136c.css.map */
