@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -8,20 +7,15 @@ import Button from 'react-bootstrap/Button';
 import './profile-view.scss';
 
 function ProfileView({logout, user}) {
-
+/* Username is taken from local storage to be consistent with other axios requests. It is being
+used in the template also to avoid defining username twice within the same component */
   const username = localStorage.getItem('user');
 // Taking password from local storage instead of database because we want to see a non-hashed version
   const password = localStorage.getItem('password');
-  const [profile, setProfile] = useState(''); 
-  const [profileMovies, setProfileMovies] = useState('');
-/* Using useEffect hook to control when the data is fetched. We only want this request to run
-once when the profile page is initially loaded */
-// We need to be asking for the specific user that will be in the URL
-  
 // Converting date to conventional day, month, year format
   const date = (user.Birthday).split("",10);
-  setProfile({birthday: date[8]+date[9]+date[7]+date[5]+date[6]+date[4]+date[0]+date[1]+date[2]+date[3]})
-  let favMovies = user.FavouriteMovies;
+  const birthday = date[8]+date[9]+date[7]+date[5]+date[6]+date[4]+date[0]+date[1]+date[2]+date[3];
+  const favMovies = user.FavouriteMovies;
   console.log(favMovies);
   let matchedMovies = (favMovies.length ? (
     favMovies.map(favMovie => {
@@ -33,7 +27,6 @@ once when the profile page is initially loaded */
       )
     })
   ):( <p>Browse movies and select your favourites</p> )); 
-  setProfileMovies(matchedMovies);
 
   const handleDeregister = () => {
     const token = localStorage.getItem('token');
@@ -80,7 +73,7 @@ once when the profile page is initially loaded */
           <Form.Control defaultValue={user.Email} />
         <Form.Group controlId="formBirthday" />
           <Form.Label className="label">Birthday:</Form.Label>
-          <Form.Control defaultValue={profile.birthday} />
+          <Form.Control defaultValue={birthday} />
       </Form>
       <br />
       <Button variant="danger" type="button" onClick={handleDeregister}>deregister</Button>
@@ -92,7 +85,7 @@ once when the profile page is initially loaded */
       <br />
       <br />
       <h2 className="header">myFavourites</h2>
-      <div>{profileMovies}</div>
+      <div>{matchedMovies}</div>
     </div>
   )
   
