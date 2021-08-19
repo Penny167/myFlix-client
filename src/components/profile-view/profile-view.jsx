@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './profile-view.scss';
 
-function ProfileView({logout}) {
+function ProfileView({logout, user}) {
 
   const username = localStorage.getItem('user');
   const token = localStorage.getItem('token');
@@ -25,7 +25,7 @@ once when the profile page is initially loaded */
 // Converting date from the database to conventional day, month, year format
       const date = (res.data.Birthday).split("",10);
       setProfile({
-        email: res.data.Email,
+//        email: res.data.Email,
         birthday: date[8]+date[9]+date[7]+date[5]+date[6]+date[4]+date[0]+date[1]+date[2]+date[3]
       })
       let favMovies = res.data.FavouriteMovies;
@@ -91,7 +91,7 @@ once when the profile page is initially loaded */
           <Form.Control type="text" defaultValue={password} />
         <Form.Group controlId="formEmail" />
           <Form.Label className="label">Email:</Form.Label>
-          <Form.Control defaultValue={profile.email} />
+          <Form.Control defaultValue={user.Email} />
         <Form.Group controlId="formBirthday" />
           <Form.Label className="label">Birthday:</Form.Label>
           <Form.Control defaultValue={profile.birthday} />

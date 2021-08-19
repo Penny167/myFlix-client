@@ -22182,7 +22182,7 @@ the setUser function. This all now happens within the new getUser function */ th
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
             path: "/register",
-            render: ({ history  })=>{
+            render: ()=>{
                 if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Redirect, {
                     to: "/"
                 }));
@@ -22190,9 +22190,7 @@ the setUser function. This all now happens within the new getUser function */ th
                     xs: 8,
                     md: 6,
                     lg: 4
-                }, /*#__PURE__*/ _reactDefault.default.createElement(_registrationViewDefault.default, {
-                    history: history
-                })));
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_registrationViewDefault.default, null)));
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
@@ -22301,7 +22299,7 @@ the setUser function. This all now happens within the new getUser function */ th
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_profileViewDefault.default, {
                     logout: ()=>this.logOut()
                     ,
-                    movieArray: movies
+                    user: user
                 })));
             },
             __source: {
@@ -39923,7 +39921,7 @@ var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _profileViewScss = require("./profile-view.scss");
 var _s = $RefreshSig$();
-function ProfileView({ logout  }) {
+function ProfileView({ logout , user  }) {
     _s();
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -39942,7 +39940,7 @@ once when the profile page is initially loaded */ // We need to be asking for th
             // Converting date from the database to conventional day, month, year format
             const date = res.data.Birthday.split("", 10);
             setProfile({
-                email: res.data.Email,
+                //        email: res.data.Email,
                 birthday: date[8] + date[9] + date[7] + date[5] + date[6] + date[4] + date[0] + date[1] + date[2] + date[3]
             });
             let favMovies = res.data.FavouriteMovies;
@@ -40093,7 +40091,7 @@ once when the profile page is initially loaded */ // We need to be asking for th
         },
         __self: this
     }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        defaultValue: profile.email,
+        defaultValue: user.Email,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 94

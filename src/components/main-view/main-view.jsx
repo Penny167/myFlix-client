@@ -163,7 +163,7 @@ the setUser function. This all now happens within the new getUser function */
             if (!user) return <Col xs={6} lg={4}>
             <LoginView onLoggedIn={loginData => this.onLoggedIn(loginData)} /></Col>
             return  <Col xs={6} lg={4}><ProfileView logout={() => this.logOut()} 
-                    movieArray={movies} /></Col>
+                    user={user} /></Col>
           }}/>
 
           <Route exact path="/updateProfile" render={() => {
