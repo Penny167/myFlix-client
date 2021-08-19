@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {useState} from 'react';
 import { updateUser } from '../../actions/actions';
 import { connect } from 'react-redux';
@@ -9,7 +10,7 @@ import './update-view.scss';
 import { connect } from 'react-redux';
 
 
-function UpdateView({user}) {
+function UpdateView({user, updateUser}) {
 
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState(localStorage.getItem('password'));
@@ -72,5 +73,16 @@ page where the new details will be displayed */
     </div>
   )
 }
+
+UpdateView.propTypes = {
+
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string.isRequired}).isRequired,
+
+  updateUser:PropTypes.func.isRequired
+};
 
 export default connect(null, { updateUser })(UpdateView);
