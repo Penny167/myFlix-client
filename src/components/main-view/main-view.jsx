@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 /* importing action creators that will be used when dispatching actions to the store 
 to change the user and movies states, replacing setState */
 import { setUser, setMovies, updateFavourites } from '../../actions/actions';
@@ -37,8 +36,6 @@ to send axios requests to reset the movies and user states. Note that password h
 been stored when submitting the login form */
     localStorage.setItem('user', loginData.user.Username);
     localStorage.setItem('token', loginData.token);
-//    localStorage.setItem('email', loginData.user.Email);
-//    localStorage.setItem('birthday', loginData.user.Birthday);
     this.getMovies(loginData.token);
   }
 
@@ -48,8 +45,6 @@ been stored when submitting the login form */
     localStorage.removeItem('user', null);
     localStorage.removeItem('token', null);
     localStorage.removeItem('password', null);
-//    localStorage.removeItem('email', null);
-//    localStorage.removeItem('birthday', null);
     console.log('logged out')
     window.open('/','_self');
   }
@@ -169,7 +164,7 @@ the setUser function. This all now happens within the new getUser function */
           <Route exact path="/updateProfile" render={() => {
             if (!user) return <Col xs={6} lg={4}>
             <LoginView onLoggedIn={loginData => this.onLoggedIn(loginData)} /></Col>
-            return  <Col xs={6} lg={4}><UpdateView /></Col>
+            return  <Col xs={6} lg={4}><UpdateView user={user} /></Col>
           }}/>  
 
         </Row>

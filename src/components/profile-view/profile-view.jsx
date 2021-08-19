@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { updateFavourites } from '../../actions/actions';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './profile-view.scss';
 
-function ProfileView({logout, user}) {
+function ProfileView({logout, user, updateFavourites}) {
 /* Username is taken from local storage to be consistent with other axios requests. It is being
 used in the template also to avoid defining username twice within the same component */
   const username = localStorage.getItem('user');
@@ -51,7 +53,8 @@ used in the template also to avoid defining username twice within the same compo
     )
     .then(res => {
       console.log(res.data);
-      window.open(`/user/${username}`, '_self');    
+      updateFavourites(res.data);
+//      window.open(`/user/${username}`, '_self');    
     })
     .catch(err => {
       console.log(err, 'remove movie failed');
@@ -95,4 +98,4 @@ ProfileView.propTypes = {
   logout:PropTypes.func.isRequired
 };
 
-export default ProfileView
+export default connect(null, { updateFavourites })(ProfileView);

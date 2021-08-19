@@ -22070,8 +22070,6 @@ class MainView extends _reactDefault.default.Component {
 to send axios requests to reset the movies and user states. Note that password has already
 been stored when submitting the login form */ localStorage.setItem('user', loginData.user.Username);
         localStorage.setItem('token', loginData.token);
-        //    localStorage.setItem('email', loginData.user.Email);
-        //    localStorage.setItem('birthday', loginData.user.Birthday);
         this.getMovies(loginData.token);
     }
     logOut() {
@@ -22080,8 +22078,6 @@ been stored when submitting the login form */ localStorage.setItem('user', login
         localStorage.removeItem('user', null);
         localStorage.removeItem('token', null);
         localStorage.removeItem('password', null);
-        //    localStorage.removeItem('email', null);
-        //    localStorage.removeItem('birthday', null);
         console.log('logged out');
         window.open('/', '_self');
     }
@@ -22139,7 +22135,7 @@ the setUser function. This all now happens within the new getUser function */ th
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 112
+                lineNumber: 107
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
@@ -22147,14 +22143,14 @@ the setUser function. This all now happens within the new getUser function */ th
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 113
+                lineNumber: 108
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 114
+                lineNumber: 109
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22176,7 +22172,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 116
+                lineNumber: 111
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22194,7 +22190,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 123
+                lineNumber: 118
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22226,7 +22222,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 128
+                lineNumber: 123
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22253,7 +22249,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 142
+                lineNumber: 137
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22280,7 +22276,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 152
+                lineNumber: 147
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22304,7 +22300,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 162
+                lineNumber: 157
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22320,11 +22316,13 @@ the setUser function. This all now happens within the new getUser function */ th
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     xs: 6,
                     lg: 4
-                }, /*#__PURE__*/ _reactDefault.default.createElement(_updateViewDefault.default, null)));
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_updateViewDefault.default, {
+                    user: user
+                })));
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 169
+                lineNumber: 164
             },
             __self: this
         }))));
@@ -39913,6 +39911,8 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouterDom = require("react-router-dom");
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _reactRedux = require("react-redux");
+var _actions = require("../../actions/actions");
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _form = require("react-bootstrap/Form");
@@ -39920,7 +39920,7 @@ var _formDefault = parcelHelpers.interopDefault(_form);
 var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _profileViewScss = require("./profile-view.scss");
-function ProfileView({ logout , user  }) {
+function ProfileView({ logout , user , updateFavourites  }) {
     /* Username is taken from local storage to be consistent with other axios requests. It is being
 used in the template also to avoid defining username twice within the same component */ const username = localStorage.getItem('user');
     // Taking password from local storage instead of database because we want to see a non-hashed version
@@ -39936,14 +39936,14 @@ used in the template also to avoid defining username twice within the same compo
             key: favMovie._id,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-                lineNumber: 23
+                lineNumber: 25
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "favourite",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-                lineNumber: 24
+                lineNumber: 26
             },
             __self: this
         }, favMovie.Title), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -39954,14 +39954,14 @@ used in the template also to avoid defining username twice within the same compo
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-                lineNumber: 25
+                lineNumber: 27
             },
             __self: this
         }, "remove")));
     }) : /*#__PURE__*/ _reactDefault.default.createElement("p", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 29
+            lineNumber: 31
         },
         __self: this
     }, "Browse movies and select your favourites");
@@ -39988,7 +39988,8 @@ used in the template also to avoid defining username twice within the same compo
             }
         }).then((res)=>{
             console.log(res.data);
-            window.open(`/user/${username}`, '_self');
+            updateFavourites(res.data);
+        //      window.open(`/user/${username}`, '_self');    
         }).catch((err)=>{
             console.log(err, 'remove movie failed');
         });
@@ -39997,45 +39998,24 @@ used in the template also to avoid defining username twice within the same compo
         className: "profile-view",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 62
+            lineNumber: 65
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
         className: "header",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 63
+            lineNumber: 66
         },
         __self: this
     }, "myProfile"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 64
+            lineNumber: 67
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formUsername",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 65
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
-        className: "label",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 66
-        },
-        __self: this
-    }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        defaultValue: username,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 67
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formPassword",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 68
@@ -40048,16 +40028,15 @@ used in the template also to avoid defining username twice within the same compo
             lineNumber: 69
         },
         __self: this
-    }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "text",
-        defaultValue: password,
+    }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        defaultValue: username,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 70
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formEmail",
+        controlId: "formPassword",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 71
@@ -40070,15 +40049,16 @@ used in the template also to avoid defining username twice within the same compo
             lineNumber: 72
         },
         __self: this
-    }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        defaultValue: user.Email,
+    }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        type: "text",
+        defaultValue: password,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 73
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formBirthday",
+        controlId: "formEmail",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 74
@@ -40091,17 +40071,38 @@ used in the template also to avoid defining username twice within the same compo
             lineNumber: 75
         },
         __self: this
-    }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        defaultValue: birthday,
+    }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        defaultValue: user.Email,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 76
         },
         __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+    }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        controlId: "formBirthday",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 77
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 78
+        },
+        __self: this
+    }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        defaultValue: birthday,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 79
+        },
+        __self: this
+    })), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 81
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -40110,21 +40111,21 @@ used in the template also to avoid defining username twice within the same compo
         onClick: handleDeregister,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 79
+            lineNumber: 82
         },
         __self: this
     }, "deregister"), /*#__PURE__*/ _reactDefault.default.createElement("span", {
         className: "space",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 80
+            lineNumber: 83
         },
         __self: this
     }, " i"), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
         to: "/updateProfile",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 81
+            lineNumber: 84
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -40132,38 +40133,38 @@ used in the template also to avoid defining username twice within the same compo
         type: "submit",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 82
+            lineNumber: 85
         },
         __self: this
     }, "update")), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 84
+            lineNumber: 87
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 85
+            lineNumber: 88
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 86
+            lineNumber: 89
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("h2", {
         className: "header",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 87
+            lineNumber: 90
         },
         __self: this
     }, "myFavourites"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 88
+            lineNumber: 91
         },
         __self: this
     }, matchedMovies)));
@@ -40172,7 +40173,9 @@ _c = ProfileView;
 ProfileView.propTypes = {
     logout: _propTypesDefault.default.func.isRequired
 };
-exports.default = ProfileView;
+exports.default = _reactRedux.connect(null, {
+    updateFavourites: _actions.updateFavourites
+})(ProfileView);
 var _c;
 $RefreshReg$(_c, "ProfileView");
 
@@ -40181,211 +40184,66 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","axios":"7rA65","./profile-view.scss":"CWyO5","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Button":"1ru0l","prop-types":"4dfy5","react-bootstrap/Form":"6A5ko","react-router-dom":"1PMSK"}],"CWyO5":[function() {},{}],"J2RKh":[function(require,module,exports) {
-var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-helpers.prelude(module);
-
-try {
+},{"react":"3b2NM","axios":"7rA65","./profile-view.scss":"CWyO5","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Button":"1ru0l","prop-types":"4dfy5","react-bootstrap/Form":"6A5ko","react-router-dom":"1PMSK","../../actions/actions":"5S6cN","react-redux":"7GDa4"}],"CWyO5":[function() {},{}],"5S6cN":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _axios = require("axios");
-var _axiosDefault = parcelHelpers.interopDefault(_axios);
-var _form = require("react-bootstrap/Form");
-var _formDefault = parcelHelpers.interopDefault(_form);
-var _button = require("react-bootstrap/Button");
-var _buttonDefault = parcelHelpers.interopDefault(_button);
-var _updateViewScss = require("./update-view.scss");
-var _s = $RefreshSig$();
-function UpdateView() {
-    _s();
-    const [username, setUsername] = _react.useState(localStorage.getItem('user'));
-    const [password, setPassword] = _react.useState(localStorage.getItem('password'));
-    const [email, setEmail] = _react.useState(localStorage.getItem('email'));
-    const date = localStorage.getItem('birthday').split("", 10);
-    const birthdate = date[0] + date[1] + date[2] + date[3] + date[7] + date[5] + date[6] + date[4] + date[8] + date[9];
-    const [birthday, setBirthday] = _react.useState(birthdate);
-    /* Function to handle submission of the new registration details. Successful update will redirect the
-user to the main view. They can continue to use their existing user credentials until they log out because
-we know they are an authenticated user. When they log out, the user state will be reset to null and will be
-updated with their new username (where applicable) when they next log in */ const handleUpdate = (e)=>{
-        e.preventDefault();
-        const token = localStorage.getItem('token');
-        const oldUsername = localStorage.getItem('user');
-        console.log('update submitted');
-        _axiosDefault.default.put(`https://intense-depths-38257.herokuapp.com/users/${oldUsername}`, {
-            Username: username,
-            Password: password,
-            Email: email,
-            Birthday: birthday
-        }, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((res)=>{
-            console.log(res.data);
-            localStorage.setItem('user', username);
-            localStorage.setItem('password', password);
-            localStorage.setItem('email', email);
-            localStorage.setItem('birthday', birthday);
-            window.open(`/user/${username}`, '_self');
-        }).catch((err)=>{
-            console.log(err, 'Update failed');
-        });
+parcelHelpers.export(exports, "SET_MOVIES", ()=>SET_MOVIES
+);
+parcelHelpers.export(exports, "FILTER_MOVIES", ()=>FILTER_MOVIES
+);
+parcelHelpers.export(exports, "SET_USER", ()=>SET_USER
+);
+parcelHelpers.export(exports, "UPDATE_USER", ()=>UPDATE_USER
+);
+parcelHelpers.export(exports, "UPDATE_FAVOURITES", ()=>UPDATE_FAVOURITES
+);
+parcelHelpers.export(exports, "setMovies", ()=>setMovies
+);
+parcelHelpers.export(exports, "filterMovies", ()=>filterMovies
+);
+parcelHelpers.export(exports, "setUser", ()=>setUser
+);
+parcelHelpers.export(exports, "updateUser", ()=>updateUser
+);
+parcelHelpers.export(exports, "updateFavourites", ()=>updateFavourites
+);
+const SET_MOVIES = 'SET_MOVIES';
+const FILTER_MOVIES = 'FILTER_MOVIES';
+const SET_USER = 'SET_USER';
+const UPDATE_USER = 'UPDATE_USER';
+const UPDATE_FAVOURITES = 'UPDATE_FAVOURITES';
+const setMovies = (movies)=>{
+    return {
+        type: SET_MOVIES,
+        payload: movies
     };
-    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-        className: "update-view",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 46
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 47
-        },
-        __self: this
-    }, "Update myProfile"), /*#__PURE__*/ _reactDefault.default.createElement("p", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 48
-        },
-        __self: this
-    }, "Please complete ALL fields"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
-        onSubmit: handleUpdate,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 49
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formUsername",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 50
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 51
-        },
-        __self: this
-    }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        required: true,
-        type: "text",
-        minLength: "5",
-        pattern: "[a-zA-Z0-9]+",
-        placeholder: "Please enter a valid username",
-        value: username,
-        onChange: (e)=>setUsername(e.target.value)
-        ,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 52
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formPassword",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 55
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 56
-        },
-        __self: this
-    }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        required: true,
-        type: "text",
-        minLength: "8",
-        placeholder: "Please enter a valid password",
-        value: password,
-        onChange: (e)=>setPassword(e.target.value)
-        ,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 57
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formEmail",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 60
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 61
-        },
-        __self: this
-    }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        required: true,
-        type: "email",
-        placeholder: "Please enter a valid email address",
-        value: email,
-        onChange: (e)=>setEmail(e.target.value)
-        ,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 62
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formBirthday",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 65
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 66
-        },
-        __self: this
-    }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        required: true,
-        type: "date",
-        value: birthday,
-        onChange: (e)=>setBirthday(e.target.value)
-        ,
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 67
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
-        variant: "danger",
-        type: "submit",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
-            lineNumber: 69
-        },
-        __self: this
-    }, "submit"))));
-}
-_s(UpdateView, "vWxJOndPbMh9QzI9BHBFHQaf4c8=");
-_c = UpdateView;
-exports.default = UpdateView;
-var _c;
-$RefreshReg$(_c, "UpdateView");
+};
+const filterMovies = (filterstring)=>{
+    return {
+        type: FILTER_MOVIES,
+        payload: filterstring
+    };
+};
+const setUser = (user)=>{
+    return {
+        type: SET_USER,
+        payload: user
+    };
+};
+const updateUser = (user)=>{
+    return {
+        type: UPDATE_USER,
+        payload: user
+    };
+};
+const updateFavourites = (favourites)=>{
+    return {
+        type: UPDATE_FAVOURITES,
+        payload: favourites
+    };
+};
 
-  helpers.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react":"3b2NM","axios":"7rA65","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","./update-view.scss":"6vYyP","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"6vYyP":[function() {},{}],"7GDa4":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"59uFI"}],"7GDa4":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
@@ -41620,66 +41478,213 @@ exports.unstable_batchedUpdates = void 0;
 var _reactDom = require("react-dom");
 exports.unstable_batchedUpdates = _reactDom.unstable_batchedUpdates;
 
-},{"react-dom":"2sg1U"}],"5S6cN":[function(require,module,exports) {
+},{"react-dom":"2sg1U"}],"J2RKh":[function(require,module,exports) {
+var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "SET_MOVIES", ()=>SET_MOVIES
-);
-parcelHelpers.export(exports, "FILTER_MOVIES", ()=>FILTER_MOVIES
-);
-parcelHelpers.export(exports, "SET_USER", ()=>SET_USER
-);
-parcelHelpers.export(exports, "UPDATE_USER", ()=>UPDATE_USER
-);
-parcelHelpers.export(exports, "UPDATE_FAVOURITES", ()=>UPDATE_FAVOURITES
-);
-parcelHelpers.export(exports, "setMovies", ()=>setMovies
-);
-parcelHelpers.export(exports, "filterMovies", ()=>filterMovies
-);
-parcelHelpers.export(exports, "setUser", ()=>setUser
-);
-parcelHelpers.export(exports, "updateUser", ()=>updateUser
-);
-parcelHelpers.export(exports, "updateFavourites", ()=>updateFavourites
-);
-const SET_MOVIES = 'SET_MOVIES';
-const FILTER_MOVIES = 'FILTER_MOVIES';
-const SET_USER = 'SET_USER';
-const UPDATE_USER = 'UPDATE_USER';
-const UPDATE_FAVOURITES = 'UPDATE_FAVOURITES';
-const setMovies = (movies)=>{
-    return {
-        type: SET_MOVIES,
-        payload: movies
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _actions = require("../../actions/actions");
+var _reactRedux = require("react-redux");
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _form = require("react-bootstrap/Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _updateViewScss = require("./update-view.scss");
+var _s = $RefreshSig$();
+function UpdateView({ user  }) {
+    _s();
+    const [username, setUsername] = _react.useState(user.Username);
+    const [password, setPassword] = _react.useState(localStorage.getItem('password'));
+    const [email, setEmail] = _react.useState(user.Email);
+    const date = user.Birthday.split("", 10);
+    const birthdate = date[0] + date[1] + date[2] + date[3] + date[7] + date[5] + date[6] + date[4] + date[8] + date[9];
+    const [birthday, setBirthday] = _react.useState(birthdate);
+    /* Function to handle submission of the new profile details. A successful request will update the 
+store with the new user details returned from the database then redirect the user to their profile 
+page where the new details will be displayed */ const handleUpdate = (e)=>{
+        e.preventDefault();
+        const token = localStorage.getItem('token');
+        const oldUsername = localStorage.getItem('user');
+        console.log('update submitted');
+        _axiosDefault.default.put(`https://intense-depths-38257.herokuapp.com/users/${oldUsername}`, {
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: birthday
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((res)=>{
+            console.log(res.data);
+            _actions.updateUser(res.data);
+            localStorage.setItem('user', username);
+            localStorage.setItem('password', password);
+            window.open(`/user/${username}`, '_self');
+        }).catch((err)=>{
+            console.log(err, 'Update failed');
+        });
     };
-};
-const filterMovies = (filterstring)=>{
-    return {
-        type: FILTER_MOVIES,
-        payload: filterstring
-    };
-};
-const setUser = (user)=>{
-    return {
-        type: SET_USER,
-        payload: user
-    };
-};
-const updateUser = (user)=>{
-    return {
-        type: UPDATE_USER,
-        payload: user
-    };
-};
-const updateFavourites = (favourites)=>{
-    return {
-        type: UPDATE_FAVOURITES,
-        payload: favourites
-    };
-};
+    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "update-view",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 47
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 48
+        },
+        __self: this
+    }, "Update myProfile"), /*#__PURE__*/ _reactDefault.default.createElement("p", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 49
+        },
+        __self: this
+    }, "Please complete ALL fields"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+        onSubmit: handleUpdate,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 50
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        controlId: "formUsername",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 51
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 52
+        },
+        __self: this
+    }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        required: true,
+        type: "text",
+        minLength: "5",
+        pattern: "[a-zA-Z0-9]+",
+        placeholder: "Please enter a valid username",
+        value: username,
+        onChange: (e)=>setUsername(e.target.value)
+        ,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 53
+        },
+        __self: this
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        controlId: "formPassword",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 56
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 57
+        },
+        __self: this
+    }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        required: true,
+        type: "text",
+        minLength: "8",
+        placeholder: "Please enter a valid password",
+        value: password,
+        onChange: (e)=>setPassword(e.target.value)
+        ,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 58
+        },
+        __self: this
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        controlId: "formEmail",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 61
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 62
+        },
+        __self: this
+    }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        required: true,
+        type: "email",
+        placeholder: "Please enter a valid email address",
+        value: email,
+        onChange: (e)=>setEmail(e.target.value)
+        ,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 63
+        },
+        __self: this
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        controlId: "formBirthday",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 66
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 67
+        },
+        __self: this
+    }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        required: true,
+        type: "date",
+        value: birthday,
+        onChange: (e)=>setBirthday(e.target.value)
+        ,
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 68
+        },
+        __self: this
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        variant: "danger",
+        type: "submit",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/update-view/update-view.jsx",
+            lineNumber: 70
+        },
+        __self: this
+    }, "submit"))));
+}
+_s(UpdateView, "qGCYO6BV+6f5n5vndl8bW1Pp0HA=");
+_c = UpdateView;
+exports.default = _reactRedux.connect(null, {
+    updateUser: _actions.updateUser
+})(UpdateView);
+var _c;
+$RefreshReg$(_c, "UpdateView");
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"59uFI"}],"EAUU1":[function(require,module,exports) {
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","axios":"7rA65","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","./update-view.scss":"6vYyP","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../../actions/actions":"5S6cN","react-redux":"7GDa4"}],"6vYyP":[function() {},{}],"EAUU1":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
