@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 /* importing action creators that will be used when dispatching actions to the store 
-to change the user and movies state, replacing setState */
-import { setUser, setMovies } from '../../actions/actions';
+to change the user and movies states, replacing setState */
+import { setUser, setMovies, updateFavourites } from '../../actions/actions';
 
 import RegistrationView from '../registration-view/registration-view';
 import LoginView from '../login-view/login-view';
@@ -89,7 +89,7 @@ the setUser function. This all now happens within the new getUser function */
     })
   }
 
-// For consistency I am using username and token retrieved from local storage for all axios requests
+// For consistency I am using username retrieved from local storage for all axios requests (as opposed to extracting from user state)
   addToFavourites(movieID) {
     let username = localStorage.getItem('user');
     let token = localStorage.getItem('token');
@@ -98,7 +98,9 @@ the setUser function. This all now happens within the new getUser function */
     {headers: { Authorization: `Bearer ${token}`}}
               )
     .then(res => {  
-      console.log(res)})
+      console.log(res);
+      this.props.updateFavourites(res.data);
+    })
     .catch(err => {
       console.log(err);
     })
@@ -118,9 +120,9 @@ the setUser function. This all now happens within the new getUser function */
             return <MoviesList movies={movies} />;
           }}/>
 
-          <Route exact path="/register" render={({history}) => {
+          <Route exact path="/register" render={() => {
             if (user) return <Redirect to="/" />
-            return <Col xs={8} md={6} lg={4}><RegistrationView history={history}/></Col>        
+            return <Col xs={8} md={6} lg={4}><RegistrationView /></Col>        
           }}/>
 
           <Route exact path="/movies/:movieId" render={({match, history}) => {
@@ -184,4 +186,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setUser, setMovies })(MainView);
+export default connect(mapStateToProps, { setUser, setMovies, updateFavourites })(MainView);

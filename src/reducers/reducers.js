@@ -35,7 +35,7 @@ const userReducer = (state=null, action) => {
     case UPDATE_FAVOURITES: {
       return {
         ...state,
-        favouriteMovies: action.payload
+        FavouriteMovies: action.payload
       }
     }
     default: return state

@@ -22033,7 +22033,7 @@ var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactRouterDom = require("react-router-dom");
 var _reactRedux = require("react-redux");
 /* importing action creators that will be used when dispatching actions to the store 
-to change the user and movies state, replacing setState */ var _actions = require("../../actions/actions");
+to change the user and movies states, replacing setState */ var _actions = require("../../actions/actions");
 var _registrationView = require("../registration-view/registration-view");
 var _registrationViewDefault = parcelHelpers.interopDefault(_registrationView);
 var _loginView = require("../login-view/login-view");
@@ -22117,7 +22117,7 @@ the setUser function. This all now happens within the new getUser function */ th
             console.log(err);
         });
     }
-    // For consistency I am using username and token retrieved from local storage for all axios requests
+    // For consistency I am using username retrieved from local storage for all axios requests (as opposed to extracting from user state)
     addToFavourites(movieID) {
         let username = localStorage.getItem('user');
         let token = localStorage.getItem('token');
@@ -22129,6 +22129,7 @@ the setUser function. This all now happens within the new getUser function */ th
             }
         }).then((res)=>{
             console.log(res);
+            this.props.updateFavourites(res.data);
         }).catch((err)=>{
             console.log(err);
         });
@@ -22138,7 +22139,7 @@ the setUser function. This all now happens within the new getUser function */ th
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 110
+                lineNumber: 112
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
@@ -22146,14 +22147,14 @@ the setUser function. This all now happens within the new getUser function */ th
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 111
+                lineNumber: 113
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 112
+                lineNumber: 114
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22175,7 +22176,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 114
+                lineNumber: 116
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22195,7 +22196,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 121
+                lineNumber: 123
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22227,7 +22228,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 126
+                lineNumber: 128
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22254,7 +22255,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 140
+                lineNumber: 142
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22281,7 +22282,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 150
+                lineNumber: 152
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22305,7 +22306,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 160
+                lineNumber: 162
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22325,7 +22326,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 167
+                lineNumber: 169
             },
             __self: this
         }))));
@@ -22339,7 +22340,8 @@ const mapStateToProps = (state)=>{
 };
 exports.default = _reactRedux.connect(mapStateToProps, {
     setUser: _actions.setUser,
-    setMovies: _actions.setMovies
+    setMovies: _actions.setMovies,
+    updateFavourites: _actions.updateFavourites
 })(MainView);
 
   helpers.postlude(module);
@@ -42521,7 +42523,7 @@ const userReducer = (state = null, action)=>{
         case _actions.UPDATE_FAVOURITES:
             return {
                 ...state,
-                favouriteMovies: action.payload
+                FavouriteMovies: action.payload
             };
         default:
             return state;
