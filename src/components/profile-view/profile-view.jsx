@@ -19,14 +19,13 @@ used in the template also to avoid defining username twice within the same compo
   const birthday = date[8]+date[9]+date[7]+date[5]+date[6]+date[4]+date[0]+date[1]+date[2]+date[3];
   const favMovies = user.FavouriteMovies;
   console.log(favMovies);
+
   let matchedMovies = (favMovies.length ? (
     favMovies.map(favMovie => {
-      return (
-        <div className="movieContainer" key={favMovie._id}>
-          <div className="favourite">{favMovie.Title}</div>
-          <Button variant="danger" type="button" size="sm" onClick={() => handleRemove(favMovie._id)}>remove</Button>
-        </div>
-      )
+      return  <div className="movieContainer" key={favMovie._id}>
+                <div className="favourite">{favMovie.Title}</div>
+                <Button variant="danger" type="button" size="sm" onClick={() => handleRemove(favMovie._id)}>remove</Button>
+              </div>
     })
   ):( <p>Browse movies and select your favourites</p> )); 
 
@@ -67,16 +66,16 @@ used in the template also to avoid defining username twice within the same compo
       <Form>
         <Form.Group controlId="formUsername" />
           <Form.Label className="label">Username:</Form.Label>
-          <Form.Control defaultValue={username} />
+          <Form.Control defaultValue={username} readOnly />
         <Form.Group controlId="formPassword" />
           <Form.Label className="label">Password:</Form.Label>
-          <Form.Control type="text" defaultValue={password} />
+          <Form.Control type="text" defaultValue={password} readOnly />
         <Form.Group controlId="formEmail" />
           <Form.Label className="label">Email:</Form.Label>
-          <Form.Control defaultValue={user.Email} />
+          <Form.Control defaultValue={user.Email} readOnly />
         <Form.Group controlId="formBirthday" />
           <Form.Label className="label">Birthday:</Form.Label>
-          <Form.Control defaultValue={birthday} />
+          <Form.Control defaultValue={birthday} readOnly />
       </Form>
       <br />
       <Button variant="danger" type="button" onClick={handleDeregister}>deregister</Button>

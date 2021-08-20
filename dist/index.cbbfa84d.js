@@ -39986,7 +39986,7 @@ used in the template also to avoid defining username twice within the same compo
     }) : /*#__PURE__*/ _reactDefault.default.createElement("p", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 31
+            lineNumber: 30
         },
         __self: this
     }, "Browse movies and select your favourites");
@@ -40023,111 +40023,115 @@ used in the template also to avoid defining username twice within the same compo
         className: "profile-view",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 65
+            lineNumber: 64
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
         className: "header",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 66
+            lineNumber: 65
         },
         __self: this
     }, "myProfile"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 67
+            lineNumber: 66
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 68
+            lineNumber: 67
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 69
+            lineNumber: 68
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         defaultValue: username,
+        readOnly: true,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 70
+            lineNumber: 69
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formPassword",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 71
+            lineNumber: 70
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 72
+            lineNumber: 71
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         type: "text",
         defaultValue: password,
+        readOnly: true,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 73
+            lineNumber: 72
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formEmail",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 74
+            lineNumber: 73
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 75
+            lineNumber: 74
         },
         __self: this
     }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         defaultValue: user.Email,
+        readOnly: true,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 76
+            lineNumber: 75
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formBirthday",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 77
+            lineNumber: 76
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 78
+            lineNumber: 77
         },
         __self: this
     }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         defaultValue: birthday,
+        readOnly: true,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 79
+            lineNumber: 78
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 81
+            lineNumber: 80
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -40136,21 +40140,21 @@ used in the template also to avoid defining username twice within the same compo
         onClick: handleDeregister,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 82
+            lineNumber: 81
         },
         __self: this
     }, "deregister"), /*#__PURE__*/ _reactDefault.default.createElement("span", {
         className: "space",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 83
+            lineNumber: 82
         },
         __self: this
     }, " i"), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
         to: "/updateProfile",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 84
+            lineNumber: 83
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -40158,10 +40162,16 @@ used in the template also to avoid defining username twice within the same compo
         type: "submit",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 85
+            lineNumber: 84
         },
         __self: this
     }, "update")), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 86
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 87
@@ -40173,23 +40183,17 @@ used in the template also to avoid defining username twice within the same compo
             lineNumber: 88
         },
         __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+    }), /*#__PURE__*/ _reactDefault.default.createElement("h2", {
+        className: "header",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 89
         },
         __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("h2", {
-        className: "header",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 90
-        },
-        __self: this
     }, "myFavourites"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 91
+            lineNumber: 90
         },
         __self: this
     }, matchedMovies)));
