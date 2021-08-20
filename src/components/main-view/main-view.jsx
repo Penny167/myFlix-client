@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -31,9 +32,9 @@ class MainView extends React.Component {
 // Dispatching action to change user state in the store rather than setting state locally
 // Using the full user object rather than just username so we can use the other properties as needed
     this.props.setUser(loginData.user);
-/* Some user data needs to be stored in local storage because if a page is refreshed we need
-to send axios requests to reset the movies and user states. Note that password has already
-been stored when submitting the login form */
+/* Some user data needs to be stored in local storage because if a page is refreshed we need to send axios 
+requests to reset the movies and user states without having to log in again. Note that password has already
+been stored when submitting the login form (it is needed to display a non-hashed password on the profile page */
     localStorage.setItem('user', loginData.user.Username);
     localStorage.setItem('token', loginData.token);
     this.getMovies(loginData.token);
@@ -53,9 +54,9 @@ been stored when submitting the login form */
     let token = localStorage.getItem('token');
     let username = localStorage.getItem('user');
     if (token !== null) {
-/*  this.props.setUser(localStorage.getItem('user')); // We are replacing this with a
-call to the database to get the full user object, which is then used as the payload for
-the setUser function. This all now happens within the new getUser function */
+/*  Instead of retrieving the user from local storage we are making a request to the database to 
+get the full user object, which is then used as the payload for the setUser function. This all 
+happens within the new getUser function called here */
     this.getUser(username, token)  
     this.getMovies(token);
     }
@@ -180,5 +181,13 @@ const mapStateToProps = (state) => {
     user: state.user
   }
 }
+
+MainView.propTypes = {
+  movies: PropTypes.array.isRequired,
+  user: PropTypes.object,
+  setUser: PropTypes.func.isRequired,
+  setMovies: PropTypes.func.isRequired,
+  updateFavourites: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, { setUser, setMovies, updateFavourites })(MainView);

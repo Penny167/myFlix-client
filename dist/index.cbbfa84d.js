@@ -22028,6 +22028,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactRouterDom = require("react-router-dom");
@@ -22066,9 +22068,9 @@ class MainView extends _reactDefault.default.Component {
         // Dispatching action to change user state in the store rather than setting state locally
         // Using the full user object rather than just username so we can use the other properties as needed
         this.props.setUser(loginData.user);
-        /* Some user data needs to be stored in local storage because if a page is refreshed we need
-to send axios requests to reset the movies and user states. Note that password has already
-been stored when submitting the login form */ localStorage.setItem('user', loginData.user.Username);
+        /* Some user data needs to be stored in local storage because if a page is refreshed we need to send axios 
+requests to reset the movies and user states without having to log in again. Note that password has already
+been stored when submitting the login form (it is needed to display a non-hashed password on the profile page */ localStorage.setItem('user', loginData.user.Username);
         localStorage.setItem('token', loginData.token);
         this.getMovies(loginData.token);
     }
@@ -22085,9 +22087,9 @@ been stored when submitting the login form */ localStorage.setItem('user', login
         let token = localStorage.getItem('token');
         let username = localStorage.getItem('user');
         if (token !== null) {
-            /*  this.props.setUser(localStorage.getItem('user')); // We are replacing this with a
-call to the database to get the full user object, which is then used as the payload for
-the setUser function. This all now happens within the new getUser function */ this.getUser(username, token);
+            /*  Instead of retrieving the user from local storage we are making a request to the database to 
+get the full user object, which is then used as the payload for the setUser function. This all 
+happens within the new getUser function called here */ this.getUser(username, token);
             this.getMovies(token);
         }
     }
@@ -22135,7 +22137,7 @@ the setUser function. This all now happens within the new getUser function */ th
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 107
+                lineNumber: 108
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
@@ -22143,14 +22145,14 @@ the setUser function. This all now happens within the new getUser function */ th
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 108
+                lineNumber: 109
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 109
+                lineNumber: 110
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22172,7 +22174,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 111
+                lineNumber: 112
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22190,7 +22192,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 118
+                lineNumber: 119
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22222,7 +22224,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 123
+                lineNumber: 124
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22249,7 +22251,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 137
+                lineNumber: 138
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22276,7 +22278,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 147
+                lineNumber: 148
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22300,7 +22302,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 157
+                lineNumber: 158
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22322,7 +22324,7 @@ the setUser function. This all now happens within the new getUser function */ th
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 164
+                lineNumber: 165
             },
             __self: this
         }))));
@@ -22333,6 +22335,13 @@ const mapStateToProps = (state)=>{
         movies: state.movies,
         user: state.user
     };
+};
+MainView.propTypes = {
+    movies: _propTypesDefault.default.array.isRequired,
+    user: _propTypesDefault.default.object,
+    setUser: _propTypesDefault.default.func.isRequired,
+    setMovies: _propTypesDefault.default.func.isRequired,
+    updateFavourites: _propTypesDefault.default.func.isRequired
 };
 exports.default = _reactRedux.connect(mapStateToProps, {
     setUser: _actions.setUser,
@@ -22345,7 +22354,7 @@ exports.default = _reactRedux.connect(mapStateToProps, {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../movie-view/movie-view":"67UYI","axios":"7rA65","../registration-view/registration-view":"1nt2p","../login-view/login-view":"6aBEq","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-router-dom":"1PMSK","../mynavbar/mynavbar":"31Qie","../director-view/director-view":"4Ed7m","../genre-view/genre-view":"GvXIx","../profile-view/profile-view":"16TE9","../update-view/update-view":"J2RKh","react-redux":"7GDa4","../../actions/actions":"5S6cN","../movies-list/movies-list":"EAUU1","./main-view.scss":"4yZvk"}],"67UYI":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../movie-view/movie-view":"67UYI","axios":"7rA65","../registration-view/registration-view":"1nt2p","../login-view/login-view":"6aBEq","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-router-dom":"1PMSK","../mynavbar/mynavbar":"31Qie","../director-view/director-view":"4Ed7m","../genre-view/genre-view":"GvXIx","../profile-view/profile-view":"16TE9","../update-view/update-view":"J2RKh","react-redux":"7GDa4","../../actions/actions":"5S6cN","../movies-list/movies-list":"EAUU1","./main-view.scss":"4yZvk","prop-types":"4dfy5"}],"67UYI":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
