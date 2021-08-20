@@ -41946,6 +41946,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _form = require("react-bootstrap/Form");
 var _formDefault = parcelHelpers.interopDefault(_form);
 var _reactRedux = require("react-redux");
@@ -41961,12 +41963,16 @@ function MoviesFilterInput({ filterMovies , movieFilter  }) {
         placeholder: "Search movies",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-filter-input/movies-filter-input.jsx",
-            lineNumber: 8
+            lineNumber: 9
         },
         __self: this
     }));
 }
 _c = MoviesFilterInput;
+MoviesFilterInput.propTypes = {
+    filterMovies: _propTypesDefault.default.func.isRequired,
+    movieFilter: _propTypesDefault.default.string.isRequired
+};
 exports.default = _reactRedux.connect(null, {
     filterMovies: _actions.filterMovies
 })(MoviesFilterInput);
@@ -41978,7 +41984,7 @@ $RefreshReg$(_c, "MoviesFilterInput");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-bootstrap/Form":"6A5ko","react-redux":"7GDa4","../../actions/actions":"5S6cN","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","./movies-filter-input.scss":"5qxhk"}],"5qxhk":[function() {},{}],"4PcYw":[function() {},{}],"4yZvk":[function() {},{}],"7panR":[function(require,module,exports) {
+},{"react":"3b2NM","react-bootstrap/Form":"6A5ko","react-redux":"7GDa4","../../actions/actions":"5S6cN","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","./movies-filter-input.scss":"5qxhk","prop-types":"4dfy5"}],"5qxhk":[function() {},{}],"4PcYw":[function() {},{}],"4yZvk":[function() {},{}],"7panR":[function(require,module,exports) {
 'use strict';
 Object.defineProperty(exports, '__esModule', {
     value: true
