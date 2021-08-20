@@ -22533,12 +22533,16 @@ MovieView.propTypes = {
         Description: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired,
         Genre: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired
+            Name: _propTypesDefault.default.string.isRequired,
+            Description: _propTypesDefault.default.string.isRequired
         }),
         Director: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired
+            Name: _propTypesDefault.default.string.isRequired,
+            Bio: _propTypesDefault.default.string.isRequired,
+            Birth: _propTypesDefault.default.string,
+            Death: _propTypesDefault.default.string
         })
-    }).isRequired,
+    }),
     onAddMovie: _propTypesDefault.default.func.isRequired,
     onBackClick: _propTypesDefault.default.func.isRequired
 };
@@ -39798,17 +39802,7 @@ function DirectorView({ directorData , onBackClick  }) {
 }
 _c = DirectorView;
 DirectorView.propTypes = {
-    directorData: _propTypesDefault.default.shape({
-        Title: _propTypesDefault.default.string.isRequired,
-        Description: _propTypesDefault.default.string.isRequired,
-        ImagePath: _propTypesDefault.default.string.isRequired,
-        Genre: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired
-        }),
-        Director: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired
-        })
-    }).isRequired,
+    directorData: _propTypesDefault.default.array.isRequired,
     onBackClick: _propTypesDefault.default.func.isRequired
 };
 exports.default = DirectorView;
@@ -39907,17 +39901,7 @@ function GenreView({ genreData , onBackClick  }) {
 }
 _c = GenreView;
 GenreView.propTypes = {
-    genreData: _propTypesDefault.default.shape({
-        Title: _propTypesDefault.default.string.isRequired,
-        Description: _propTypesDefault.default.string.isRequired,
-        ImagePath: _propTypesDefault.default.string.isRequired,
-        Genre: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired
-        }),
-        Director: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired
-        })
-    }).isRequired,
+    genreData: _propTypesDefault.default.array.isRequired,
     onBackClick: _propTypesDefault.default.func.isRequired
 };
 exports.default = GenreView;
@@ -41746,6 +41730,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 // We have not wrapped MoviesList within a column when rendered within MainView
 var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
@@ -41766,21 +41752,21 @@ function MoviesList({ movies , movieFilter  }) {
         },
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-            lineNumber: 18
+            lineNumber: 19
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_moviesFilterInputDefault.default, {
         movieFilter: movieFilter,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-            lineNumber: 19
+            lineNumber: 20
         },
         __self: this
     }), " "), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "empty-view",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-            lineNumber: 22
+            lineNumber: 23
         },
         __self: this
     }), " "));
@@ -41791,14 +41777,14 @@ function MoviesList({ movies , movieFilter  }) {
         },
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-            lineNumber: 24
+            lineNumber: 25
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_moviesFilterInputDefault.default, {
         movieFilter: movieFilter,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-            lineNumber: 25
+            lineNumber: 26
         },
         __self: this
     }), " "), filteredMovies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
@@ -41809,14 +41795,14 @@ function MoviesList({ movies , movieFilter  }) {
             key: movie._id,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-                lineNumber: 29
+                lineNumber: 30
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCardDefault.default, {
             movieData: movie,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
-                lineNumber: 30
+                lineNumber: 31
             },
             __self: this
         }))
@@ -41828,6 +41814,10 @@ const mapStateToProps = (state)=>{
         movieFilter: state.movieFilter
     };
 };
+MoviesList.propTypes = {
+    movies: _propTypesDefault.default.array.isRequired,
+    movieFilter: _propTypesDefault.default.string.isRequired
+};
 exports.default = _reactRedux.connect(mapStateToProps)(MoviesList);
 var _c;
 $RefreshReg$(_c, "MoviesList");
@@ -41837,7 +41827,7 @@ $RefreshReg$(_c, "MoviesList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-redux":"7GDa4","../movie-card/movie-card":"VFCZ2","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Col":"2D0r8","../movies-filter-input/movies-filter-input":"6yMWk","./movies-list.scss":"4PcYw"}],"VFCZ2":[function(require,module,exports) {
+},{"react":"3b2NM","react-redux":"7GDa4","../movie-card/movie-card":"VFCZ2","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Col":"2D0r8","../movies-filter-input/movies-filter-input":"6yMWk","./movies-list.scss":"4PcYw","prop-types":"4dfy5"}],"VFCZ2":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41926,14 +41916,17 @@ MovieCard.propTypes = {
         Title: _propTypesDefault.default.string.isRequired,
         Description: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired,
-        _id: _propTypesDefault.default.string.isRequired,
         Genre: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired
+            Name: _propTypesDefault.default.string.isRequired,
+            Description: _propTypesDefault.default.string.isRequired
         }),
         Director: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired
+            Name: _propTypesDefault.default.string.isRequired,
+            Bio: _propTypesDefault.default.string.isRequired,
+            Birth: _propTypesDefault.default.string,
+            Death: _propTypesDefault.default.string
         })
-    }).isRequired
+    })
 };
 exports.default = MovieCard;
 

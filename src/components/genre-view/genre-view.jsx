@@ -29,14 +29,7 @@ function GenreView({ genreData, onBackClick }) {
 
 GenreView.propTypes = {
 
-  genreData: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({Name: PropTypes.string.isRequired}),
-    Director: PropTypes.shape({Name: PropTypes.string.isRequired})  
-  }).isRequired,
-  
+  genreData: PropTypes.array.isRequired,
   onBackClick: PropTypes.func.isRequired
 
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 // We have not wrapped MoviesList within a column when rendered within MainView
 import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
@@ -38,5 +39,12 @@ const mapStateToProps = (state) => {
     movieFilter: state.movieFilter
   }
 }
+
+MoviesList.propTypes = {
+
+  movies: PropTypes.array.isRequired,
+  movieFilter: PropTypes.string.isRequired
+  
+};
 
 export default connect(mapStateToProps)(MoviesList);
