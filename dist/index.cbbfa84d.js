@@ -39811,7 +39811,7 @@ function DirectorView({ directorData , onBackClick  }) {
 }
 _c = DirectorView;
 DirectorView.propTypes = {
-    directorData: _propTypesDefault.default.array.isRequired,
+    directorData: _propTypesDefault.default.arrayOf(_propTypesDefault.default.object.isRequired).isRequired,
     onBackClick: _propTypesDefault.default.func.isRequired
 };
 exports.default = DirectorView;
@@ -39910,7 +39910,7 @@ function GenreView({ genreData , onBackClick  }) {
 }
 _c = GenreView;
 GenreView.propTypes = {
-    genreData: _propTypesDefault.default.array.isRequired,
+    genreData: _propTypesDefault.default.arrayOf(_propTypesDefault.default.object.isRequired).isRequired,
     onBackClick: _propTypesDefault.default.func.isRequired
 };
 exports.default = GenreView;
@@ -41824,7 +41824,7 @@ const mapStateToProps = (state)=>{
     };
 };
 MoviesList.propTypes = {
-    movies: _propTypesDefault.default.array.isRequired,
+    movies: _propTypesDefault.default.arrayOf(_propTypesDefault.default.object.isRequired).isRequired,
     movieFilter: _propTypesDefault.default.string.isRequired
 };
 exports.default = _reactRedux.connect(mapStateToProps)(MoviesList);

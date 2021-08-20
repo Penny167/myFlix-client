@@ -29,7 +29,8 @@ function GenreView({ genreData, onBackClick }) {
 
 GenreView.propTypes = {
 
-  genreData: PropTypes.array.isRequired,
+  genreData: PropTypes.arrayOf(
+    PropTypes.object.isRequired).isRequired,
   onBackClick: PropTypes.func.isRequired
 
 };

@@ -31,7 +31,8 @@ function DirectorView({ directorData, onBackClick }) {
 
 DirectorView.propTypes = {
 
-  directorData: PropTypes.array.isRequired,
+  directorData: PropTypes.arrayOf(
+    PropTypes.object.isRequired).isRequired,
   onBackClick: PropTypes.func.isRequired
 
 };

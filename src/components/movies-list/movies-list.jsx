@@ -41,7 +41,8 @@ const mapStateToProps = (state) => {
 }
 
 MoviesList.propTypes = {
-  movies: PropTypes.array.isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.object.isRequired).isRequired,
   movieFilter: PropTypes.string.isRequired
 };
 
