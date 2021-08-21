@@ -34,14 +34,14 @@ class MainView extends React.Component {
     this.props.setUser(loginData.user);
 /* Some user data needs to be stored in local storage because if a page is refreshed we need to send axios 
 requests to reset the movies and user states without having to log in again. Note that password has already
-been stored when submitting the login form (it is needed to display a non-hashed password on the profile page */
+been stored when submitting the login form (it is needed to display a non-hashed password on the profile page) */
     localStorage.setItem('user', loginData.user.Username);
     localStorage.setItem('token', loginData.token);
     this.getMovies(loginData.token);
   }
 
   logOut() {
-// Using setUser function again to reset the user state in the store to null
+// Using setUser function to reset the user state in the store to null
     this.props.setUser(null);
     localStorage.removeItem('user', null);
     localStorage.removeItem('token', null);
@@ -54,9 +54,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
     let token = localStorage.getItem('token');
     let username = localStorage.getItem('user');
     if (token !== null) {
-/*  Instead of retrieving the user from local storage we are making a request to the database to 
-get the full user object, which is then used as the payload for the setUser function. This all 
-happens within the new getUser function called here */
+//  Fetch data from the database and reset the movies and user state in the store
     this.getUser(username, token)  
     this.getMovies(token);
     }
@@ -184,7 +182,7 @@ const mapStateToProps = (state) => {
 
 MainView.propTypes = {
   movies: PropTypes.array.isRequired,
-  user: PropTypes.object,
+  user: PropTypes.object, // initial user state must be null to render login page so cannot be required in MainView
   setUser: PropTypes.func.isRequired,
   setMovies: PropTypes.func.isRequired,
   updateFavourites: PropTypes.func.isRequired

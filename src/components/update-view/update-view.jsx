@@ -56,7 +56,7 @@ page where the new details will be displayed */
         </Form.Group> 
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
-          <Form.Control required type="text" minLength="8" placeholder="Please enter a valid password"
+          <Form.Control required type="password" minLength="8" placeholder="Please enter a valid password"
           value={password} onChange={e => setPassword(e.target.value)} />
         </Form.Group> 
         <Form.Group controlId="formEmail"> 

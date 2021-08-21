@@ -53,7 +53,6 @@ used in the template also to avoid defining username twice within the same compo
     .then(res => {
       console.log(res.data);
       updateFavourites(res.data);
-//      window.open(`/user/${username}`, '_self');    
     })
     .catch(err => {
       console.log(err, 'remove movie failed');
@@ -69,7 +68,7 @@ used in the template also to avoid defining username twice within the same compo
           <Form.Control defaultValue={username} readOnly />
         <Form.Group controlId="formPassword" />
           <Form.Label className="label">Password:</Form.Label>
-          <Form.Control type="text" defaultValue={password} readOnly />
+          <Form.Control type="password" defaultValue={password} readOnly />
         <Form.Group controlId="formEmail" />
           <Form.Label className="label">Email:</Form.Label>
           <Form.Control defaultValue={user.Email} readOnly />
