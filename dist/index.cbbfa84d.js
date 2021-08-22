@@ -22070,12 +22070,12 @@ class MainView extends _reactDefault.default.Component {
         this.props.setUser(loginData.user);
         /* Some user data needs to be stored in local storage because if a page is refreshed we need to send axios 
 requests to reset the movies and user states without having to log in again. Note that password has already
-been stored when submitting the login form (it is needed to display a non-hashed password on the profile page) */ localStorage.setItem('user', loginData.user.Username);
+been stored when submitting the login form (it is needed to display a non-hashed password on the profile page */ localStorage.setItem('user', loginData.user.Username);
         localStorage.setItem('token', loginData.token);
         this.getMovies(loginData.token);
     }
     logOut() {
-        // Using setUser function to reset the user state in the store to null
+        // Using setUser function again to reset the user state in the store to null
         this.props.setUser(null);
         localStorage.removeItem('user', null);
         localStorage.removeItem('token', null);
@@ -22087,8 +22087,9 @@ been stored when submitting the login form (it is needed to display a non-hashed
         let token = localStorage.getItem('token');
         let username = localStorage.getItem('user');
         if (token !== null) {
-            //  Fetch data from the database and reset the movies and user state in the store
-            this.getUser(username, token);
+            /*  Instead of retrieving the user from local storage we are making a request to the database to 
+get the full user object, which is then used as the payload for the setUser function. This all 
+happens within the new getUser function called here */ this.getUser(username, token);
             this.getMovies(token);
         }
     }
@@ -22136,7 +22137,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 106
+                lineNumber: 108
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
@@ -22144,14 +22145,14 @@ been stored when submitting the login form (it is needed to display a non-hashed
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 107
+                lineNumber: 109
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 108
+                lineNumber: 110
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22173,7 +22174,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 110
+                lineNumber: 112
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22191,7 +22192,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 117
+                lineNumber: 119
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22223,7 +22224,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 122
+                lineNumber: 124
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22250,7 +22251,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 136
+                lineNumber: 138
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22277,7 +22278,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 146
+                lineNumber: 148
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22301,7 +22302,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 156
+                lineNumber: 158
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22323,7 +22324,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 163
+                lineNumber: 165
             },
             __self: this
         }))));
@@ -22353,7 +22354,7 @@ exports.default = _reactRedux.connect(mapStateToProps, {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../movie-view/movie-view":"67UYI","axios":"7rA65","../registration-view/registration-view":"1nt2p","../login-view/login-view":"6aBEq","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-router-dom":"1PMSK","../mynavbar/mynavbar":"31Qie","../director-view/director-view":"4Ed7m","../genre-view/genre-view":"GvXIx","../profile-view/profile-view":"16TE9","../update-view/update-view":"J2RKh","prop-types":"4dfy5","react-redux":"7GDa4","../../actions/actions":"5S6cN","../movies-list/movies-list":"EAUU1","./main-view.scss":"4yZvk"}],"67UYI":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../movie-view/movie-view":"67UYI","axios":"7rA65","../registration-view/registration-view":"1nt2p","../login-view/login-view":"6aBEq","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-router-dom":"1PMSK","../mynavbar/mynavbar":"31Qie","../director-view/director-view":"4Ed7m","../genre-view/genre-view":"GvXIx","../profile-view/profile-view":"16TE9","../update-view/update-view":"J2RKh","react-redux":"7GDa4","../../actions/actions":"5S6cN","../movies-list/movies-list":"EAUU1","./main-view.scss":"4yZvk","prop-types":"4dfy5"}],"67UYI":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40013,6 +40014,7 @@ used in the template also to avoid defining username twice within the same compo
         }).then((res)=>{
             console.log(res.data);
             updateFavourites(res.data);
+        //      window.open(`/user/${username}`, '_self');    
         }).catch((err)=>{
             console.log(err, 'remove movie failed');
         });
@@ -40021,34 +40023,34 @@ used in the template also to avoid defining username twice within the same compo
         className: "profile-view",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 63
+            lineNumber: 64
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
         className: "header",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 64
+            lineNumber: 65
         },
         __self: this
     }, "myProfile"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 65
+            lineNumber: 66
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 66
+            lineNumber: 67
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 67
+            lineNumber: 68
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -40056,44 +40058,44 @@ used in the template also to avoid defining username twice within the same compo
         readOnly: true,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 68
+            lineNumber: 69
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formPassword",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 69
+            lineNumber: 70
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 70
+            lineNumber: 71
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "password",
+        type: "text",
         defaultValue: password,
         readOnly: true,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 71
+            lineNumber: 72
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formEmail",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 72
+            lineNumber: 73
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 73
+            lineNumber: 74
         },
         __self: this
     }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -40101,21 +40103,21 @@ used in the template also to avoid defining username twice within the same compo
         readOnly: true,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 74
+            lineNumber: 75
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formBirthday",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 75
+            lineNumber: 76
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         className: "label",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 76
+            lineNumber: 77
         },
         __self: this
     }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -40123,13 +40125,13 @@ used in the template also to avoid defining username twice within the same compo
         readOnly: true,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 77
+            lineNumber: 78
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 79
+            lineNumber: 80
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -40138,21 +40140,21 @@ used in the template also to avoid defining username twice within the same compo
         onClick: handleDeregister,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 80
+            lineNumber: 81
         },
         __self: this
     }, "deregister"), /*#__PURE__*/ _reactDefault.default.createElement("span", {
         className: "space",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 81
+            lineNumber: 82
         },
         __self: this
     }, " i"), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
         to: "/updateProfile",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 82
+            lineNumber: 83
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -40160,16 +40162,10 @@ used in the template also to avoid defining username twice within the same compo
         type: "submit",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 83
+            lineNumber: 84
         },
         __self: this
     }, "update")), /*#__PURE__*/ _reactDefault.default.createElement("br", {
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
-            lineNumber: 85
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 86
@@ -40181,17 +40177,23 @@ used in the template also to avoid defining username twice within the same compo
             lineNumber: 87
         },
         __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("h2", {
-        className: "header",
+    }), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 88
         },
         __self: this
-    }, "myFavourites"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }), /*#__PURE__*/ _reactDefault.default.createElement("h2", {
+        className: "header",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 89
+        },
+        __self: this
+    }, "myFavourites"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 90
         },
         __self: this
     }, matchedMovies)));
@@ -40219,7 +40221,66 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","axios":"7rA65","./profile-view.scss":"CWyO5","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Button":"1ru0l","prop-types":"4dfy5","react-bootstrap/Form":"6A5ko","react-router-dom":"1PMSK","react-redux":"7GDa4","../../actions/actions":"5S6cN"}],"CWyO5":[function() {},{}],"7GDa4":[function(require,module,exports) {
+},{"react":"3b2NM","axios":"7rA65","./profile-view.scss":"CWyO5","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Button":"1ru0l","prop-types":"4dfy5","react-bootstrap/Form":"6A5ko","react-router-dom":"1PMSK","../../actions/actions":"5S6cN","react-redux":"7GDa4"}],"CWyO5":[function() {},{}],"5S6cN":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "SET_MOVIES", ()=>SET_MOVIES
+);
+parcelHelpers.export(exports, "FILTER_MOVIES", ()=>FILTER_MOVIES
+);
+parcelHelpers.export(exports, "SET_USER", ()=>SET_USER
+);
+parcelHelpers.export(exports, "UPDATE_USER", ()=>UPDATE_USER
+);
+parcelHelpers.export(exports, "UPDATE_FAVOURITES", ()=>UPDATE_FAVOURITES
+);
+parcelHelpers.export(exports, "setMovies", ()=>setMovies
+);
+parcelHelpers.export(exports, "filterMovies", ()=>filterMovies
+);
+parcelHelpers.export(exports, "setUser", ()=>setUser
+);
+parcelHelpers.export(exports, "updateUser", ()=>updateUser
+);
+parcelHelpers.export(exports, "updateFavourites", ()=>updateFavourites
+);
+const SET_MOVIES = 'SET_MOVIES';
+const FILTER_MOVIES = 'FILTER_MOVIES';
+const SET_USER = 'SET_USER';
+const UPDATE_USER = 'UPDATE_USER';
+const UPDATE_FAVOURITES = 'UPDATE_FAVOURITES';
+const setMovies = (movies)=>{
+    return {
+        type: SET_MOVIES,
+        payload: movies
+    };
+};
+const filterMovies = (filterstring)=>{
+    return {
+        type: FILTER_MOVIES,
+        payload: filterstring
+    };
+};
+const setUser = (user)=>{
+    return {
+        type: SET_USER,
+        payload: user
+    };
+};
+const updateUser = (user)=>{
+    return {
+        type: UPDATE_USER,
+        payload: user
+    };
+};
+const updateFavourites = (favourites)=>{
+    return {
+        type: UPDATE_FAVOURITES,
+        payload: favourites
+    };
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"59uFI"}],"7GDa4":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
@@ -41454,66 +41515,7 @@ exports.unstable_batchedUpdates = void 0;
 var _reactDom = require("react-dom");
 exports.unstable_batchedUpdates = _reactDom.unstable_batchedUpdates;
 
-},{"react-dom":"2sg1U"}],"5S6cN":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "SET_MOVIES", ()=>SET_MOVIES
-);
-parcelHelpers.export(exports, "FILTER_MOVIES", ()=>FILTER_MOVIES
-);
-parcelHelpers.export(exports, "SET_USER", ()=>SET_USER
-);
-parcelHelpers.export(exports, "UPDATE_USER", ()=>UPDATE_USER
-);
-parcelHelpers.export(exports, "UPDATE_FAVOURITES", ()=>UPDATE_FAVOURITES
-);
-parcelHelpers.export(exports, "setMovies", ()=>setMovies
-);
-parcelHelpers.export(exports, "filterMovies", ()=>filterMovies
-);
-parcelHelpers.export(exports, "setUser", ()=>setUser
-);
-parcelHelpers.export(exports, "updateUser", ()=>updateUser
-);
-parcelHelpers.export(exports, "updateFavourites", ()=>updateFavourites
-);
-const SET_MOVIES = 'SET_MOVIES';
-const FILTER_MOVIES = 'FILTER_MOVIES';
-const SET_USER = 'SET_USER';
-const UPDATE_USER = 'UPDATE_USER';
-const UPDATE_FAVOURITES = 'UPDATE_FAVOURITES';
-const setMovies = (movies)=>{
-    return {
-        type: SET_MOVIES,
-        payload: movies
-    };
-};
-const filterMovies = (filterstring)=>{
-    return {
-        type: FILTER_MOVIES,
-        payload: filterstring
-    };
-};
-const setUser = (user)=>{
-    return {
-        type: SET_USER,
-        payload: user
-    };
-};
-const updateUser = (user)=>{
-    return {
-        type: UPDATE_USER,
-        payload: user
-    };
-};
-const updateFavourites = (favourites)=>{
-    return {
-        type: UPDATE_FAVOURITES,
-        payload: favourites
-    };
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"59uFI"}],"J2RKh":[function(require,module,exports) {
+},{"react-dom":"2sg1U"}],"J2RKh":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41730,7 +41732,7 @@ $RefreshReg$(_c, "UpdateView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","axios":"7rA65","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","./update-view.scss":"6vYyP","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","prop-types":"4dfy5","../../actions/actions":"5S6cN","react-redux":"7GDa4"}],"6vYyP":[function() {},{}],"EAUU1":[function(require,module,exports) {
+},{"react":"3b2NM","axios":"7rA65","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","./update-view.scss":"6vYyP","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","../../actions/actions":"5S6cN","react-redux":"7GDa4","prop-types":"4dfy5"}],"6vYyP":[function() {},{}],"EAUU1":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41838,56 +41840,7 @@ $RefreshReg$(_c, "MoviesList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap/Col":"2D0r8","react-redux":"7GDa4","../movies-filter-input/movies-filter-input":"6yMWk","../movie-card/movie-card":"VFCZ2","./movies-list.scss":"4PcYw","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"6yMWk":[function(require,module,exports) {
-var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-helpers.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _form = require("react-bootstrap/Form");
-var _formDefault = parcelHelpers.interopDefault(_form);
-var _reactRedux = require("react-redux");
-var _actions = require("../../actions/actions");
-var _moviesFilterInputScss = require("./movies-filter-input.scss");
-function MoviesFilterInput({ filterMovies , movieFilter  }) {
-    return(/*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        id: "input",
-        onChange: (e)=>filterMovies(e.target.value)
-        ,
-        type: "text",
-        value: movieFilter,
-        placeholder: "Search movies",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-filter-input/movies-filter-input.jsx",
-            lineNumber: 9
-        },
-        __self: this
-    }));
-}
-_c = MoviesFilterInput;
-MoviesFilterInput.propTypes = {
-    filterMovies: _propTypesDefault.default.func.isRequired,
-    movieFilter: _propTypesDefault.default.string.isRequired
-};
-exports.default = _reactRedux.connect(null, {
-    filterMovies: _actions.filterMovies
-})(MoviesFilterInput);
-var _c;
-$RefreshReg$(_c, "MoviesFilterInput");
-
-  helpers.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap/Form":"6A5ko","react-redux":"7GDa4","../../actions/actions":"5S6cN","./movies-filter-input.scss":"5qxhk","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"5qxhk":[function() {},{}],"VFCZ2":[function(require,module,exports) {
+},{"react":"3b2NM","react-redux":"7GDa4","../movie-card/movie-card":"VFCZ2","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Col":"2D0r8","../movies-filter-input/movies-filter-input":"6yMWk","./movies-list.scss":"4PcYw","prop-types":"4dfy5"}],"VFCZ2":[function(require,module,exports) {
 var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41995,7 +41948,56 @@ exports.default = MovieCard;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap/Button":"1ru0l","react-bootstrap/Card":"1CZWQ","react-router-dom":"1PMSK","./movie-card.scss":"4xSPx","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"4xSPx":[function() {},{}],"4PcYw":[function() {},{}],"4yZvk":[function() {},{}],"7panR":[function(require,module,exports) {
+},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap/Button":"1ru0l","react-bootstrap/Card":"1CZWQ","react-router-dom":"1PMSK","./movie-card.scss":"4xSPx","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"4xSPx":[function() {},{}],"6yMWk":[function(require,module,exports) {
+var helpers = require("../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _form = require("react-bootstrap/Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _reactRedux = require("react-redux");
+var _actions = require("../../actions/actions");
+var _moviesFilterInputScss = require("./movies-filter-input.scss");
+function MoviesFilterInput({ filterMovies , movieFilter  }) {
+    return(/*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        id: "input",
+        onChange: (e)=>filterMovies(e.target.value)
+        ,
+        type: "text",
+        value: movieFilter,
+        placeholder: "Search movies",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web development/Projects/myFlix-client/src/components/movies-filter-input/movies-filter-input.jsx",
+            lineNumber: 9
+        },
+        __self: this
+    }));
+}
+_c = MoviesFilterInput;
+MoviesFilterInput.propTypes = {
+    filterMovies: _propTypesDefault.default.func.isRequired,
+    movieFilter: _propTypesDefault.default.string.isRequired
+};
+exports.default = _reactRedux.connect(null, {
+    filterMovies: _actions.filterMovies
+})(MoviesFilterInput);
+var _c;
+$RefreshReg$(_c, "MoviesFilterInput");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","react-bootstrap/Form":"6A5ko","react-redux":"7GDa4","../../actions/actions":"5S6cN","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","./movies-filter-input.scss":"5qxhk","prop-types":"4dfy5"}],"5qxhk":[function() {},{}],"4PcYw":[function() {},{}],"4yZvk":[function() {},{}],"7panR":[function(require,module,exports) {
 'use strict';
 Object.defineProperty(exports, '__esModule', {
     value: true
