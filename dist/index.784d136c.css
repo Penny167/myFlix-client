@@ -99,6 +99,15 @@
   margin-top: 20vh;
   padding-bottom: 10vh;
 }
+#input {
+  color: black;
+  margin-top: 15vh;
+  border: black;
+}
+
+#input:focus {
+  border: none;
+}
 .movie-card {
   margin-top: 5vh;
   margin-bottom: 2vh;
@@ -118,15 +127,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-#input {
-  color: black;
-  margin-top: 15vh;
-  border: black;
-}
-
-#input:focus {
-  border: none;
-}
 .empty-view {
   background-color: #0c0d0d;
   height: 100%;
@@ -137,24 +137,5 @@
 
 .main-view {
   padding-bottom: 30vh;
-}
-.movie-card {
-  margin-top: 15vh;
-  margin-bottom: 2vh;
-}
-
-#moviecardButton {
-  border-color: #fff;
-}
-
-.card-text {
-  height: 100px;
-  overflow: auto;
-}
-
-.card-title {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 /*# sourceMappingURL=index.784d136c.css.map */
