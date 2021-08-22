@@ -1,24 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {useState} from 'react';
+import { updateUser } from '../../actions/actions';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './update-view.scss';
+import { connect } from 'react-redux';
 
 
-function UpdateView() {
+function UpdateView({user, updateUser}) {
 
-  const [username, setUsername] = useState(localStorage.getItem('user'));
+  const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState(localStorage.getItem('password'));
-  const [email, setEmail] = useState(localStorage.getItem('email'));
-  const date = (localStorage.getItem('birthday')).split("",10);
+  const [email, setEmail] = useState(user.Email);
+  const date = (user.Birthday).split("",10);
   const birthdate = date[0]+date[1]+date[2]+date[3]+date[7]+date[5]+date[6]+date[4]+date[8]+date[9];
   const [birthday, setBirthday] = useState(birthdate);
 
-/* Function to handle submission of the new registration details. Successful update will redirect the
-user to the main view. They can continue to use their existing user credentials until they log out because
-we know they are an authenticated user. When they log out, the user state will be reset to null and will be
-updated with their new username (where applicable) when they next log in */
+/* Function to handle submission of the new profile details. A successful request will update the 
+store with the new user details returned from the database then redirect the user to their profile 
+page where the new details will be displayed */
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -31,10 +34,9 @@ updated with their new username (where applicable) when they next log in */
     )
     .then(res => {
       console.log(res.data);
+      updateUser(res.data);
       localStorage.setItem('user', username);
       localStorage.setItem('password', password);
-      localStorage.setItem('email', email);
-      localStorage.setItem('birthday', birthday);
       window.open(`/user/${username}`, '_self');
     })
     .catch(err => {
@@ -54,7 +56,7 @@ updated with their new username (where applicable) when they next log in */
         </Form.Group> 
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
-          <Form.Control required type="text" minLength="8" placeholder="Please enter a valid password"
+          <Form.Control required type="password" minLength="8" placeholder="Please enter a valid password"
           value={password} onChange={e => setPassword(e.target.value)} />
         </Form.Group> 
         <Form.Group controlId="formEmail"> 
@@ -72,4 +74,15 @@ updated with their new username (where applicable) when they next log in */
   )
 }
 
-export default UpdateView
+UpdateView.propTypes = {
+
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string.isRequired}).isRequired,
+
+  updateUser:PropTypes.func.isRequired
+};
+
+export default connect(null, { updateUser })(UpdateView);

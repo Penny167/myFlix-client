@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import './director-view.scss';
@@ -27,5 +28,13 @@ function DirectorView({ directorData, onBackClick }) {
     </div>
   );
 }
+
+DirectorView.propTypes = {
+
+  directorData: PropTypes.arrayOf(
+    PropTypes.object.isRequired).isRequired,
+  onBackClick: PropTypes.func.isRequired
+
+};
 
 export default DirectorView

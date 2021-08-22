@@ -8,8 +8,7 @@
   height: 100%;
 }
 .movie-view {
-  margin-top: 8rem;
-  padding-bottom: 50vh;
+  margin-top: 30vh;
   color: #fff;
 }
 
@@ -36,7 +35,6 @@
 }
 .login-view {
   margin-top: 20vh;
-  padding-bottom: 50vh;
 }
 #navButton {
   color: #0c0d0d;
@@ -49,8 +47,7 @@
   background-color: #dc3545;
 }
 .director-view {
-  margin-top: 8rem;
-  padding-bottom: 50vh;
+  margin-top: 30vh;
   color: #fff;
 }
 
@@ -71,13 +68,11 @@
   text-decoration: none;
 }
 .genre-view {
-  margin-top: 8rem;
-  padding-bottom: 50vh;
+  margin-top: 30vh;
   color: #fff;
 }
 .profile-view {
   margin-top: 20vh;
-  padding-bottom: 30vh;
   color: #fff;
 }
 
@@ -102,6 +97,45 @@
 }
 .update-view {
   margin-top: 20vh;
+  padding-bottom: 10vh;
+}
+.movie-card {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+}
+
+#moviecardButton {
+  border-color: #fff;
+}
+
+.card-text {
+  height: 100px;
+  overflow: auto;
+}
+
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#input {
+  color: black;
+  margin-top: 15vh;
+  border: black;
+}
+
+#input:focus {
+  border: none;
+}
+.empty-view {
+  background-color: #0c0d0d;
+  height: 100%;
+}
+.empty-view {
+  padding-bottom: 100vh;
+}
+
+.main-view {
   padding-bottom: 30vh;
 }
 .movie-card {
