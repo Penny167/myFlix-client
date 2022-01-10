@@ -1,0 +1,141 @@
+.registration-view {
+  margin-top: 20vh;
+  padding-bottom: 10vh;
+}
+.login-view {
+  margin-top: 20vh;
+}
+#input {
+  color: black;
+  margin-top: 15vh;
+  border: black;
+}
+
+#input:focus {
+  border: none;
+}
+.movie-card {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+}
+
+#moviecardButton {
+  border-color: #fff;
+}
+
+.card-text {
+  height: 100px;
+  overflow: auto;
+}
+
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.empty-view {
+  background-color: #0c0d0d;
+  height: 100%;
+}
+.movie-view {
+  margin-top: 30vh;
+  color: #fff;
+}
+
+#image {
+  float: left;
+  margin-right: 2vw;
+}
+
+.link {
+  color: #fff;
+}
+
+.link:hover {
+  color: #dc3545;
+  text-decoration: none;
+}
+
+.space {
+  color: #0c0d0d;
+}
+#navButton {
+  color: #0c0d0d;
+  border: none;
+  text-align: center;
+}
+
+#navButton:hover {
+  text-decoration: underline;
+  background-color: #dc3545;
+}
+.director-view {
+  margin-top: 30vh;
+  color: #fff;
+}
+
+#list {
+  padding-left: 0px;
+}
+
+.listItem {
+  list-style: none;
+}
+
+#link {
+  color: #fff;
+}
+
+#link:hover {
+  color: #dc3545;
+  text-decoration: none;
+}
+.genre-view {
+  margin-top: 30vh;
+  color: #fff;
+}
+.profile-view {
+  margin-top: 20vh;
+  color: #fff;
+}
+
+.space {
+  color: #0c0d0d;
+}
+
+.header {
+  color: #dc3545;
+}
+
+.label {
+  color: #dc3545;
+}
+
+.movieContainer {
+  margin-top: 20px;
+}
+
+.favourite {
+  margin-bottom: 10px;
+}
+.update-view {
+  margin-top: 20vh;
+  padding-bottom: 10vh;
+}
+.empty-view {
+  padding-bottom: 100vh;
+}
+
+.main-view {
+  padding-bottom: 30vh;
+}
+.my-flix {
+  color: steelblue;
+}
+
+.app-container {
+  background-color: #0c0d0d;
+  color: #dc3545;
+  height: 100%;
+}
+/*# sourceMappingURL=index.18a47353.css.map */
