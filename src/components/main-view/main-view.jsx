@@ -100,14 +100,14 @@ been stored when submitting the login form (it is needed to display a non-hashed
     })
   }
 
-/* New version of add to favourites
+// New version of add to favourites
   addToFavourites(movieID) {
     let username = localStorage.getItem('user');
     let token = localStorage.getItem('token');
     axios.get(`http://intense-depths-38257.herokuapp.com/users/favourites/${username}`,
       {headers: { Authorization: `Bearer ${token}`}})
     .then(res => {
-      favouritesArray = res;
+    let favouritesArray = res.data;
       if (!favouritesArray.includes(movieID)) {
         axios.put(`https://intense-depths-38257.herokuapp.com/users/${username}/${movieID}`,
         {FavouriteMovies: movieID},
@@ -119,13 +119,13 @@ been stored when submitting the login form (it is needed to display a non-hashed
       .catch(err => {
         console.log(err);
       })
-      }
+      } else { alert('Movie already added!')}
     })
     .catch(err => {
       console.log(err);
     })
   }
-*/
+
 
 
   render() {
