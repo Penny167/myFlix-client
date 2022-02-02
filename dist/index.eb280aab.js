@@ -29081,7 +29081,7 @@ user to the login view */ const handleRegistration = (e)=>{
         type: "text",
         minLength: "5",
         pattern: "[a-zA-Z0-9]+",
-        placeholder: "Please enter a valid username",
+        placeholder: "Please enter a username",
         value: username,
         onChange: (e)=>setUsername(e.target.value)
         ,
@@ -29107,7 +29107,7 @@ user to the login view */ const handleRegistration = (e)=>{
         required: true,
         type: "password",
         minLength: "8",
-        placeholder: "Please enter a valid password",
+        placeholder: "Please enter a password",
         value: password,
         onChange: (e)=>setPassword(e.target.value)
         ,
@@ -30694,7 +30694,7 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         required: true,
-        type: "text",
+        type: "password",
         minLength: "8",
         placeholder: "Password",
         value: password,
@@ -42424,7 +42424,7 @@ used in the template also to avoid defining username twice within the same compo
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "password",
+        type: "text",
         defaultValue: password,
         readOnly: true,
         __source: {

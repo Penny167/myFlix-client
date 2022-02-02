@@ -32,12 +32,12 @@ user to the login view */
       <Form onSubmit={handleRegistration}>
         <Form.Group controlId="formUsername">  
           <Form.Label>Username:</Form.Label>
-          <Form.Control required type="text" minLength="5" pattern="[a-zA-Z0-9]+" placeholder="Please enter a valid username"
+          <Form.Control required type="text" minLength="5" pattern="[a-zA-Z0-9]+" placeholder="Please enter a username"
           value={username} onChange={e => setUsername(e.target.value)} />
         </Form.Group> 
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
-          <Form.Control required type="password" minLength="8" placeholder="Please enter a valid password"
+          <Form.Control required type="password" minLength="8" placeholder="Please enter a password"
           value={password} onChange={e => setPassword(e.target.value)} />
         </Form.Group> 
         <Form.Group controlId="formEmail"> 
