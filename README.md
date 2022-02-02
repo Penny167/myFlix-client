@@ -1,24 +1,42 @@
 # myFlix-client
 
-myFlix-client is the front end of the myFlix application, which is an app for movie enthusiasts that allows them to view information about movies, directors and genres, and create lists of their favourite movies. The back end of the application consists of an API hosted on Heroku and a database hosted on MongoDB Atlas, and the files for this reside in a separate repository, myFlix.
+myFlix-client is a responsive front end for a movie application that allows movie enthusiasts to view information about movies, directors and genres for a selection of classic films. 
 
-# Tools and functionality
-myFlix-client has been built using React and the build tool Parcel.
+The app interacts with a database that holds movie and user information using the myFlix API. The repository for the API, which includes documentation of all the available endpoints, can be found [here](https://github.com/Penny167/myFlix).
 
-The main component, MainView, is a class component inside of which movies and user data is fetched via requests to the database using Axios. This data is used to populate the app state inside a store created using Redux and React-Redux. The store state is updated thereafter based on user interactions, by dispatching actions that are connected to relevant components as props using connect(mapDispatchToProps).MainView receives the app state as props from the store using connect(mapStateToProps), which it then passes to child components as props as needed.
+my-Flix-client was built using React, uses the build tool Parcel and is hosted on Netlify.
 
-MainView uses React-Router to render various views of the data within child components. This allows the user to navigate from a main view of all of the movie data (the homepage), to explore an individual movie, genre or director. The movies data, passed to the child components as props, is filtered within Routes using normal javaScript, to return the required subsection pertaining to an individual movie, genre or director.
+## Live website
 
-In addition, a user can search for a movie on the homepage via a search bar that uses a separate, dedicated filter component. This component contains a search string input that dispatches updates, as the user types, to the store, where the filter string is managed as a separate piece of state. The child component responsible for rendering the homepage movies content (MoviesList) subscribes for updates to the filter string state in the store, and uses the data to filter through the movies list and display only those movies whose titles contain characters within the search string. Where no search characters  have been entered by the user, the full list is displayed; when characters are entered, a filtered list is displayed, updating dynamically as the user types.
+Visit myFlix-client [here]() and sign up to explore the app!
 
-There are views to handle logging on to and registering for the app that are also child components of MainView. These contain forms that are populated by data originated by the user and therefore require local state. As such they have been created as function components that use the React useState hook to create and manage this state.
+## Key Features
 
-A registered, logged in user has a profile page where they can view their details, including a list of their favourite movies. Movies are added to favourites via buttons on individual movie views as the user explores the app. They can be deleted from the favourites list via buttons on the profile page. The buttons in each case, submit add or delete requests using Axios to the database, and the returned object is used to update the user state in the store. The updated state is passed as props by the store to MainView (which is connected to the store as described above using connect(mapStateToProps)), which in turn passes it as props to the profile component that is re-rendered displaying the updated list. The functions required to dispatch updates to the store when the buttons are clicked are attached to the movie and profile components using connect(mapDispatchToProps).
 
-A user may also update their details, on a separate pre-populated update page linked to via the profile page. This sends a put request using Axios to update the database, with the returned updated user object then dispatched to the store to update the user state. A successful request returns the user to the profile page where updated details will be displayed. They can also deregister from the app entirely using a button on the profile page that similarly sends a delete request to the database; in this case a successful request triggers the logout function. This resets the app state in the store to null and returns to the login page. A user can also log out at any time by clicking a button (styled as a link) in the navbar.
 
-When a user logs in, they are authenticated then passed a JWT to authorise subsequent requests to the database, using functionality implemented on the server-side of the app. Within myFlix-client, the JWT and username are stored in localstorage when the user logs in. As well as facilitating requests initiated by user actions such as adding or deleting a favourite movie, this ensures that on a page refresh the app can re-retrieve the movies and user data needed by the store (that is otheriwse reset to [] and null respectively) without requiring the user to log in again. All properties stored in local storage are removed when the user logs out.
+## Technologies used
 
-The app has been styled using React-Bootstrap. The Card component has been used to display summary movie information as cards within a grid on the homepage with an image, title and some descriptive text as well as a button that links to the dedicated view for the movie selected. React-Bootstrap forms are used on the login, registration, profile and update views. Basic html 5 form validation has been implemented to ensure completeness of any inputs required and to validate inputs against database requirements defined in the back end. The React-Bootstrap Navbar has been used within a separate navbar component that contains navlinks to the home and profile views as well as the logout button.
+- React
+- React-Bootstrap
+- React-Redux
+- Redux
+- Axios
+- Prop-types
+- Parcel
 
-PropTypes have been used within each component that has props, as a control mechanism. The redux devtools extension has also been used to enable views of the state during testing.
+## Installation and set up
+
+UPDATE THIS SECTION ONCE DEPLOYMENT COMPLETED
+
+To install myFlix-client run: 
+```
+npm install
+```
+
+To launch myFlix-client locally run:
+```
+parcel src/index.html
+```
+
+## Author
+Github: [@penny167](https://github.com/Penny167)
