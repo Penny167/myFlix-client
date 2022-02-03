@@ -13,14 +13,15 @@ Visit myFlix-client [here]() and sign up to explore the app!
 ## Key Features
 
 - Users can log in or sign up to the app from a welcome page. Login and registration forms implement HTML form validation to ensure credentials adhere to the database users schema.
-- On logging in users are taken to a movie view where they can view all the movies in the database. Movies are displayed as cards showing an image, the title, the first lines of a synopsis and a button that the user can click to see additional details. The movie view also contains a search bar that implements a filter whereby users can search for movies by name.
-- Clicking a movie card button takes the user to a view of the selected movie. They can read a full synopsis and find information about the film's director and genre. Clickable links take them to director and genre views with further details. A button allows the user to add the movie to a list of their favourites, which they can view on their profile page.
-- Back buttons and links allow the user to move between views. There is also a navigation bar via which a user can either navigate directly to the movie view or their profile or click a button to log out.
+- On logging in users are taken to a movie view where they can view all the movies in the database. Movies are displayed as cards showing an image, the title, the first lines of a synopsis and a button that the user can click on to open the card. The movie view also contains a search bar that implements a filter whereby users can search for individual movies by name.
+- Clicking the movie card button takes the user to a view of the movie selected. There, they can read a full synopsis and find information about the film's director and genre. Clickable links take them to director and genre views with further details. A button allows the user to add the movie to a list of their favourites, which they can view on their profile page.
+- Back buttons and links allow the user to move between views. There is also a navigation bar via which a user can either navigate directly to the movie view or to their profile, or click a button to log out.
 - The user's profile displays their registration credentials as well as the list of their favourite movies. Inside this view they can update their credentials using an update form, remove movies from their list of favourites or delete their profile and deregister from the app.
-- myFlix-client is a React application that uses both class based and function components to demonstrate different ways of working with state, hooks and lifecycle methods.
+- myFlix-client is a React application and uses both class based and function components to demonstrate different ways of working with state, hooks and lifecycle methods.
 - The app implements Redux and React-Redux to manage shared state via a store using actions and reducers. 
 - React-Bootstrap has been used to provide a responsive layout as well as a variety of components such as forms, cards, toast alerts and a navbar.
-- The data used throughout the app is sent and received by using Axios to make HTTP requests to the relevant myFlix API endpoints.
+- Routing is implemented using the React Router in the main component and nav links in the Bootstrap NavBar.
+- The data used throughout the app is sent and received using Axios to make HTTP requests to the relevant myFlix API endpoints.
 - Prop-types have been used to ensure that props are passed between React components correctly.
 - The completed app has been published to Netlify and is accessible via the live website link above.
 
@@ -36,17 +37,17 @@ Visit myFlix-client [here]() and sign up to explore the app!
 
 ## Installation and set up
 
-UPDATE THIS SECTION ONCE DEPLOYMENT COMPLETED
+This project requires npm in order to install package dependencies. npm is installed automatically when installing node.js. The relevant documentation can be found [here](https://nodejs.org/en/).
 
-To install myFlix-client run: 
+Once npm is installed, install myFlix-client by running: 
 ```
 npm install
 ```
-
-To launch myFlix-client locally run:
+To launch myFlix-client run:
 ```
 parcel src/index.html
 ```
+This will build a local version of myFlix viewable in the browser. 
 
 ## Author
 Github: [@penny167](https://github.com/Penny167)
