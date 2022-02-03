@@ -13,14 +13,14 @@ class MovieView extends React.Component {
     <div className="movie-view">
       <div className="movie-image"><img id="image" src={movieData.ImagePath} /></div>
       <div className="movie-title">
-        <span className="Label">Title: </span>
+        <span className="Label"></span>
         <span className="Value">{movieData.Title}</span>
       </div>
+      <br></br>
       <div className="movie-description">
-        <span className="Label">Description: </span>
+        <span className="Label">Synopsis: </span>
         <span className="Value">{movieData.Description}</span>
       </div>
-      <br></br>
       <div className="movie-genre">
         <span className="Label">Genre: </span>
       <Link className="link" to={"/genre/" + movieData.Genre.Name}>

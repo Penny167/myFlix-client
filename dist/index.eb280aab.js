@@ -24847,11 +24847,19 @@ var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
 var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
+var _toast = require("react-bootstrap/Toast");
+var _toastDefault = parcelHelpers.interopDefault(_toast);
+var _toastBody = require("react-bootstrap/ToastBody");
+var _toastBodyDefault = parcelHelpers.interopDefault(_toastBody);
 var _mainViewScss = require("./main-view.scss");
 class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
     }
+    state = {
+        alertSuccess: false,
+        alertFail: false
+    };
     onLoggedIn(loginData) {
         console.log(loginData);
         // Dispatching action to change user state in the store rather than setting state locally
@@ -24939,12 +24947,27 @@ been stored when submitting the login form (it is needed to display a non-hashed
             }).then((res1)=>{
                 console.log(res1);
                 this.props.updateFavourites(res1.data);
+                this.setState({
+                    alertSuccess: true
+                });
             }).catch((err)=>{
                 console.log(err);
             });
-            else alert('Movie already added!');
+            else this.setState({
+                alertFail: true
+            });
         }).catch((err)=>{
             console.log(err);
+        });
+    }
+    resetAlertSuccess() {
+        this.setState({
+            alertSuccess: false
+        });
+    }
+    resetAlertFail() {
+        this.setState({
+            alertFail: false
         });
     }
     render() {
@@ -24952,7 +24975,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 134
+                lineNumber: 147
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
@@ -24960,14 +24983,14 @@ been stored when submitting the login form (it is needed to display a non-hashed
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 135
+                lineNumber: 148
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 136
+                lineNumber: 149
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -24989,7 +25012,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 138
+                lineNumber: 151
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25007,7 +25030,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 145
+                lineNumber: 158
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25035,11 +25058,43 @@ been stored when submitting the login form (it is needed to display a non-hashed
                         const movieID = match.params.movieId;
                         this.addToFavourites(movieID);
                     }
-                })));
+                }), /*#__PURE__*/ _reactDefault.default.createElement("br", null), /*#__PURE__*/ _reactDefault.default.createElement(_toastDefault.default, {
+                    style: {
+                        color: 'black',
+                        backgroundColor: 'white',
+                        fontSize: 14,
+                        position: 'fixed',
+                        top: 75,
+                        right: 15,
+                        textAlign: 'center',
+                        fontWeight: 400
+                    },
+                    show: this.state.alertSuccess,
+                    onClose: ()=>this.resetAlertSuccess()
+                    ,
+                    delay: 2000,
+                    autohide: true
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_toastBodyDefault.default, null, "Movie added!")), /*#__PURE__*/ _reactDefault.default.createElement(_toastDefault.default, {
+                    style: {
+                        color: 'black',
+                        backgroundColor: 'white',
+                        fontSize: 14,
+                        position: 'fixed',
+                        top: 75,
+                        right: 15,
+                        textAlign: 'center',
+                        fontWeight: 400
+                    },
+                    show: this.state.alertFail,
+                    onClose: ()=>this.resetAlertFail()
+                    ,
+                    delay: 2000,
+                    autohide: true
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_toastBodyDefault.default, null, "Movie already added!"))));
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 150
+                lineNumber: 163
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25066,7 +25121,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 164
+                lineNumber: 192
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25093,7 +25148,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 174
+                lineNumber: 202
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25117,7 +25172,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 184
+                lineNumber: 212
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25139,7 +25194,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 191
+                lineNumber: 219
             },
             __self: this
         }))));
@@ -25169,7 +25224,7 @@ exports.default = _reactRedux.connect(mapStateToProps, {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-router-dom":"1PMSK","react-redux":"7GDa4","../../actions/actions":"5S6cN","../registration-view/registration-view":"5Z2K9","../login-view/login-view":"2T1uR","../movies-list/movies-list":"6G3Ep","../movie-view/movie-view":"4yLEy","../mynavbar/mynavbar":"337dS","../director-view/director-view":"1KhgF","../genre-view/genre-view":"MgiBz","../profile-view/profile-view":"4iBw0","../update-view/update-view":"5P3X5","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","./main-view.scss":"4eBeD","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"7rA65":[function(require,module,exports) {
+},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-router-dom":"1PMSK","react-redux":"7GDa4","../../actions/actions":"5S6cN","../registration-view/registration-view":"5Z2K9","../login-view/login-view":"2T1uR","../movies-list/movies-list":"6G3Ep","../movie-view/movie-view":"4yLEy","../mynavbar/mynavbar":"337dS","../director-view/director-view":"1KhgF","../genre-view/genre-view":"MgiBz","../profile-view/profile-view":"4iBw0","../update-view/update-view":"5P3X5","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","./main-view.scss":"4eBeD","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-bootstrap/Toast":"o9l9n","react-bootstrap/ToastBody":"4qMwS"}],"7rA65":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"4qfhW"}],"4qfhW":[function(require,module,exports) {
@@ -31254,41 +31309,41 @@ class MovieView extends _reactDefault.default.Component {
                 lineNumber: 16
             },
             __self: this
-        }, "Title: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+        }), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "Value",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
                 lineNumber: 17
             },
             __self: this
-        }, movieData.Title)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "movie-description",
+        }, movieData.Title)), /*#__PURE__*/ _reactDefault.default.createElement("br", {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
                 lineNumber: 19
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-description",
+            __source: {
+                fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 20
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "Label",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
-                lineNumber: 20
-            },
-            __self: this
-        }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "Value",
-            __source: {
-                fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
                 lineNumber: 21
             },
             __self: this
-        }, movieData.Description)), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+        }, "Synopsis: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "Value",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",
-                lineNumber: 23
+                lineNumber: 22
             },
             __self: this
-        }), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        }, movieData.Description)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-genre",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/movie-view/movie-view.jsx",

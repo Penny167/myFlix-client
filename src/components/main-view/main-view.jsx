@@ -19,6 +19,8 @@ import UpdateView from '../update-view/update-view';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Toast from 'react-bootstrap/Toast';
+import ToastBody from 'react-bootstrap/ToastBody';
 import './main-view.scss';
 
 class MainView extends React.Component {
@@ -26,6 +28,8 @@ class MainView extends React.Component {
   constructor() {
     super();
   }
+
+  state = { alertSuccess: false, alertFail: false };
 
   onLoggedIn(loginData) {
     console.log(loginData);
@@ -115,18 +119,27 @@ been stored when submitting the login form (it is needed to display a non-hashed
       .then(res => {  
         console.log(res);
         this.props.updateFavourites(res.data);
+        this.setState({ alertSuccess: true });
       })
       .catch(err => {
         console.log(err);
       })
-      } else { alert('Movie already added!')}
+      } else { 
+        this.setState({ alertFail: true });
+      }
     })
     .catch(err => {
       console.log(err);
     })
   }
 
+  resetAlertSuccess() {
+    this.setState({ alertSuccess: false });
+  }
 
+  resetAlertFail() {
+    this.setState({ alertFail: false });
+  }
 
   render() {
     const { movies, user } = this.props;
@@ -158,7 +171,22 @@ been stored when submitting the login form (it is needed to display a non-hashed
                           const movieID = match.params.movieId;
                           this.addToFavourites(movieID)}}
                       />
-                    </Col>
+                      <br></br>
+                      <Toast style={{ color: 'black', backgroundColor: 'white', fontSize: 14, 
+                        position: 'fixed', top: 75, right: 15,
+                        textAlign: 'center', fontWeight: 400 }}  
+                        show={this.state.alertSuccess} onClose={() => this.resetAlertSuccess()}
+                        delay={2000} autohide>
+                        <ToastBody>Movie added!</ToastBody>
+                      </Toast>
+                      <Toast style={{ color: 'black', backgroundColor: 'white', fontSize: 14,
+                        position: 'fixed', top: 75, right: 15, 
+                        textAlign: 'center', fontWeight: 400, }}    
+                        show={this.state.alertFail} onClose={() => this.resetAlertFail()}
+                        delay={2000} autohide>
+                        <ToastBody>Movie already added!</ToastBody>
+                      </Toast>   
+                    </Col>          
           }}/>
 
           <Route exact path="/director/:name" render={({match, history}) => {
