@@ -91,7 +91,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
   addToFavourites(movieID) {
     let username = localStorage.getItem('user');
     let token = localStorage.getItem('token');
-    axios.get(`http://intense-depths-38257.herokuapp.com/users/favourites/${username}`,
+    axios.get(`https://intense-depths-38257.herokuapp.com/users/favourites/${username}`,
       {headers: { Authorization: `Bearer ${token}`}})
     .then(res => {
     let favouritesArray = res.data;
