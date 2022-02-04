@@ -13,7 +13,7 @@ class MovieCard extends React.Component {
       <Card className="movie-card" text="light" bg="danger" border="dark">
         <Card.Img variant="top" src={movieData.ImagePath} />
         <Card.Body>
-          <Card.Title className="card-title">{movieData.Title}</Card.Title>
+          <Card.Title id="title" className="card-title">{movieData.Title}</Card.Title>
           <Card.Text className="card-text">{movieData.Description}</Card.Text> 
           <Link to={"/movies/" + movieData._id}>
             <Button variant="danger" id="moviecardButton">open</Button> 

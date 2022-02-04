@@ -30872,6 +30872,7 @@ function MoviesList({ movies , movieFilter  }) {
             sm: 6,
             md: 4,
             lg: 3,
+            xl: 2,
             key: movie._id,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/movies-list/movies-list.jsx",
@@ -31009,6 +31010,7 @@ class MovieCard extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Title, {
+            id: "title",
             className: "card-title",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/movie-card/movie-card.jsx",

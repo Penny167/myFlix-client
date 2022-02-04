@@ -8,12 +8,21 @@
 }
 
 .card-text {
-  height: 100px;
+  height: 75px;
   overflow: auto;
+  font-size: 13px;
 }
 
 .card-title {
   white-space: nowrap; // this prevents the text from wrapping
   overflow: hidden; // this hides any text that overflows
   text-overflow: ellipsis; // this replaces the hidden text with dots ...
+}
+
+#title {
+  font-size: 15px;
+}
+
+#moviecardButton {
+  font-size: 13px;
 }

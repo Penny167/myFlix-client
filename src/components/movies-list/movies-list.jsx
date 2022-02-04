@@ -27,7 +27,7 @@ function MoviesList({ movies, movieFilter }) {
       passed to the movie-filter component as a prop */}
     </Col>
     {filteredMovies.map(movie => (
-    <Col xs={7} sm={6} md={4} lg={3} key={movie._id}>
+    <Col xs={7} sm={6} md={4} lg={3} xl={2} key={movie._id}>
       <MovieCard movieData={movie} />
     </Col>
     ))}

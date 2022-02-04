@@ -36,14 +36,23 @@
 }
 
 .card-text {
-  height: 100px;
+  height: 75px;
   overflow: auto;
+  font-size: 13px;
 }
 
 .card-title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+#title {
+  font-size: 15px;
+}
+
+#moviecardButton {
+  font-size: 13px;
 }
 .empty-view {
   background-color: #0c0d0d;
