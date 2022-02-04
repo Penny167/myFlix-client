@@ -48,7 +48,7 @@ To launch myFlix-client run:
 ```
 parcel src/index.html
 ```
-This will build a local version of myFlix viewable in the browser. 
+This will build a local version of myFlix-client viewable in the browser. 
 
 ## Author
 Github: [@penny167](https://github.com/Penny167)

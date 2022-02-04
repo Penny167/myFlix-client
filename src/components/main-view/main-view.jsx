@@ -87,24 +87,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
     })
   }
 
-// For consistency I am using username retrieved from local storage for all axios requests (as opposed to extracting from user state)
-  addToFavourites(movieID) {
-    let username = localStorage.getItem('user');
-    let token = localStorage.getItem('token');
-    axios.put(`https://intense-depths-38257.herokuapp.com/users/${username}/${movieID}`,
-    {FavouriteMovies: movieID},
-    {headers: { Authorization: `Bearer ${token}`}}
-              )
-    .then(res => {  
-      console.log(res);
-      this.props.updateFavourites(res.data);
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }
-
-// New version of add to favourites
+// Check first whether movie is included in users favourites. If not, then movie can be added.
   addToFavourites(movieID) {
     let username = localStorage.getItem('user');
     let token = localStorage.getItem('token');
@@ -165,27 +148,26 @@ been stored when submitting the login form (it is needed to display a non-hashed
               <LoginView onLoggedIn={loginData => this.onLoggedIn(loginData)} /></Col>
             if (movies.length === 0) return <div className="main-view" />;
             return  <Col xs={10} md={8} >
-                      <MovieView movieData={movies.find((movie) => movie._id === match.params.movieId)}
-                      onBackClick={() => history.goBack()}
-                      onAddMovie={() => {
-                          const movieID = match.params.movieId;
-                          this.addToFavourites(movieID)}}
-                      />
-                      <br></br>
+                      <div id="toast" >
                       <Toast style={{ color: 'black', backgroundColor: 'white', fontSize: 14, 
-                        position: 'fixed', top: 75, right: 15,
                         textAlign: 'center', fontWeight: 400 }}  
                         show={this.state.alertSuccess} onClose={() => this.resetAlertSuccess()}
                         delay={2000} autohide>
                         <ToastBody>Movie added!</ToastBody>
                       </Toast>
                       <Toast style={{ color: 'black', backgroundColor: 'white', fontSize: 14,
-                        position: 'fixed', top: 75, right: 15, 
-                        textAlign: 'center', fontWeight: 400, }}    
+                        textAlign: 'center', fontWeight: 400 }}    
                         show={this.state.alertFail} onClose={() => this.resetAlertFail()}
                         delay={2000} autohide>
                         <ToastBody>Movie already added!</ToastBody>
-                      </Toast>   
+                      </Toast>
+                      </div> 
+                      <MovieView movieData={movies.find((movie) => movie._id === match.params.movieId)}
+                      onBackClick={() => history.goBack()}
+                      onAddMovie={() => {
+                          const movieID = match.params.movieId;
+                          this.addToFavourites(movieID)}}
+                      />  
                     </Col>          
           }}/>
 

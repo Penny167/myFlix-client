@@ -5,3 +5,29 @@
 .main-view {
   padding-bottom: 30vh;
 } 
+
+#toast {
+  margin-top: 80px;
+  text-align: center;
+  height: 25px;
+  width: 175px;
+  position: fixed;
+  top: 0px;
+  left: 45vw;
+} 
+
+@media all and (max-width: 600px) {
+  #toast {
+    position: fixed;
+    top: 0px;
+    left: 30vw;
+  }
+}
+
+@media all and (min-width: 601px) and (max-width: 900px) {
+  #toast {
+    position: fixed;
+    top: 0px;
+    left: 40vw;
+  }
+}

@@ -24,7 +24,7 @@ used in the template also to avoid defining username twice within the same compo
     favMovies.map(favMovie => {
       return  <div className="movieContainer" key={favMovie._id}>
                 <div className="favourite">{favMovie.Title}</div>
-                <Button variant="danger" type="button" size="sm" onClick={() => handleRemove(favMovie._id)}>remove</Button>
+                <Button id="remove" variant="danger" type="button" size="sm" onClick={() => handleRemove(favMovie._id)}>remove</Button>
               </div>
     })
   ):( <p>Browse movies and select your favourites</p> )); 
@@ -77,10 +77,10 @@ used in the template also to avoid defining username twice within the same compo
           <Form.Control defaultValue={birthday} readOnly />
       </Form>
       <br />
-      <Button variant="danger" type="button" onClick={handleDeregister}>deregister</Button>
+      <Button id="deregister" variant="danger" type="button" onClick={handleDeregister}>deregister</Button>
       <span className="space"> i</span>
       <Link to="/updateProfile">
-        <Button variant="danger" type="submit">update</Button>
+        <Button id="update" variant="danger" type="submit">update</Button>
       </Link>
       <br />
       <br />

@@ -24911,24 +24911,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             console.log(err);
         });
     }
-    // For consistency I am using username retrieved from local storage for all axios requests (as opposed to extracting from user state)
-    addToFavourites(movieID) {
-        let username = localStorage.getItem('user');
-        let token = localStorage.getItem('token');
-        _axiosDefault.default.put(`https://intense-depths-38257.herokuapp.com/users/${username}/${movieID}`, {
-            FavouriteMovies: movieID
-        }, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((res)=>{
-            console.log(res);
-            this.props.updateFavourites(res.data);
-        }).catch((err)=>{
-            console.log(err);
-        });
-    }
-    // New version of add to favourites
+    // Check first whether movie is included in users favourites. If not, then movie can be added.
     addToFavourites(movieID) {
         let username = localStorage.getItem('user');
         let token = localStorage.getItem('token');
@@ -24975,7 +24958,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 147
+                lineNumber: 130
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
@@ -24983,14 +24966,14 @@ been stored when submitting the login form (it is needed to display a non-hashed
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 148
+                lineNumber: 131
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 149
+                lineNumber: 132
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25012,7 +24995,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 151
+                lineNumber: 134
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25030,7 +25013,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 158
+                lineNumber: 141
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25049,23 +25032,13 @@ been stored when submitting the login form (it is needed to display a non-hashed
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     xs: 10,
                     md: 8
-                }, /*#__PURE__*/ _reactDefault.default.createElement(_movieViewDefault.default, {
-                    movieData: movies.find((movie)=>movie._id === match.params.movieId
-                    ),
-                    onBackClick: ()=>history.goBack()
-                    ,
-                    onAddMovie: ()=>{
-                        const movieID = match.params.movieId;
-                        this.addToFavourites(movieID);
-                    }
-                }), /*#__PURE__*/ _reactDefault.default.createElement("br", null), /*#__PURE__*/ _reactDefault.default.createElement(_toastDefault.default, {
+                }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+                    id: "toast"
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_toastDefault.default, {
                     style: {
                         color: 'black',
                         backgroundColor: 'white',
                         fontSize: 14,
-                        position: 'fixed',
-                        top: 75,
-                        right: 15,
                         textAlign: 'center',
                         fontWeight: 400
                     },
@@ -25079,9 +25052,6 @@ been stored when submitting the login form (it is needed to display a non-hashed
                         color: 'black',
                         backgroundColor: 'white',
                         fontSize: 14,
-                        position: 'fixed',
-                        top: 75,
-                        right: 15,
                         textAlign: 'center',
                         fontWeight: 400
                     },
@@ -25090,11 +25060,20 @@ been stored when submitting the login form (it is needed to display a non-hashed
                     ,
                     delay: 2000,
                     autohide: true
-                }, /*#__PURE__*/ _reactDefault.default.createElement(_toastBodyDefault.default, null, "Movie already added!"))));
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_toastBodyDefault.default, null, "Movie already added!"))), /*#__PURE__*/ _reactDefault.default.createElement(_movieViewDefault.default, {
+                    movieData: movies.find((movie)=>movie._id === match.params.movieId
+                    ),
+                    onBackClick: ()=>history.goBack()
+                    ,
+                    onAddMovie: ()=>{
+                        const movieID = match.params.movieId;
+                        this.addToFavourites(movieID);
+                    }
+                })));
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 163
+                lineNumber: 146
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25121,7 +25100,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 192
+                lineNumber: 174
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25148,7 +25127,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 202
+                lineNumber: 184
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25172,7 +25151,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 212
+                lineNumber: 194
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25194,7 +25173,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 219
+                lineNumber: 201
             },
             __self: this
         }))));
@@ -29221,6 +29200,7 @@ user to the login view */ const handleRegistration = (e)=>{
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        id: "submit",
         variant: "danger",
         type: "submit",
         __source: {
@@ -30761,6 +30741,7 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        id: "myFlix",
         variant: "danger",
         type: "submit",
         __source: {
@@ -30794,6 +30775,7 @@ the authenticated user data (which includes the JWT) is passed to the onLoggedIn
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        id: "signUp",
         variant: "danger",
         type: "button",
         __source: {
@@ -42376,6 +42358,7 @@ used in the template also to avoid defining username twice within the same compo
             },
             __self: this
         }, favMovie.Title), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            id: "remove",
             variant: "danger",
             type: "button",
             size: "sm",
@@ -42538,6 +42521,7 @@ used in the template also to avoid defining username twice within the same compo
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        id: "deregister",
         variant: "danger",
         type: "button",
         onClick: handleDeregister,
@@ -42561,6 +42545,7 @@ used in the template also to avoid defining username twice within the same compo
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        id: "update",
         variant: "danger",
         type: "submit",
         __source: {
@@ -42810,6 +42795,7 @@ page where the new details will be displayed */ const handleUpdate = (e)=>{
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        id: "submit",
         variant: "danger",
         type: "submit",
         __source: {

@@ -2,8 +2,20 @@
   margin-top: 20vh;
   padding-bottom: 10vh;
 }
+
+#submit {
+  box-shadow: none;
+}
 .login-view {
   margin-top: 20vh;
+}
+
+#signUp {
+  box-shadow: none;
+}
+
+#myFlix {
+  box-shadow: none;
 }
 #input {
   color: black;
@@ -58,6 +70,14 @@
 
 .space {
   color: #0c0d0d;
+}
+
+#addMovieButton {
+  box-shadow: none;
+}
+
+#backButton {
+  box-shadow: none;
 }
 #navButton {
   color: #0c0d0d;
@@ -118,9 +138,25 @@
 .favourite {
   margin-bottom: 10px;
 }
+
+#remove {
+  box-shadow: none;
+}
+
+#deregister {
+  box-shadow: none;
+}
+
+#update {
+  box-shadow: none;
+}
 .update-view {
   margin-top: 20vh;
   padding-bottom: 10vh;
+}
+
+#submit {
+  box-shadow: none;
 }
 .empty-view {
   padding-bottom: 100vh;
@@ -128,6 +164,31 @@
 
 .main-view {
   padding-bottom: 30vh;
+}
+
+#toast {
+  margin-top: 80px;
+  text-align: center;
+  height: 25px;
+  width: 175px;
+  position: fixed;
+  top: 0px;
+  left: 45vw;
+}
+
+@media all and (max-width: 600px) {
+  #toast {
+    position: fixed;
+    top: 0px;
+    left: 30vw;
+  }
+}
+@media all and (min-width: 601px) and (max-width: 900px) {
+  #toast {
+    position: fixed;
+    top: 0px;
+    left: 40vw;
+  }
 }
 .my-flix {
   color: steelblue;

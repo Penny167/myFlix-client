@@ -49,7 +49,7 @@ user to the login view */
           <Form.Label>Birthday:</Form.Label>
           <Form.Control required type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
         </Form.Group>  
-        <Button variant="danger" type="submit">Submit</Button>
+        <Button id="submit" variant="danger" type="submit">Submit</Button>
       </Form>
     </div>  
   ) 

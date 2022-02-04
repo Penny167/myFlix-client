@@ -68,7 +68,7 @@ page where the new details will be displayed */
           <Form.Label>Birthday:</Form.Label>
           <Form.Control required type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
         </Form.Group>  
-        <Button variant="danger" type="submit">submit</Button>
+        <Button id="submit" variant="danger" type="submit">submit</Button>
       </Form>
     </div>
   )
