@@ -2,7 +2,7 @@
 
 myFlix-client is a responsive front end for a movie application that allows movie enthusiasts to view information about movies, directors and genres for a selection of classic films. 
 
-The app interacts with a database that holds movie and user information using the myFlix API. The repository for the API, which includes documentation of all the available endpoints, can be found [here](https://github.com/Penny167/myFlix).
+The app interacts with a database that holds movie and user information, using the myFlix API. The repository for the API, which includes documentation of all the available endpoints, can be found [here](https://github.com/Penny167/myFlix).
 
 my-Flix-client was built using React, uses the build tool Parcel and is hosted on Netlify.
 
@@ -14,7 +14,7 @@ Visit myFlix-client [here]() and sign up to explore the app!
 
 - Users can log in or sign up to the app from a welcome page. Login and registration forms implement HTML form validation to ensure credentials adhere to the database users schema.
 - On logging in users are taken to a movie view where they can view all the movies in the database. Movies are displayed as cards showing an image, the title, the first lines of a synopsis and a button that the user can click to open the card for further information. The movie view also contains a search bar that implements a filter whereby users can search for individual movies by name.
-- Clicking the movie card button takes the user to a view of the movie selected. There, they can read a full synopsis and find information about the film's director and genre. Clickable links take them to director and genre views with further details. A button allows the user to add the movie to a list of their favourites, which they can view on their profile page.
+- Clicking the movie card button takes the user to a view of the movie selected. There they can read a full synopsis and find information about the film's director and genre. Clickable links take them to director and genre views with further details. A button allows the user to add the movie to a list of their favourites, which they can view on their profile page.
 - Back buttons and links allow the user to move between views. There is also a navigation bar via which a user can navigate directly to the movie view, navigate to their profile or click a button to log out.
 - The user's profile displays their registration credentials as well as the list of their favourite movies. Inside this view they can update their credentials using an update form, remove movies from their list of favourites or delete their profile and deregister from the app.
 - myFlix-client is a React application and uses both class based and function components to demonstrate different ways of working with state, hooks and lifecycle methods.

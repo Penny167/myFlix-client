@@ -31462,6 +31462,7 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _mynavbarScss = require("./mynavbar.scss");
 var _reactBootstrap = require("react-bootstrap");
+var _reactRouterDom = require("react-router-dom");
 function MyFlixNavbar({ logOut  }) {
     const handleLogout = ()=>{
         logOut();
@@ -31473,55 +31474,55 @@ function MyFlixNavbar({ logOut  }) {
         expand: "md",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 18
+            lineNumber: 19
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Brand, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 19
+            lineNumber: 20
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h5", {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 19
+            lineNumber: 20
         },
         __self: this
     }, "myFlix")), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Toggle, {
         className: "justify-content-end",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 20
+            lineNumber: 21
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Collapse, {
         className: "justify-content-end",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 21
+            lineNumber: 22
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav, {
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 22
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
-        href: "/",
-        id: "navButton",
-        __source: {
-            fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
             lineNumber: 23
         },
         __self: this
-    }, "Home"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
-        href: "/user/" + username,
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+        to: "/",
         id: "navButton",
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
             lineNumber: 24
+        },
+        __self: this
+    }, "Home"), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+        to: "/user/" + username,
+        id: "navButton",
+        __source: {
+            fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
+            lineNumber: 25
         },
         __self: this
     }, "myProfile"), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -31531,7 +31532,7 @@ function MyFlixNavbar({ logOut  }) {
         onClick: handleLogout,
         __source: {
             fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/mynavbar/mynavbar.jsx",
-            lineNumber: 25
+            lineNumber: 26
         },
         __self: this
     }, "logout")))));
@@ -31549,7 +31550,7 @@ $RefreshReg$(_c, "MyFlixNavbar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-bootstrap/Navbar":"3qLFd","react-bootstrap/Button":"1ru0l","prop-types":"4dfy5","./mynavbar.scss":"48v7J","react-bootstrap":"4n7hB","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8"}],"3qLFd":[function(require,module,exports) {
+},{"react":"3b2NM","react-bootstrap/Navbar":"3qLFd","react-bootstrap/Button":"1ru0l","prop-types":"4dfy5","./mynavbar.scss":"48v7J","react-bootstrap":"4n7hB","@parcel/transformer-js/src/esmodule-helpers.js":"59uFI","../../../../../../../.nvm/versions/node/v14.16.1/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"79DY8","react-router-dom":"1PMSK"}],"3qLFd":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;

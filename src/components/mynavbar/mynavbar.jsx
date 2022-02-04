@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import './mynavbar.scss';
 import { Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 function MyFlixNavbar({logOut}) {
@@ -20,8 +21,8 @@ function MyFlixNavbar({logOut}) {
       <Navbar.Toggle className="justify-content-end"/>
       <Navbar.Collapse className="justify-content-end">
         <Nav>
-            <Nav.Link href="/" id="navButton">Home</Nav.Link>
-            <Nav.Link href={"/user/" + username} id="navButton">myProfile</Nav.Link>
+            <Link to="/" id="navButton">Home</Link>
+            <Link to={"/user/" + username} id="navButton">myProfile</Link>
             <Button variant="danger" type="button" id="navButton" onClick={handleLogout}>logout</Button>
         </Nav>
       </Navbar.Collapse>
