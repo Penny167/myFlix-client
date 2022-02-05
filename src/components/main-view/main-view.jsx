@@ -33,16 +33,14 @@ class MainView extends React.Component {
 
   onLoggedIn(loginData) {
     console.log(loginData);
-// Dispatching action to change user state in the store rather than setting state locally
-// Using the full user object rather than just username so we can use the other properties as needed
-    this.props.setUser(loginData.user);
-/* Some user data needs to be stored in local storage because if a page is refreshed we need to send axios 
+/* Some user data needs to be stored in local storage because if a page is refreshed we want to send axios 
 requests to reset the movies and user states without having to log in again. Note that password has already
-been stored when submitting the login form (it is needed to display a non-hashed password on the profile page) */
+been stored when submitting the login form (it is needed to display a non-hashed password on the profile page). */
     localStorage.setItem('user', loginData.user.Username);
     localStorage.setItem('token', loginData.token);
     this.getMovies(loginData.token);
-//  Calling getUser because we want the full movie data for the users favourites, which is not returned by the login route
+/*  The loginData user does not contain full movie data for the user's favourites. So, to populate the user
+state in the store we call getUser(), which returns the full user data needed for the profile page. */ 
     this.getUser(loginData.user.Username, loginData.token);
   }
 
