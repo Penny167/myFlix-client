@@ -42,6 +42,8 @@ been stored when submitting the login form (it is needed to display a non-hashed
     localStorage.setItem('user', loginData.user.Username);
     localStorage.setItem('token', loginData.token);
     this.getMovies(loginData.token);
+//  Calling getUser because we want the full movie data for the users favourites, which is not returned by the login route
+    this.getUser(loginData.user.Username, loginData.token);
   }
 
   logOut() {

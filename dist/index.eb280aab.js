@@ -24870,6 +24870,8 @@ requests to reset the movies and user states without having to log in again. Not
 been stored when submitting the login form (it is needed to display a non-hashed password on the profile page) */ localStorage.setItem('user', loginData.user.Username);
         localStorage.setItem('token', loginData.token);
         this.getMovies(loginData.token);
+        //  Calling getUser because we want the full movie data for the users favourites, which is not returned by the login route
+        this.getUser(loginData.user.Username, loginData.token);
     }
     logOut() {
         // Using setUser function to reset the user state in the store to null
@@ -24958,7 +24960,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 130
+                lineNumber: 132
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_mynavbarDefault.default, {
@@ -24966,14 +24968,14 @@ been stored when submitting the login form (it is needed to display a non-hashed
             ,
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 131
+                lineNumber: 133
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-center",
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 132
+                lineNumber: 134
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -24995,7 +24997,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 134
+                lineNumber: 136
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25013,7 +25015,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 141
+                lineNumber: 143
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25073,7 +25075,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 146
+                lineNumber: 148
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25100,7 +25102,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 174
+                lineNumber: 176
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25127,7 +25129,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 184
+                lineNumber: 186
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25151,7 +25153,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 194
+                lineNumber: 196
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25173,7 +25175,7 @@ been stored when submitting the login form (it is needed to display a non-hashed
             },
             __source: {
                 fileName: "/Users/pennygraham/Desktop/Web_development/Projects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 201
+                lineNumber: 203
             },
             __self: this
         }))));
