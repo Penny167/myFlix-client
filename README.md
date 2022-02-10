@@ -27,7 +27,7 @@ Visit myFlix-client [here](https://myflix-reactapp.netlify.app/) and sign up to 
 - Prop-types have been used to ensure that props are passed between React components correctly.
 - The completed app has been published to Netlify and is accessible via the live website link above.
 
-## Technologies used
+## Technologies
 
 - React
 - React-Bootstrap
